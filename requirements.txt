@@ -25,7 +25,7 @@ Pymoe
 pendulum
 pytesseract
 pyshorteners
-persondoesnotexist
+persondoesnotexist==11.1.0
 catdoesnotexist
 python-decouple
 speedtest-cli
