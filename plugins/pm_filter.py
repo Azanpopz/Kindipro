@@ -2357,28 +2357,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
         )
 
 
-    else:
-        Send_message=await message.replyd_video(
-                
-                video="https://telegra.ph/file/ec5404d035924f1113d8d.mp4",
-                caption=f"<b>📍ʜᴇʟʟᴏ {update.from_user.mention}</b> ᴄᴏᴜʟᴅɴ'ᴛ ꜰɪɴᴅ ᴛʜɪꜱ ᴍᴏᴠɪᴇ.ᴘʟᴇᴀꜱᴇ ᴛʀʏ ᴀɢᴀɪɴ ᴏʀ ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ ᴏʀ ɴᴏᴛ ɢᴇᴛ ᴍᴏᴠɪᴇ ʀᴇᴘᴏʀᴛ ᴀᴅᴍɪɴꜱ👉</b>"
-                        f"<b><a href='https://t.me/kinzanoufal'>👇ᴀᴅᴍɪɴ</a></b>. \n\n"
-                        f"<b>നിങ്ങൾ സിനിമ ചോദിക്കുമ്പോൾ ഇംഗ്ലീഷിൽ അയക്കുക🔍 അയക്കേണ്ട രീതി അറിയാൻ മുകളിലെ വീഡിയോ കാണുക.</b>(അഥവാ നിങ്ങൾക്ക് മൂവി കിട്ടുന്നില്ലെങ്കിൽ ഞങ്ങളെ അറിയിക്കുക)</b>(25 Sec)",
-                parse_mode="html",
-                reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("🔍ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ", url=f"https://t.me/bigmoviesworld")
-                            ],
-                            [
-                                InlineKeyboardButton("♻️ᴄᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ♻️", url=f"https://t.me/kinzanoufal")
-                            ]
-                        ]
-                    ),
-                reply_to_message_id=update.message_id
-            )
-        await asyncio.sleep(20) # in seconds
-        await Send_message.delete()
+    
 
 
     
@@ -2497,7 +2476,28 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
     await message.reply_text(text=f"⚙️ {message.from_user.mention} Fɪʟᴛᴇʀ Fᴏʀ {search} Cʟᴏꜱᴇᴅ 🗑️")
 
-
+    else:
+        Send_message=await message.reply_video(
+                
+                video="https://telegra.ph/file/ec5404d035924f1113d8d.mp4",
+                caption=f"<b>📍ʜᴇʟʟᴏ {update.from_user.mention}</b> ᴄᴏᴜʟᴅɴ'ᴛ ꜰɪɴᴅ ᴛʜɪꜱ ᴍᴏᴠɪᴇ.ᴘʟᴇᴀꜱᴇ ᴛʀʏ ᴀɢᴀɪɴ ᴏʀ ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ ᴏʀ ɴᴏᴛ ɢᴇᴛ ᴍᴏᴠɪᴇ ʀᴇᴘᴏʀᴛ ᴀᴅᴍɪɴꜱ👉</b>"
+                        f"<b><a href='https://t.me/kinzanoufal'>👇ᴀᴅᴍɪɴ</a></b>. \n\n"
+                        f"<b>നിങ്ങൾ സിനിമ ചോദിക്കുമ്പോൾ ഇംഗ്ലീഷിൽ അയക്കുക🔍 അയക്കേണ്ട രീതി അറിയാൻ മുകളിലെ വീഡിയോ കാണുക.</b>(അഥവാ നിങ്ങൾക്ക് മൂവി കിട്ടുന്നില്ലെങ്കിൽ ഞങ്ങളെ അറിയിക്കുക)</b>(25 Sec)",
+                parse_mode="html",
+                reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("🔍ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ", url=f"https://t.me/bigmoviesworld")
+                            ],
+                            [
+                                InlineKeyboardButton("♻️ᴄᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ♻️", url=f"https://t.me/kinzanoufal")
+                            ]
+                        ]
+                    ),
+                reply_to_message_id=update.message_id
+            )
+        await asyncio.sleep(20) # in seconds
+        await Send_message.delete()
 
 
 
