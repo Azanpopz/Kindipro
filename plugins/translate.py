@@ -2,11 +2,6 @@ from googletrans import Translator
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from plugins.list import list
-from database.gtrans_mdb import find_one
-
-
-
-
 
 @Client.on_message(filters.command(["tr"]))
 async def left(client,message):
@@ -21,12 +16,12 @@ async def left(client,message):
                                 [
                                     [
                                         InlineKeyboardButton(
-                                            "language codes", url="https://cloud.google.com/translate/docs/languages"
+                                            text=f"𝘔𝘰𝘳𝘦 𝘓𝘢𝘯𝘨 𝘊𝘰𝘥𝘦𝘴", url="https://cloud.google.com/translate/docs/languages"
                                         )
                                     ],
 				    [
                                         InlineKeyboardButton(
-                                            "✗ close the translate ✗", callback_data="close_data"
+                                            "𝘊𝘭𝘰𝘴𝘦", callback_data="close_data"
                                         )
                                     ],
                                 ]
@@ -37,7 +32,7 @@ async def left(client,message):
 						fromt = i
 					if list[i] == translation.dest:
 						to = i 
-				await message.reply_text(f"Translated from **{fromt.capitalize()}** To **{to.capitalize()}**\n\n```{translation.text}```", reply_markup=hehek, quote=True)
+				await message.reply_text(f"translated from {fromt.capitalize()} to {to.capitalize()}\n\n```{translation.text}```", reply_markup=hehek, quote=True)
 			except:
 			   	await message.reply_text(f"Translated from **{translation.src}** To **{translation.dest}**\n\n```{translation.text}```", reply_markup=hehek, quote=True)
 			
