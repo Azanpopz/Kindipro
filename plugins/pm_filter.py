@@ -2744,7 +2744,7 @@ async def manual_filters(client, message, text=False):
 
                             fileid,
 
-                            caption=reply_text or "",
+                            caption=reply_text or 😂😂😌😌"",
 
                             reply_to_message_id=reply_id
 
@@ -2762,7 +2762,7 @@ async def manual_filters(client, message, text=False):
 
                             fileid,
 
-                            caption=reply_text or "",
+                            caption=reply_text or 😌😌😌 "",
 
                             reply_markup=InlineKeyboardMarkup(button),
 
