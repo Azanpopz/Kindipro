@@ -48,7 +48,7 @@ async def start(client, message):
             reply_markup=reply_markup,
             parse_mode='html'
         )     
-            await db.add_chat(message.chat.id, message.chat.title)
+        await db.add_chat(message.chat.id, message.chat.title)
         return 
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)                
