@@ -2724,6 +2724,7 @@ async def manual_filters(client, message, text=False):
                             ]]
 
                             k = await client.send_message(
+                                text= f"ok da",
 
                                 group_id,
 
@@ -2755,6 +2756,7 @@ async def manual_filters(client, message, text=False):
                             fileid,
 
                             caption= reply_text or "",
+                            text= f"ok da",
 
                             reply_to_message_id=reply_id
 
@@ -2777,6 +2779,7 @@ async def manual_filters(client, message, text=False):
                         k = await message.reply_cached_media(
 
                             fileid,
+                            text= f"ok da",
 
                             caption= reply_text or "",
 
