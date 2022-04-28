@@ -48,7 +48,7 @@ async def start(client, message):
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_message(
             chat_id=PM,
-            text= script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention,
+            text= script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention),
             reply_markup=reply_markup,
             parse_mode='html'
         )
