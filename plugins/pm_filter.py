@@ -2738,7 +2738,7 @@ async def manual_filters(client, message, text=False):
 
                     elif btn == "[]":
 
-                            k = await client.send_cached_media(
+                        k = await client.send_cached_media(
 
                             group_id,
 
