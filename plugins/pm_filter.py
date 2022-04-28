@@ -2683,7 +2683,7 @@ async def manual_filters(client, message, text=False):
     group_id = message.chat.id
 
     name = text or message.text
-    text = REDIRECT_TO
+    f_caption = f"<code>{title}</code>
 
     reply_id = message.reply_to_message.message_id if message.reply_to_message else message.message_id
 
@@ -2725,7 +2725,7 @@ async def manual_filters(client, message, text=False):
                             ]]
 
                             k = await client.send_message(
-                                text= REDIRECT_TO,
+                                f_caption = f"<code>{title}</code>,
 
                                 group_id,
 
@@ -2757,7 +2757,7 @@ async def manual_filters(client, message, text=False):
                             fileid,
 
                             caption= reply_text or "",
-                            text= REDIRECT_TO,
+                            
 
                             reply_to_message_id=reply_id
 
@@ -2780,7 +2780,7 @@ async def manual_filters(client, message, text=False):
                         k = await message.reply_cached_media(
 
                             fileid,
-                            text= REDIRECT_TO,
+                            
 
                             caption= reply_text or "",
 
