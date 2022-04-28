@@ -35,3 +35,9 @@ pyromod~=1.5
 gtts
 yt_dlp
 wget
+
+TgCrypto
+pyrogram<=1.4.16
+googletrans==3.1.0a0
+pymongo
+dnspython
