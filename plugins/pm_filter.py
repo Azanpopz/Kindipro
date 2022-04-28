@@ -2717,6 +2717,11 @@ async def manual_filters(client, message, text=False):
                         else:
 
                             button = eval(btn)
+                            buttons = [[
+
+                                InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+                            ]]
 
                             k = await client.send_message(
 
@@ -2730,11 +2735,7 @@ async def manual_filters(client, message, text=False):
 
                                 reply_to_message_id=reply_id
 
-                            buttons = [[
-
-                                InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-
-                            ]]
+                            )
                             await asyncio.sleep(10)
                             await k.delete()      
 
