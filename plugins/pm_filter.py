@@ -2718,7 +2718,7 @@ async def manual_filters(client, message, text=False):
 
                             button = eval(btn)
 
-                           k = await client.send_message(
+                            k = await client.send_message(
 
                                 group_id,
 
