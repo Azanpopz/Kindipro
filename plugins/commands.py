@@ -40,8 +40,18 @@ async def start(client, message):
             await db.add_chat(message.chat.id, message.chat.title)
         return 
     if not await db.is_user_exist(message.from_user.id):
-        await db.add_user(message.from_user.id, message.from_user.first_name)
-        await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
+        await db.add_user(message.from_user.id, message.from_user.first_name)                
+        buttons = [[            
+            InlineKeyboardButton('🕵️𝐇𝐞𝐥𝐩🕵️', callback_data='help'),
+            InlineKeyboardButton('😊𝐀𝐛𝐨𝐮𝐭😊', callback_data='about')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await client.send_message(
+            chat_id=PM,
+            text= script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention,
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )
     if len(message.command) != 2:
         await message.reply_chat_action("Typing")
         m=await message.reply_sticker("CAACAgUAAx0CQTCW0gABB5EUYkx6-OZS7qCQC6kNGMagdQOqozoAAgQAA8EkMTGJ5R1uC7PIECME") 
