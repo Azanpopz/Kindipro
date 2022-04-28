@@ -2718,7 +2718,7 @@ async def manual_filters(client, message, text=False):
 
                             button = eval(btn)
 
-                            await client.send_message(
+                           k = await client.send_message(
 
                                 group_id,
 
@@ -2731,26 +2731,27 @@ async def manual_filters(client, message, text=False):
                                 reply_to_message_id=reply_id
 
                             )
-
-                            
+                           await asyncio.sleep(10)
+                           await k.delete()      
 
                             
 
                     elif btn == "[]":
 
-                            await client.send_cached_media(
+                            k = await client.send_cached_media(
 
                             group_id,
 
                             fileid,
 
-                            caption=hui"",
+                            caption= reply_text or "",
 
                             reply_to_message_id=reply_id
 
                         )
 
-                       
+                        await asyncio.sleep(10)
+                        await k.delete()            
 
                         
 
@@ -2758,21 +2759,20 @@ async def manual_filters(client, message, text=False):
 
                         button = eval(btn)
 
-                        await message.reply_cached_media(
+                        k = await message.reply_cached_media(
 
                             fileid,
 
-                            caption= hii"",
+                            caption= reply_text or "",
 
                             reply_markup=InlineKeyboardMarkup(button),
 
                             reply_to_message_id=reply_id
 
                         )
-
-                        
-
-                         
+                        await asyncio.sleep(10)
+                        await k.delete()  
+                                                 
 
                 except Exception as e:
 
