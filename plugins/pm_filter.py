@@ -2730,19 +2730,11 @@ async def manual_filters(client, message, text=False):
 
                                 reply_to_message_id=reply_id
 
-                            btn.insert(0,
+                            buttons = [[
 
-            [
+                                InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
 
-                InlineKeyboardButton(f'ɪɴғᴏ', 'im'),
-
-                InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'movies'),
-
-                InlineKeyboardButton(f'sᴇʀɪᴇs', 'series')
-
-            ]
-
-    )            
+                            ]]
                             await asyncio.sleep(10)
                             await k.delete()      
 
