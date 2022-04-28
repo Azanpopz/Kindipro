@@ -2683,8 +2683,7 @@ async def manual_filters(client, message, text=False):
     group_id = message.chat.id
 
     name = text or message.text
-    f_caption = f"<code>{title}</code>
-
+    
     reply_id = message.reply_to_message.message_id if message.reply_to_message else message.message_id
 
     keywords = await get_filters(group_id)
@@ -2724,8 +2723,7 @@ async def manual_filters(client, message, text=False):
 
                             ]]
 
-                            k = await client.send_message(
-                                f_caption = f"<code>{title}</code>,
+                            k = await client.send_message(                               
 
                                 group_id,
 
