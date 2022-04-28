@@ -2263,7 +2263,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
     await k.delete()
     else:
-        Send_message=await message.reply_video(
+    k = await message.reply_video(
                 
                 video="https://telegra.ph/file/ec5404d035924f1113d8d.mp4",
                 caption=f"<b>📍ʜᴇʟʟᴏ {update.from_user.mention}</b> ᴄᴏᴜʟᴅɴ'ᴛ ꜰɪɴᴅ ᴛʜɪꜱ ᴍᴏᴠɪᴇ.ᴘʟᴇᴀꜱᴇ ᴛʀʏ ᴀɢᴀɪɴ ᴏʀ ꜱᴇᴀʀᴄʜ ɢᴏᴏɢʟᴇ ᴏʀ ɴᴏᴛ ɢᴇᴛ ᴍᴏᴠɪᴇ ʀᴇᴘᴏʀᴛ ᴀᴅᴍɪɴꜱ👉</b>"
@@ -2283,13 +2283,13 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
                 reply_to_message_id=update.message_id
             )
         await asyncio.sleep(20) # in seconds
-        await Send_message.delete()
+        await k.delete()
         # await bot.delete_messages(update.chat.id,update.message_id)
         return  # return if no files found for that query
     
     if len(results) == 0:   # double check
         return
-    
+              
     
 
     
