@@ -2255,13 +2255,6 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
     )
 
-    
-
-    k = await message.reply_sticker("CAACAgUAAx0CQTCW0gABB5EUYkx6-OZS7qCQC6kNGMagdQOqozoAAgQAA8EkMTGJ5R1uC7PIECME") 
-
-    await asyncio.sleep(1)
-
-    await k.delete()
     else:
     k = await message.reply_video(
                 
@@ -2290,6 +2283,13 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
     if len(results) == 0:   # double check
         return
               
+    
+
+    k = await message.reply_sticker("CAACAgUAAx0CQTCW0gABB5EUYkx6-OZS7qCQC6kNGMagdQOqozoAAgQAA8EkMTGJ5R1uC7PIECME") 
+
+    await asyncio.sleep(1)
+
+    await k.delete()
     
 
     
