@@ -2742,6 +2742,11 @@ async def manual_filters(client, message, text=False):
                             
 
                     elif btn == "[]":
+                        buttons = [[
+
+                            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+                        ]]
 
                         k = await client.send_cached_media(
 
@@ -2763,6 +2768,11 @@ async def manual_filters(client, message, text=False):
                     else:
 
                         button = eval(btn)
+                        buttons = [[
+
+                            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+                        ]]
 
                         k = await message.reply_cached_media(
 
