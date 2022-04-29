@@ -1420,7 +1420,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[     
             InlineKeyboardButton('CLOSE', callback_data='close_data'),
             InlineKeyboardButton(f"{title}{act}", callback_data=f"groupcb:{groupid}:{act}"),
-            InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='close_data'')
+            InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='close_data')
 
         ]]
 
