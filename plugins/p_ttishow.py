@@ -31,7 +31,7 @@ async def save_group(bot, message):
             reply_markup=reply_markup,
             parse_mode='html'
         )           
-            await db.add_chat(message.chat.id, message.chat.title)
+        await db.add_chat(message.chat.id, message.chat.title)
         if message.chat.id in temp.BANNED_CHATS:
             # Inspired from a boat of a banana tree
             buttons = [[
