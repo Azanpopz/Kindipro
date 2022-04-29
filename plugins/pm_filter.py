@@ -1454,13 +1454,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
 
             InlineKeyboardButton('MODULES', callback_data='page1'),
-            InlineKeyboardButton('EXTRA', callback_data='fun')                                            
+            InlineKeyboardButton('EXTRA', callback_data='extra')                                            
             ],[
             InlineKeyboardButton('ADMINS ONLY', callback_data='admin'),
-            InlineKeyboardButton('INFO', callback_data='trnt')           
+            InlineKeyboardButton('INFO', callback_data='inf')           
             ],[
-            InlineKeyboardButton('GROUPS', callback_data='covid'),            
-            InlineKeyboardButton('CHANNELS', callback_data='gtrans')            
+            InlineKeyboardButton('GROUPS', callback_data='groups'),            
+            InlineKeyboardButton('CHANNELS', callback_data='channels')            
             ],[                                    
             InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='close_data'),
             InlineKeyboardButton('Home', callback_data='start'),
@@ -1516,6 +1516,247 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         )
 
+    elif query.data == "extra":
+
+        buttons = [[
+
+            InlineKeyboardButton('quotly', callback_data='quotly'),
+            InlineKeyboardButton('kang', callback_data='kang')                                            
+                        
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▣"
+
+        )
+
+        await query.message.edit_text(
+
+            text=script.HELP_TXT.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+
+    elif query.data == "admin":
+
+        buttons = [[
+
+            InlineKeyboardButton('Privet', callback_data='privet'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='start')                                            
+                                   
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▣"
+
+        )
+
+        await query.message.edit_text(
+
+            text=script.HELP_TXT.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+
+    elif query.data == "groups":
+
+        buttons = [[
+
+            InlineKeyboardButton('MOVIES GROUP', url='https://t.me/nasrani_update'),
+            InlineKeyboardButton('MOVIES GROUP', url='https://t.me/NasraniSeries')                                            
+            ],[
+            InlineKeyboardButton('CHATING GROUP', url='https://t.me/NasraniChatGroup'),
+            InlineKeyboardButton('STATUS GROUP', url='https://t.me/mazhatthullikal')           
+            ],[
+            InlineKeyboardButton('SONGS GROUP', url='https://t.me/NasraniChatGroup'),            
+            InlineKeyboardButton('UPDATE GROUP', url='https://t.me/NasraniMovies')            
+            ],[                                    
+            InlineKeyboardButton('Home', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▣"
+
+        )
+
+        await query.message.edit_text(
+
+            text=script.HELP_TXT.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+
+    elif query.data == "channels":
+
+        buttons = [[
+
+            InlineKeyboardButton('CHANNEL1', url='https://t.me/+c_29_PqP73tmOTE1'),
+            InlineKeyboardButton('CHANNEL2', url='https://t.me/HDAZmovies'),                                                      
+            InlineKeyboardButton('File store', url='https://t.me/+Md9dwytUK1NhNTc9')
+            InlineKeyboardButton('INFO', callback_data='inf')           
+                                                
+            InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▣"
+
+        )
+
+        await query.message.edit_text(
+
+            text=script.HELP_TXT.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
 
 
 
@@ -2299,6 +2540,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer("FILES FORWARD TO YOUR SAVED MESSAGES. All files here Gets Deleted With in 5 Minutes", True)
 
     
+    elif query.data == 'inf':
+
+        await query.answer("⚠︎ ഇവിടെ ഒന്നും നോക്കണ്ട ഉണ്ണി ", True)
 
 
 
