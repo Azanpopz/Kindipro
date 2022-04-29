@@ -2605,11 +2605,11 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
             logger.exception(e)
 
-            fmsg = await message.reply_image(cap,image,reply_markup=InlineKeyboardMarkup(btn))
+            fmsg = await message.reply_photo(cap,image,reply_markup=InlineKeyboardMarkup(btn))
 
     else:
 
-        fmsg = await message.reply_image(cap,image,reply_markup=InlineKeyboardMarkup(btn))
+        fmsg = await message.reply_photo(cap,image,reply_markup=InlineKeyboardMarkup(btn))
 
     
 
