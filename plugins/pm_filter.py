@@ -336,37 +336,37 @@ async def advantage_spoll_choker(bot, query):
 
             k = await query.message.edit_text(
 
-            text="▣▢▢▢▢▢"
+            text="▭▭ ▭▭  ▭▭ ▭▭ ▭▭\nSEARCHING...    𝟎𝟎/𝟏𝟎𝟎%\n▭▭ ▭▭  ▭▭ ▭▭ ▭▭"
 
         )
 
             k = await query.message.edit_text(
 
-            text="▣▣▢▢▢▢"
+            text="▬▬ ▭▭  ▭▭ ▭▭ ▭▭\nSEARCHING...     𝟐𝟓/𝟏𝟎𝟎%\n▬▬ ▭▭  ▭▭ ▭▭ ▭▭"
 
         )
 
             k = await query.message.edit_text(
 
-            text="▣▣▣▢▢▢"
+            text="▬▬ ▬▬  ▭▭ ▭▭ ▭▭\nSEARCHING...     𝟓𝟎/𝟏𝟎𝟎%\n▬▬ ▬▬  ▭▭ ▭▭ ▭▭"
 
         )
 
             k = await query.message.edit_text(
 
-            text="▣▣▣▣▢▢"
+            text="▬▬ ▬▬  ▬▬ ▭▭ ▭▭\nSEARCHING...     𝟕𝟓/𝟏𝟎𝟎%\n▬▬ ▬▬  ▬▬ ▭▭ ▭▭"
 
         )
 
             k = await query.message.edit_text(
 
-            text="▣▣▣▣▣▢"
+            text="▬▬ ▬▬  ▬▬ ▬▭ ▭▭\nSEARCHING...     𝟖𝟓/𝟏𝟎𝟎%\n▬▬ ▬▬  ▬▬ ▬▭ ▭▭"
 
         )
 
             k = await query.message.edit_text(
 
-            text="▣▣▣▣▣▣"
+            text="▬▬ ▬▬  ▬▬ ▬▬ ▬▬\nSEARCHING...    𝟏𝟎𝟎/𝟏𝟎𝟎%\n▬▬ ▬▬  ▬▬ ▬▬ ▬▬"
 
         )
 
