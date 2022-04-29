@@ -1314,6 +1314,78 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
 
+
+    elif query.data == "help":
+
+        buttons = [[
+
+            InlineKeyboardButton('MODULES', callback_data='hud'),
+            InlineKeyboardButton('EXTRA', callback_data='fun')                                            
+            ],[
+            InlineKeyboardButton('ADMINS ONLY', callback_data='pin'),
+            InlineKeyboardButton('INFO', callback_data='trnt')           
+            ],[
+            InlineKeyboardButton('GROUPS', callback_data='covid'),            
+            InlineKeyboardButton('CHANNELS', callback_data='gtrans')            
+            ],[                                    
+            InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='close_data'),
+            InlineKeyboardButton('Home', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='start')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▢▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣▣▣▣"
+
+        )
+
+        await query.message.edit_text(
+
+            text=script.HELP_TXT.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+
+
+
+
+
     elif query.data == "about":
 
         await query.message.delete()
