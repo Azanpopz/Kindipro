@@ -1474,7 +1474,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
 
-            InlineKeyboardButton('MODULES', callback_data='hud'),
+            InlineKeyboardButton('MODULES', callback_data='page1'),
             InlineKeyboardButton('EXTRA', callback_data='fun')                                            
             ],[
             InlineKeyboardButton('ADMINS ONLY', callback_data='pin'),
@@ -1485,7 +1485,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[                                    
             InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='close_data'),
             InlineKeyboardButton('Home', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='start')
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
 
         ]]
 
