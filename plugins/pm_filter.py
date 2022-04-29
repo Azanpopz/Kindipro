@@ -1410,7 +1410,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Torrent', callback_data='trnt'),
             InlineKeyboardButton('Url short', callback_data='urlshrt')
             ],[
-            InlineKeyboardButton('Weather', callback_data='weather')
+            InlineKeyboardButton('Weather', callback_data='weather'),
             InlineKeyboardButton('Country', callback_data='cntry')
             ],[     
             InlineKeyboardButton('CLOSE', callback_data='close_data'),
