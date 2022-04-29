@@ -1197,13 +1197,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
 
             InlineKeyboardButton('𝖥𝗂𝗅𝗍𝖾𝗋', callback_data='hud'),
+            InlineKeyboardButton('𝖲𝗍𝖺𝗍𝗌', callback_data='stats'),
             InlineKeyboardButton('𝖨𝗆𝖽𝖻', callback_data='imbd')
             ],[
             InlineKeyboardButton('𝖯𝗎𝗋𝗀𝖾', callback_data='purge'),
+            InlineKeyboardButton('Logo', callback_data='lego'),   
             InlineKeyboardButton('𝖳𝗀𝗋𝖺𝗉𝗁', callback_data='tgraph')
             ],[  
             InlineKeyboardButton('𝖬𝖾𝗆𝖾', callback_data='fun'),
-            InlineKeyboardButton('𝖬𝗎𝗍𝖾', callback_data='mute')
+            InlineKeyboardButton('𝖬𝗎𝗍𝖾', callback_data='mute'),
+            InlineKeyboardButton('Torrent', callback_data='trnt')
             ],[
             InlineKeyboardButton('NEXT', callback_data='page3'),
             InlineKeyboardButton('PAGE1', callback_data='start'),
@@ -1268,13 +1271,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
             InlineKeyboardButton('𝖡𝖺𝗇', callback_data='ban'),
-            InlineKeyboardButton('𝖢𝗈𝗇𝗇𝖾𝖼𝗍𝗂𝗈𝗇', callback_data='coct')
+            InlineKeyboardButton('𝖢𝗈𝗇𝗇𝖾𝖼𝗍𝗂𝗈𝗇', callback_data='coct'),
+            InlineKeyboardButton('Url short', callback_data='urlshrt')
             ],[
             InlineKeyboardButton('𝖯𝗂𝗇', callback_data='pin'),
-            InlineKeyboardButton('𝖨𝗇𝖿𝗈', callback_data='info')
+            InlineKeyboardButton('𝖨𝗇𝖿𝗈', callback_data='info'),
+            InlineKeyboardButton('Weather', callback_data='weather')
             ],[
             InlineKeyboardButton('𝖩𝗌𝗈𝗇', callback_data='json'),
-            InlineKeyboardButton('𝖯𝗂𝗇𝗀', callback_data='ping')
+            InlineKeyboardButton('𝖯𝗂𝗇𝗀', callback_data='ping'),
+            InlineKeyboardButton('Country', callback_data='cntry')
             ],[
             InlineKeyboardButton('NEXT', callback_data='page2'),
             InlineKeyboardButton('PAGE2', callback_data='start'),
@@ -1336,17 +1342,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
 
             InlineKeyboardButton('𝖢𝗈𝗏𝗂𝖽', callback_data='covid'),
-            InlineKeyboardButton('𝖲𝗈𝗇𝗀', callback_data='song')
-            ],[
-            InlineKeyboardButton('Carbon', callback_data='carbon'),          
-            InlineKeyboardButton('𝖯𝖺𝗌𝗍𝖾', callback_data='paste')
-            ],[
-            InlineKeyboardButton('𝖦-𝖳𝗋𝖺𝗇𝗌', callback_data='gtrans'),
+            InlineKeyboardButton('𝖲𝗈𝗇𝗀', callback_data='song'),
             InlineKeyboardButton('TTS', callback_data='tts')
             ],[
-            InlineKeyboardButton('NEXT', callback_data='page3'),
+            InlineKeyboardButton('Carbon', callback_data='carbon'),          
+            InlineKeyboardButton('𝖯𝖺𝗌𝗍𝖾', callback_data='paste'),
+            InlineKeyboardButton('𝖦-𝖳𝗋𝖺𝗇𝗌', callback_data='gtrans')
+            ],[                                    
+            InlineKeyboardButton('Back', callback_data='page2'),
             InlineKeyboardButton('PAGE3', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='page2')
+            InlineKeyboardButton('Close.', callback_data='close_data')
 
         ]]
 
@@ -1401,21 +1406,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
 
-    elif query.data == "page4":
+    elif query.data == "admin":
 
         buttons = [[
-            InlineKeyboardButton('𝖲𝗍𝖺𝗍𝗌', callback_data='stats'),
-            InlineKeyboardButton('Logo', callback_data='lego')   
+            
+            
             ],[
-            InlineKeyboardButton('Torrent', callback_data='trnt'),
-            InlineKeyboardButton('Url short', callback_data='urlshrt')
+            
+            
             ],[
-            InlineKeyboardButton('Weather', callback_data='weather'),
-            InlineKeyboardButton('Country', callback_data='cntry')
+            
+            
             ],[     
             InlineKeyboardButton('CLOSE', callback_data='close_data'),
-            InlineKeyboardButton('PAGE4', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='page3')
+            InlineKeyboardButton(f"{title}{act}", callback_data=f"groupcb:{groupid}:{act}"),
+            InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='close_data'')
 
         ]]
 
@@ -1477,7 +1482,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('MODULES', callback_data='page1'),
             InlineKeyboardButton('EXTRA', callback_data='fun')                                            
             ],[
-            InlineKeyboardButton('ADMINS ONLY', callback_data='pin'),
+            InlineKeyboardButton('ADMINS ONLY', callback_data='admin'),
             InlineKeyboardButton('INFO', callback_data='trnt')           
             ],[
             InlineKeyboardButton('GROUPS', callback_data='covid'),            
