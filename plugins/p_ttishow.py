@@ -25,7 +25,7 @@ async def save_group(bot, message):
             InlineKeyboardButton('😊𝐀𝐛𝐨𝐮𝐭😊', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.send_message(
+        await bot.send_message(
             chat_id=PM,
             text= script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, r_j),
             reply_markup=reply_markup,
