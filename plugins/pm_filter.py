@@ -1159,12 +1159,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode='html'
 
         )
-
-    elif query.data == "inf":
-        await query.answer("⚠︎ ഇവിടെ ഒന്നും നോക്കണ്ട ഉണ്ണി ", True)
-
-
-        
+            
 
         await query.answer('Piracy Is Crime')
 
