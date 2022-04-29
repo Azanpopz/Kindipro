@@ -1192,7 +1192,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         await query.answer('Piracy Is Crime')
 
-    elif query.data == "help":
+    elif query.data == "page1":
 
         buttons = [[
 
@@ -1205,6 +1205,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('𝖬𝖾𝗆𝖾', callback_data='fun'),
             InlineKeyboardButton('𝖬𝗎𝗍𝖾', callback_data='mute')
             ],[
+            InlineKeyboardButton('NEXT', callback_data='page3'),
+            InlineKeyboardButton('PAGE1', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')            
 
         ]]
 
@@ -1261,7 +1264,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         await query.answer('Piracy Is Crime')
 
-    elif query.data == "help":
+    elif query.data == "page2":
 
         buttons = [[
             InlineKeyboardButton('𝖡𝖺𝗇', callback_data='ban'),
@@ -1272,6 +1275,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('𝖩𝗌𝗈𝗇', callback_data='json'),
             InlineKeyboardButton('𝖯𝗂𝗇𝗀', callback_data='ping')
+            ],[
+            InlineKeyboardButton('NEXT', callback_data='page2'),
+            InlineKeyboardButton('PAGE2', callback_data='start'),
+            InlineKeyboardButton('BACK', callback_data='page1')
 
         ]]
 
@@ -1324,7 +1331,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
 
 
-    elif query.data == "help":
+    elif query.data == "page3":
 
         buttons = [[
 
@@ -1336,6 +1343,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
             InlineKeyboardButton('𝖦-𝖳𝗋𝖺𝗇𝗌', callback_data='gtrans'),
             InlineKeyboardButton('TTS', callback_data='tts')
+            ],[
+            InlineKeyboardButton('NEXT', callback_data='page3'),
+            InlineKeyboardButton('PAGE3', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='page2')
 
         ]]
 
@@ -1390,7 +1401,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
 
-    elif query.data == "help":
+    elif query.data == "page4":
 
         buttons = [[
             InlineKeyboardButton('𝖲𝗍𝖺𝗍𝗌', callback_data='stats'),
@@ -1402,9 +1413,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Weather', callback_data='weather')
             InlineKeyboardButton('Country', callback_data='cntry')
             ],[     
-            InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='close_data'),
-            InlineKeyboardButton('Home', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='start')
+            InlineKeyboardButton('CLOSE', callback_data='close_data'),
+            InlineKeyboardButton('PAGE4', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='page3')
 
         ]]
 
