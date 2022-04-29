@@ -1705,8 +1705,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('CHANNEL1', url='https://t.me/+c_29_PqP73tmOTE1'),
             InlineKeyboardButton('CHANNEL2', url='https://t.me/HDAZmovies'),                                                      
             InlineKeyboardButton('File store', url='https://t.me/+Md9dwytUK1NhNTc9')
-            InlineKeyboardButton('INFO', callback_data='inf')           
-                                                
+            ],[                                                          
             InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='start'),
             InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
 
