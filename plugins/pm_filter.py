@@ -2582,7 +2582,8 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
     else:
 
-        cap = f"👮‍♂ {message.from_user.mention} ɴᴏᴛɪᴄᴇ :ɪ𝙵 ʏᴏᴜ ᴅᴏ ɴᴏᴛ sᴇᴇ ᴛʜᴇ 𝙵ɪʟᴇ𝚂 ᴏ𝙵 ᴛʜɪ𝚂 ᴍᴏᴠɪᴇ ʏᴏᴜ ᴀ𝚂ᴋᴇᴅ 𝙵ᴏʀ. ʟᴏᴏᴋ ᴀᴛ ɴᴇ𝚇ᴛ ᴘᴀɢᴇ🔎\n©️քօաɛʀɛɖ ɮʏ :{message.chat.title}"
+        cap = f"👮‍♂ {message.from_user.mention} ɴᴏᴛɪᴄᴇ :ɪ𝙵 ʏᴏᴜ ᴅᴏ ɴᴏᴛ sᴇᴇ ᴛʜᴇ 𝙵ɪʟᴇ𝚂 ᴏ𝙵 ᴛʜɪ𝚂 ᴍᴏᴠɪᴇ ʏᴏᴜ ᴀ𝚂ᴋᴇᴅ 𝙵ᴏʀ. ʟᴏᴏᴋ ᴀᴛ ɴᴇ𝚇ᴛ ᴘᴀɢᴇ🔎\n©️քօաɛʀɛɖ ɮʏ :{message.chat.title}",
+        image = "https://telegra.ph/file/8a8ba3e824e1d2482253f.jpg"
 
     if imdb and imdb.get('poster'):
 
@@ -2604,17 +2605,11 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
             logger.exception(e)
 
-            fmsg = await message.reply_photos(
-                   photos= "https://telegra.ph/file/8a8ba3e824e1d2482253f.jpg",               
-                   text= cap,
-                   reply_markup=InlineKeyboardMarkup(btn))
+            fmsg = await message.reply_image(cap,image,reply_markup=InlineKeyboardMarkup(btn))
 
     else:
 
-        fmsg = await message.reply_photos(
-               photos= "https://telegra.ph/file/8a8ba3e824e1d2482253f.jpg",
-               text= cap,
-               reply_markup=InlineKeyboardMarkup(btn))
+        fmsg = await message.reply_image(cap,image,reply_markup=InlineKeyboardMarkup(btn))
 
     
 
