@@ -1182,9 +1182,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('𝖬𝗎𝗍𝖾', callback_data='mute'),
             InlineKeyboardButton('Torrent', callback_data='trnt')
             ],[
-            InlineKeyboardButton('NEXT', callback_data='page3'),
+            InlineKeyboardButton('BACK', callback_data='help'),
             InlineKeyboardButton('PAGE1', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')            
+            InlineKeyboardButton('NEXT', callback_data='page2')            
 
         ]]
 
@@ -1256,9 +1256,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('𝖯𝗂𝗇𝗀', callback_data='ping'),
             InlineKeyboardButton('Country', callback_data='cntry')
             ],[
-            InlineKeyboardButton('NEXT', callback_data='page2'),
+            InlineKeyboardButton('BACK', callback_data='page1'),
             InlineKeyboardButton('PAGE2', callback_data='start'),
-            InlineKeyboardButton('BACK', callback_data='page1')
+            InlineKeyboardButton('NEXT', callback_data='page3')            
 
         ]]
 
@@ -1323,9 +1323,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('𝖯𝖺𝗌𝗍𝖾', callback_data='paste'),
             InlineKeyboardButton('𝖦-𝖳𝗋𝖺𝗇𝗌', callback_data='gtrans')
             ],[                                    
-            InlineKeyboardButton('Back', callback_data='page2'),
+            InlineKeyboardButton('BACK', callback_data='page2'),
             InlineKeyboardButton('PAGE3', callback_data='start'),
-            InlineKeyboardButton('Close.', callback_data='close_data')
+            InlineKeyboardButton('CLOSE', callback_data='close_data')            
 
         ]]
 
@@ -1393,7 +1393,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             
             ],[     
             InlineKeyboardButton('CLOSE', callback_data='close_data'),
-            InlineKeyboardButton(f"{title}{act}", callback_data=f"groupcb:{groupid}:{act}"),
+            InlineKeyboardButton('😌😌😌😌}', callback_data='close_data'),
             InlineKeyboardButton('𝖢𝗅𝗈𝗌𝖾', callback_data='close_data')
 
         ]]
