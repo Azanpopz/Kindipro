@@ -1160,7 +1160,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         )
 
-        
+    elif query.data == "inf":
+        await query.answer("⚠︎ ഇവിടെ ഒന്നും നോക്കണ്ട ഉണ്ണി ", True)
+
 
         
 
@@ -1457,7 +1459,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('EXTRA', callback_data='extra')                                            
             ],[
             InlineKeyboardButton('ADMINS ONLY', callback_data='admin'),
-            InlineKeyboardButton('ɪɴғᴏ', callback_data='inf')           
+            InlineKeyboardButton(f'ɪɴғᴏ', 'inf')           
             ],[
             InlineKeyboardButton('GROUPS', callback_data='groups'),            
             InlineKeyboardButton('CHANNELS', callback_data='channels')            
