@@ -2604,15 +2604,15 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
             logger.exception(e)
 
-            fmsg = await message.reply_photo(
-                   photo= "https://telegra.ph/file/8a8ba3e824e1d2482253f.jpg",               
+            fmsg = await message.reply_photos(
+                   photos= "https://telegra.ph/file/8a8ba3e824e1d2482253f.jpg",               
                    text= cap,
                    reply_markup=InlineKeyboardMarkup(btn))
 
     else:
 
-        fmsg = await message.reply_photo(
-               photo= "https://telegra.ph/file/8a8ba3e824e1d2482253f.jpg",
+        fmsg = await message.reply_photos(
+               photos= "https://telegra.ph/file/8a8ba3e824e1d2482253f.jpg",
                text= cap,
                reply_markup=InlineKeyboardMarkup(btn))
 
