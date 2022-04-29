@@ -965,21 +965,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 file_id=file_id,
 
                 caption=f'<b> 𝐇𝐞𝐲 👋 {query.from_user.mention} </b>😍\n 📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : <code>{title}</code>\n ⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ: {size}  \n\n⚠️ കോപ്പി റൈറ്റ് ഉള്ളത് കൊണ്ട് ഈ ഒരു ഫയൽ 5 മിനിറ്റ് കൊണ്ട് ഇവിടെ നിന്നും ഡിലേറ്റാവും...!!!\n\n\nഇവിടെ നിന്നും വേറെ എവിടേലും മാറ്റിയതിന് ശേഷം ഡൗൺലോഡ് ചെയ്യുക...!!!\nFILES FORWARD TO YOUR SAVED MESSAGES\n\n\nAll files here Gets Deleted With in 5 Minutes\n╔════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ═════╗\n\n♻️ 𝙅𝙊𝙄𝙉 :- @nasrani_update\n♻️ 𝙅𝙊𝙄𝙉 :- @NasraniSeries\n╚════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ═════╝</b>\n',
-
                 
-
                 protect_content=True if ident == "filep" else False,
 
                 reply_markup=InlineKeyboardMarkup(buttons)
-
                     
-
             )
-
-
-
             
-
             msg1 = await query.message.reply(
 
                 f'<b> 𝐇𝐞𝐲 👋 {query.from_user.mention} </b>😍\n\n<b>📫 Your File is Ready</b>\n\n'           
@@ -995,42 +987,24 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 reply_markup=InlineKeyboardMarkup(
 
                     [
-
                         [
-
                             InlineKeyboardButton(f'ɪɴғᴏ', 'infos')
-
                         ],
-
                         [
-
                             InlineKeyboardButton("⚠️ Can't Access ❓ Click Here ⚠️", url=f'https://t.me/+Md9dwytUK1NhNTc9')
-
                         ],                       
-
                         [
-
                             InlineKeyboardButton('📥 Download 📥 ', url = msg.link)
-
                         ]
-
                     ]
-
                 )
-
             )
 
             await query.answer('📥𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻📥',)
-
             await asyncio.sleep(180)
-
             await msg1.delete()
-
-            await msg.delete()
-
-            await fmsg.delete()
-
-            del msg1, msg, fmsg
+            await msg.delete()           
+            del msg1, msg
 
         except Exception as e:
 
