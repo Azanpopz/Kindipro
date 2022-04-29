@@ -20,7 +20,17 @@ async def save_group(bot, message):
         if not await db.get_chat(message.chat.id):
             total=await bot.get_chat_members_count(message.chat.id)
             r_j = message.from_user.mention if message.from_user else "Anonymous" 
-            await bot.send_message(PM, script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, r_j))       
+            buttons = [[            
+            InlineKeyboardButton('🕵️𝐇𝐞𝐥𝐩🕵️', callback_data='help'),
+            InlineKeyboardButton('😊𝐀𝐛𝐨𝐮𝐭😊', callback_data='about')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await client.send_message(
+            chat_id=PM,
+            text= script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, r_j),
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )           
             await db.add_chat(message.chat.id, message.chat.title)
         if message.chat.id in temp.BANNED_CHATS:
             # Inspired from a boat of a banana tree
