@@ -1457,7 +1457,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('EXTRA', callback_data='extra')                                            
             ],[
             InlineKeyboardButton('ADMINS ONLY', callback_data='admin'),
-            InlineKeyboardButton(f'ɪɴғᴏ', callback_data='inf')           
+            InlineKeyboardButton(f'ɪɴғᴏ', 'inf')           
             ],[
             InlineKeyboardButton('GROUPS', callback_data='groups'),            
             InlineKeyboardButton('CHANNELS', callback_data='channels')            
