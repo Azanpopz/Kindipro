@@ -145,8 +145,7 @@ async def start(client, message):
                     )
 
 
-            await asyncio.sleep(1) 
-        await sts.delete()
+
         await asyncio.sleep(15)
         await autodelete.delete()
         return
