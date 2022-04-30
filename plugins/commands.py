@@ -137,7 +137,7 @@ async def start(client, message):
             if f_caption is None:
                 f_caption = f"{title}"
             try:
-                await client.send_cached_media(
+                autodelete = await client.send_cached_media(
                     chat_id=message.from_user.id,
                     file_id=msg.get("file_id"),
                     caption=f_caption,
@@ -146,7 +146,7 @@ async def start(client, message):
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
-                await client.send_cached_media(
+                autodelete = await client.send_cached_media(
                     chat_id=message.from_user.id,
                     file_id=msg.get("file_id"),
                     caption=f_caption,
@@ -157,6 +157,8 @@ async def start(client, message):
                 continue
             await asyncio.sleep(1) 
         await sts.delete()
+        await asyncio.sleep(15)
+        await autodelete.delete()
         return
     elif data.split("-", 1)[0] == "DSTORE":
         sts = await message.reply("Please wait")
