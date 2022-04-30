@@ -3,6 +3,7 @@ import logging
 import random
 import asyncio
 from Script import script
+from Vars import Var
 from pyrogram import Client, filters
 from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -42,13 +43,8 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-            ],[
-            InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria')
-            ],[
-            InlineKeyboardButton('ℹ️ Help', callback_data='help'),
-            InlineKeyboardButton('😊 About', callback_data='about')
+            InlineKeyboardButton('🌐 Website', url='https://hagadmansa.com'),
+            InlineKeyboardButton('📣 Updates', url='https://t.me/hagadmansa')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -88,13 +84,8 @@ async def start(client, message):
         return
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-            ],[
-            InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria')
-            ],[
-            InlineKeyboardButton('ℹ️ Help', callback_data='help'),
-            InlineKeyboardButton('😊 About', callback_data='about')
+            InlineKeyboardButton('🌐 Website', url='https://hagadmansa.com'),
+            InlineKeyboardButton('📣 Updates', url='https://t.me/hagadmansa')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -137,30 +128,27 @@ async def start(client, message):
             if f_caption is None:
                 f_caption = f"{title}"
             try:
-                autodelete = await client.send_cached_media(
-                    chat_id=message.from_user.id,
+                await client.send_cached_media(
+                    chat_id=Var.TARGET_CHANNEL,
                     file_id=msg.get("file_id"),
                     caption=f_caption,
                     protect_content=msg.get('protect', False),
                     )
-                await asyncio.sleep(15)
-                await autodelete.delete()
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
-                autodelete = await client.send_cached_media(
-                    chat_id=message.from_user.id,
+                await client.send_cached_media(
+                    chat_id=Var.TARGET_CHANNEL,
                     file_id=msg.get("file_id"),
                     caption=f_caption,
                     protect_content=msg.get('protect', False),
                     )
-
-             
             except Exception as e:
                 logger.warning(e, exc_info=True)
                 continue
-            await asyncio.sleep(1) 
-        await sts.delete()
+        await sts.edit(
+            text=f"all files has been successfully sent to Target Channel"
+            )
         return
     elif data.split("-", 1)[0] == "DSTORE":
         sts = await message.reply("Please wait")
