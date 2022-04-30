@@ -129,7 +129,7 @@ async def start(client, message):
         file_id = data
         pre = ""
     if data.split("-", 1)[0] == "BATCH":
-        sts = await message.reply(
+        sts = client.send_cached_media(
               chat_id=PM,
               file_id=msg.get("file_id"),
               caption=script.START_TXT.format(message.from_user.mention),
