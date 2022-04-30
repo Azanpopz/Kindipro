@@ -1,5 +1,13 @@
 import re
+import asyncio
+import urllib.parse
+import logging
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from typing import Any, Optional
+from urllib.parse import quote_plus
+from Vars import Var
 from pyrogram import filters, Client
+from pyrogram.file_id import FileId
 from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, UsernameInvalid, UsernameNotModified
 from info import ADMINS, LOG_CHANNEL, FILE_STORE_CHANNEL, PUBLIC_FILE_STORE
 from database.ia_filterdb import unpack_new_file_id
@@ -20,6 +28,7 @@ async def allowed(_, __, message):
         return True
     return False
 
+
 @Client.on_message(filters.command(['link', 'plink']) & filters.create(allowed))
 async def gen_link_s(bot, message):
     replied = message.reply_to_message
@@ -28,22 +37,31 @@ async def gen_link_s(bot, message):
     file_type = replied.media
     if file_type not in ["video", 'audio', 'document']:
         return await message.reply("Reply to a supported media")
-    if message.has_protected_content and message.chat.id not in ADMINS:
-        return await message.reply("okDa")
     file_id, ref = unpack_new_file_id((getattr(replied, file_type)).file_id)
     string = 'filep_' if message.text.lower().strip() == "/plink" else 'file_'
     string += file_id
     outstr = base64.urlsafe_b64encode(string.encode("ascii")).decode().strip("=")
-    await message.reply(f"Here is your Link:\nhttps://t.me/{temp.U_NAME}?start={outstr}")
-    
+    file_link = f'https://t.me/{temp.U_NAME}?start={outstr}'
+    await message.reply(
+             text="""<b>😎 I generated one more link for you, <a href={short_link}>Hold me to copy.</a> No need to say thank you.</b>""",
+             quote=True,
+             parse_mode="html",
+             reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton('📦 Share Link', url=f'https://t.me/share/url?url={file_link}')
+                    ]
+                ]
+            )
+        )
     
 @Client.on_message(filters.command(['batch', 'pbatch']) & filters.create(allowed))
 async def gen_link_batch(bot, message):
     if " " not in message.text:
-        return await message.reply("Use correct format.\nExample <code>/batch https://t.me/TeamEvamaria/10 https://t.me/TeamEvamaria/20</code>.")
+        return await message.reply("Use correct format.\nExample <code>/batch https://t.me/hagadmansa/10 https://t.me/hagadmansa/20</code>.")
     links = message.text.strip().split(" ")
     if len(links) != 3:
-        return await message.reply("Use correct format.\nExample <code>/batch https://t.me/TeamEvamaria/10 https://t.me/TeamEvamaria/20</code>.")
+        return await message.reply("Use correct format.\nExample <code>/batch https://t.me/hagadmansa/10 https://t.me/hagadmansa/20</code>.")
     cmd, first, last = links
     regex = re.compile("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
     match = regex.match(first)
@@ -56,7 +74,7 @@ async def gen_link_batch(bot, message):
 
     match = regex.match(last)
     if not match:
-        return await message.reply('Invalid link')
+        return await message.reply('Please give a valid link for batch.')
     l_chat_id = match.group(4)
     l_msg_id = int(match.group(5))
     if l_chat_id.isnumeric():
