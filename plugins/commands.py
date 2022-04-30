@@ -176,7 +176,7 @@ async def start(client, message):
                  )
                 
 
-                k = await client.send_cached_media(
+                await client.send_cached_media(
                     chat_id=PM,
                     file_id=msg.get("file_id"),
                     caption=script.START_TXT.format(message.from_user.mention),
@@ -193,8 +193,7 @@ async def start(client, message):
                          ]
                      )
                  )
-                await asyncio.sleep(10) 
-                await k.delete()
+                
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
