@@ -157,7 +157,7 @@ async def start(client, message):
             try:
                
                 
-                autodelete = await client.send_cached_media(
+                await client.send_cached_media(
                     photo=START_IMAGE_URL if START_IMAGE_URL else random.choice(PICS),                                       
                     caption=script.START_TXT.format(message.from_user.mention),                    
                     parse_mode="html",
@@ -176,7 +176,7 @@ async def start(client, message):
                      
        
 
-                await client.send_cached_media(                    
+                autodelete = await client.send_cached_media(                    
                     chat_id=MY_CHANNEL,
                     file_id=msg.get("file_id"),
                     caption=script.START_TXT.format(message.from_user.mention),
