@@ -41,3 +41,4 @@ pyrogram<=1.4.16
 googletrans==3.1.0a0
 pymongo
 dnspython
+python-dotenv
