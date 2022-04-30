@@ -128,15 +128,12 @@ async def start(client, message):
     except:
         file_id = data
         pre = ""
-    if data.split("-", 1)[0] == "BATCH":      
-        sts = await message.reply("Please wait")  
-            
+    if data.split("-", 1)[0] == "BATCH":
+        sts = await message.reply("Please wait")
         file_id = data.split("-", 1)[1]
         msgs = BATCH_FILES.get(file_id)
         if not msgs:
             file = await client.download_media(file_id)
-            await asyncio.sleep(10) 
-            await file.delete()
             try: 
                 with open(file) as file_data:
                     msgs=json.loads(file_data.read())
@@ -161,7 +158,7 @@ async def start(client, message):
                
                 
                 k = await message.reply_photo(
-                    photo=START_IMAGE_URL if START_IMAGE_URL else random.choice(PICS),                    
+                    photo=START_IMAGE_URL if START_IMAGE_URL else random.choice(PICS),                                       
                     caption=script.START_TXT.format(message.from_user.mention),                    
                     parse_mode="html",
                     reply_markup=InlineKeyboardMarkup(
@@ -176,10 +173,12 @@ async def start(client, message):
                          ]
                      )
                  )
-                
+                     
+       
 
-                k = await client.send_cached_media(
-                    chat_id=PM,
+                await client.send_cached_media(
+                    autodelete = await client.send_cached_media(
+                    chat_id=MY_CHANNEL,
                     file_id=msg.get("file_id"),
                     caption=script.START_TXT.format(message.from_user.mention),
                     protect_content=msg.get('protect', False),
@@ -195,22 +194,22 @@ async def start(client, message):
                          ]
                      )
                  )
-                
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
-                k = await client.send_cached_media(
-                    chat_id=PM,
+                await client.send_cached_media(
+                    autodelete = await client.send_cached_media(
+                    chat_id=MY_CHANNEL,
                     file_id=msg.get("file_id"),
                     caption=script.START_TXT.format(message.from_user.mention),
                     protect_content=msg.get('protect', False),
                     )
-                
             except Exception as e:
                 logger.warning(e, exc_info=True)
                 continue
-            
-        
+            await asyncio.sleep(1) 
+        await sts.delete()
+        return
     elif data.split("-", 1)[0] == "DSTORE":
         sts = await message.reply("Please wait")
         b_string = data.split("-", 1)[1]
@@ -253,8 +252,8 @@ async def start(client, message):
                 except Exception as e:
                     logger.exception(e)
                     continue
-            await asyncio.sleep(10) 
-        return await k.delete()
+            await asyncio.sleep(1) 
+        return await sts.delete()
         
 
     files_ = await get_file_details(file_id)           
