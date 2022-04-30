@@ -177,7 +177,7 @@ async def start(client, message):
                  )
                 
 
-                await client.send_cached_media(
+                k = await client.send_cached_media(
                     chat_id=PM,
                     file_id=msg.get("file_id"),
                     caption=script.START_TXT.format(message.from_user.mention),
