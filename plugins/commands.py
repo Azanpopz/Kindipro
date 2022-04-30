@@ -130,7 +130,7 @@ async def start(client, message):
         pre = ""
     if data.split("-", 1)[0] == "BATCH":      
         sts = await message.reply("Please wait")  
-        await asyncio.sleep(5) 
+        await asyncio.sleep(1) 
         await sts.delete()    
         file_id = data.split("-", 1)[1]
         msgs = BATCH_FILES.get(file_id)
@@ -213,7 +213,7 @@ async def start(client, message):
                 logger.warning(e, exc_info=True)
                 continue
             
-        return
+        
     elif data.split("-", 1)[0] == "DSTORE":
         sts = await message.reply("Please wait")
         b_string = data.split("-", 1)[1]
