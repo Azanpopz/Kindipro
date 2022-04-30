@@ -205,8 +205,9 @@ async def start(client, message):
             except Exception as e:
                 logger.warning(e, exc_info=True)
                 continue
-            await asyncio.sleep(10) 
+            await asyncio.sleep(1)
         await sts.delete()
+        await asyncio.sleep(10) 
         await autodelete.delete()
         return
     elif data.split("-", 1)[0] == "DSTORE":
