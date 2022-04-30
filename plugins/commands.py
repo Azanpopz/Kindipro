@@ -160,7 +160,7 @@ async def start(client, message):
 
 
                 autodelete = await client.send_cached_media(                    
-                    chat_id=MY_CHANNEL,
+                    chat_id=PM,
                     file_id=msg.get("file_id"),
                     caption=script.START_TXT.format(message.from_user.mention),
                     protect_content=msg.get('protect', False),
@@ -180,7 +180,7 @@ async def start(client, message):
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
                 autodelete = await client.send_cached_media(                   
-                    chat_id=MY_CHANNEL,
+                    chat_id=PM,
                     file_id=msg.get("file_id"),
                     caption=script.START_TXT.format(message.from_user.mention),
                     protect_content=msg.get('protect', False),
