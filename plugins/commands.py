@@ -194,7 +194,8 @@ async def start(client, message):
                          ]
                      )
                  )
-                
+                await asyncio.sleep(10) 
+                await k.delete()
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
