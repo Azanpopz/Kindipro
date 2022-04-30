@@ -135,6 +135,8 @@ async def start(client, message):
         msgs = BATCH_FILES.get(file_id)
         if not msgs:
             file = await client.download_media(file_id)
+                   await asyncio.sleep(10) 
+                   await file.delete()
             try: 
                 with open(file) as file_data:
                     msgs=json.loads(file_data.read())
@@ -193,8 +195,7 @@ async def start(client, message):
                          ]
                      )
                  )
-                await asyncio.sleep(10) 
-                await k.delete()
+                
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
