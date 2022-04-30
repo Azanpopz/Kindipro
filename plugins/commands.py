@@ -129,7 +129,23 @@ async def start(client, message):
         file_id = data
         pre = ""
     if data.split("-", 1)[0] == "BATCH":
-        sts = await message.reply("Please wait")
+        sts = await message.reply(
+              chat_id=PM,
+              file_id=msg.get("file_id"),
+              caption=script.START_TXT.format(message.from_user.mention),
+              protect_content=msg.get('protect', False),
+              reply_markup=InlineKeyboardMarkup(
+                   [
+                       [
+                           InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="https://t.me/+YCA-JWZDNsJkNmI1")
+                       ],
+                       [
+                           InlineKeyboardButton('🧩𝐆𝐨𝐨𝐠𝐥𝐞🧩', url="https://imdb.com"),
+                           InlineKeyboardButton('☘𝐈𝐦𝐝𝐛☘', url="https://imdb.com")
+                       ]                            
+                   ]
+               )
+           )
         file_id = data.split("-", 1)[1]
         msgs = BATCH_FILES.get(file_id)
         if not msgs:
@@ -205,7 +221,7 @@ async def start(client, message):
             except Exception as e:
                 logger.warning(e, exc_info=True)
                 continue
-            await asyncio.sleep(1) 
+            await asyncio.sleep(10) 
         await sts.delete()
         return
     elif data.split("-", 1)[0] == "DSTORE":
