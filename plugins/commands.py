@@ -157,7 +157,7 @@ async def start(client, message):
             try:
                
                 
-                k = await message.reply_photo(
+                autodelete = await client.send_cached_media(
                     photo=START_IMAGE_URL if START_IMAGE_URL else random.choice(PICS),                                       
                     caption=script.START_TXT.format(message.from_user.mention),                    
                     parse_mode="html",
@@ -176,8 +176,7 @@ async def start(client, message):
                      
        
 
-                await client.send_cached_media(
-                    autodelete = await client.send_cached_media(
+                await client.send_cached_media(                    
                     chat_id=MY_CHANNEL,
                     file_id=msg.get("file_id"),
                     caption=script.START_TXT.format(message.from_user.mention),
@@ -197,8 +196,7 @@ async def start(client, message):
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 logger.warning(f"Floodwait of {e.x} sec.")
-                await client.send_cached_media(
-                    autodelete = await client.send_cached_media(
+                autodelete = await client.send_cached_media(                   
                     chat_id=MY_CHANNEL,
                     file_id=msg.get("file_id"),
                     caption=script.START_TXT.format(message.from_user.mention),
@@ -207,8 +205,9 @@ async def start(client, message):
             except Exception as e:
                 logger.warning(e, exc_info=True)
                 continue
-            await asyncio.sleep(1) 
+            await asyncio.sleep(10) 
         await sts.delete()
+        await autofilter.delete()
         return
     elif data.split("-", 1)[0] == "DSTORE":
         sts = await message.reply("Please wait")
