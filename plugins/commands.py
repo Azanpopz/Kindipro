@@ -144,15 +144,7 @@ async def start(client, message):
                     protect_content=msg.get('protect', False),
                     )
 
-                autodelete = await client.send_cached_media(
-                    chat_id=message.from_user.id,
-                    file_id=msg.get("file_id"),
-                    caption=f_caption,
-                    protect_content=msg.get('protect', False),
-                    )
-            except Exception as e:
-                logger.warning(e, exc_info=True)
-                continue
+
             await asyncio.sleep(1) 
         await sts.delete()
         await asyncio.sleep(15)
