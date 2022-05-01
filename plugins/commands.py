@@ -263,6 +263,8 @@ async def start(client, message):
                 caption=MY_CAPTION,       
                 protect_content=True if pre == 'filep' else False,
                 )
+            await message.reply(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
+             
             filetype = msg.media
             file = getattr(msg, filetype)
             title = file.file_name
