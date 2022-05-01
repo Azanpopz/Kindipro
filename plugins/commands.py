@@ -269,9 +269,10 @@ async def start(client, message):
     k = await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
-        f_caption=MY_CAPTION,                
+        caption=script.START_TXT.format(message.from_user.mention),
+                                    
         reply_markup=reply_markup,
-        parse_mode='markdown'
+        parse_mode="html"
         )
         
     await client.send_cached_media(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
