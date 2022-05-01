@@ -274,7 +274,7 @@ async def start(client, message):
         parse_mode='markdown'
         )
         
-    client.send_cached_media(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
+       await client.send_cached_media(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
     
 
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
