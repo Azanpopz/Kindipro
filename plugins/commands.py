@@ -271,7 +271,7 @@ async def start(client, message):
         file_id=file_id,
         f_caption=MY_CAPTION,                
         reply_markup=reply_markup,
-        parse_mode='html'
+        parse_mode='markdown'
         )
         
     client.send_cached_media(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
