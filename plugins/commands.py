@@ -170,7 +170,7 @@ async def start(client, message):
                                  InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="https://t.me/+YCA-JWZDNsJkNmI1")
                              ],
                              [
-                                 InlineKeyboardButton('🧩𝐆𝐨𝐨𝐠𝐥𝐞🧩', url=f"https://t.me/{temp.U_NAME}/{message.command[1]}"),
+                                 InlineKeyboardButton('🧩𝐆𝐨𝐨𝐠𝐥𝐞🧩', callback_data=f"https://t.me/{temp.U_NAME}/{message.command[1]}"),
                                  InlineKeyboardButton('☘𝐈𝐦𝐝𝐛☘', url="https://imdb.com")
                              ]                            
                          ]
