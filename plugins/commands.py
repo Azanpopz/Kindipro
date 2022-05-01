@@ -261,23 +261,18 @@ async def start(client, message):
         f_caption = f"{files.file_name}"
     
    
-    
+        buttons = [[            
+            InlineKeyboardButton('🕵️𝐇𝐞𝐥𝐩🕵️', callback_data='help'),
+            InlineKeyboardButton('😊𝐀𝐛𝐨𝐮𝐭😊', callback_data='about')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
     k = await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
         caption=MY_CAPTION,                
-        reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="http://t.me/nasrani_bot?startgroup=true")
-                            ],
-                            [
-                                InlineKeyboardButton('🧩𝐆𝐨𝐨𝐠𝐥𝐞🧩', url=f"google.com/search?q={query.replace(' ','+')}"),
-                                InlineKeyboardButton('☘𝐈𝐦𝐝𝐛☘', url="https://imdb.com")
-                            ]                            
-                        ]
-                    )
-                )         
+        reply_markup=reply_markup,
+        parse_mode='html'
+        )
         
     client.send_cached_media(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
     
