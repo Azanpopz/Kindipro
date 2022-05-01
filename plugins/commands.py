@@ -265,7 +265,7 @@ async def start(client, message):
     k = await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
-        caption=f_caption,
+        caption=MY_CAPTION,
         
         parse_mode="html",
         reply_markup=InlineKeyboardMarkup(
@@ -281,7 +281,7 @@ async def start(client, message):
                     )
                 )         
         
-    await message.reply(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
+    client.send_cached_media(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
     
 
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
