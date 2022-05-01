@@ -839,10 +839,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f"{files.file_name}"
 
 
-        buttons = [[
-            InlineKeyboardButton('🎭 𝐆𝐫𝐨𝐮𝐩 🎭', url='https://t.me/UrvashiTheaters') 
-         ]]
-
+        buttons = [
+            [
+                InlineKeyboardButton('⭕️ Support', url='https://t.me/JOSPSupport'),
+                InlineKeyboardButton('Channel ⭕️', url='https://t.me/JosProjects')
+            ],
+            [
+                InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/+y53tWFUw6Q43NzE9')
+            ]
+            ]
+        
         try:
 
             if AUTH_CHANNEL and not await is_subscribed(client, query):
@@ -859,9 +865,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
             else:
 
-                buttons = [[
-                    InlineKeyboardButton('🎭 𝐆𝐫𝐨𝐮𝐩 🎭', url='https://t.me/UrvashiTheaters') 
-                 ]]
+                buttons = [
+                  [
+                        InlineKeyboardButton('⭕️ Support', url='https://t.me/JOSPSupport'),
+                        InlineKeyboardButton('Channel ⭕️', url='https://t.me/JosProjects')
+                  ],
+                  [
+                        InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/+y53tWFUw6Q43NzE9')
+                  ]
+                  ]
+        
                 await client.send_cached_media(
 
                     chat_id=query.from_user.id,
@@ -1080,6 +1093,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
 
+        buttons = [
+            [
+                InlineKeyboardButton('⭕️ Support', url='https://t.me/JOSPSupport'),
+                InlineKeyboardButton('Channel ⭕️', url='https://t.me/JosProjects')
+            ],
+            [
+                InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/+y53tWFUw6Q43NzE9')
+            ]
+            ]
         await query.answer()
 
         await client.send_cached_media(
