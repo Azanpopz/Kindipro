@@ -261,19 +261,23 @@ async def start(client, message):
         f_caption = f"{files.file_name}"
     
    
-        buttons = [[            
-            InlineKeyboardButton('🕵️𝐇𝐞𝐥𝐩🕵️', callback_data='help'),
-            InlineKeyboardButton('😊𝐀𝐛𝐨𝐮𝐭😊', callback_data='about')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-    k = await client.send_cached_media(
+        buttons = [
+        [
+            InlineKeyboardButton('⭕️ Support', url='https://t.me/JOSPSupport'),
+            InlineKeyboardButton('Channel ⭕️', url='https://t.me/josprojects/221')
+        ],
+        [
+            InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/+y53tWFUw6Q43NzE9')
+        ]
+        ]
+    await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
-        caption=script.START_TXT.format(message.from_user.mention),
-                                    
-        reply_markup=reply_markup,
-        parse_mode="html"
+        caption=f_caption,
+        reply_markup=InlineKeyboardMarkup(buttons),
+        protect_content=True if pre == 'filep' else False,
         )
+                    
         
     await client.send_cached_media(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
 
