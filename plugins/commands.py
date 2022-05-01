@@ -314,7 +314,9 @@ async def start(client, message):
         )
     
     await asyncio.sleep(3600)
-    await k.delete()                
+    await k.delete()   
+    await message.reply(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
+             
 
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
 async def channel_info(bot, message):
