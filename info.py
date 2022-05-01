@@ -68,6 +68,9 @@ FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '')).
 MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
+MY_CAPTION = "FILE : <code>{file_name}</code> \nSize : <i>{file_size}</i>\n\n Hello {message.from_user.first_name} \n\n⚠️ കോപ്പി റൈറ്റ് ഉള്ളത് കൊണ്ട് ഈ ഒരു ഫയൽ 1 മണിക്കൂർകൊണ്ട് ഇവിടെ നിന്നും ഡിലേറ്റാവും...!!!\n\nഇവിടെ നിന്നും വേറെ എവിടേലും മാറ്റിയതിന് ശേഷം ഡൗൺലോഡ് ചെയ്യുക...!!!\n\nFILES FORWARD TO YOUR SAVED MESSAGES\n\nAll files here Gets Deleted With in 1 hour."
+ 
+
 
 DELETE_TIME = int(environ.get('DELETE_TIME', 300))
 START_IMAGE_URL = environ.get('START_IMAGE_URL', "")
