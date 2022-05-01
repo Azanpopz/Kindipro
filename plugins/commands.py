@@ -265,7 +265,7 @@ async def start(client, message):
     await client.send_cached_media(
         chat_id=message.from_user.id,
         file_id=file_id,
-        caption=f_caption,
+        caption="ok",
         reply_markup=InlineKeyboardMarkup(
                          [
                              [
