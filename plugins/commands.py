@@ -190,8 +190,7 @@ async def start(client, message):
                 continue
             await asyncio.sleep(1)
         await sts.delete()
-        await asyncio.sleep(10) 
-        await autodelete.delete()
+        
         return
     elif data.split("-", 1)[0] == "DSTORE":
         sts = await message.reply("Please wait")
