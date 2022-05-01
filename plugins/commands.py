@@ -242,9 +242,25 @@ async def start(client, message):
     if not files_:
         pre, file_id = ((base64.urlsafe_b64decode(data + "=" * (-len(data) % 4))).decode("ascii")).split("_", 1)
         try:
+
+            buttons = [
+                    [
+                        InlineKeyboardButton('💌 SUBSCRIBE ✅', url=f"https://t.me/{temp.U_NAME}?start={file_id}")
+                    ],
+                    [
+                        InlineKeyboardButton('💌 SUBSCRIBE ✅', url='https://t.me/bigmoviesworld'),
+                        InlineKeyboardButton('💌 SUBSCRIBE ✅', url='https://t.me/bigmoviesworld')
+                    ],
+                    [
+                        InlineKeyboardButton('💌 SUBSCRIBE ✅', url='https://t.me/bigmoviesworld'),
+                        InlineKeyboardButton('💌 SUBSCRIBE ✅', url='https://t.me/bigmoviesworld')
+                  
+                    ]
+                    ]
             msg = await client.send_cached_media(
                 chat_id=message.from_user.id,
                 file_id=file_id,
+                caption=f"Hello {message.from_user.first_name} \n\n⚠️ കോപ്പി റൈറ്റ് ഉള്ളത് കൊണ്ട് ഈ ഒരു ഫയൽ 1 മണിക്കൂർകൊണ്ട് ഇവിടെ നിന്നും ഡിലേറ്റാവും...!!!\n\nഇവിടെ നിന്നും വേറെ എവിടേലും മാറ്റിയതിന് ശേഷം ഡൗൺലോഡ് ചെയ്യുക...!!!\n\nFILES FORWARD TO YOUR SAVED MESSAGES\n\nAll files here Gets Deleted With in 1 hour.",       
                 protect_content=True if pre == 'filep' else False,
                 )
             filetype = msg.media
