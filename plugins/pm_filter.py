@@ -839,6 +839,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f"{files.file_name}"
 
 
+        buttons = [[
+            InlineKeyboardButton('🎭 𝐆𝐫𝐨𝐮𝐩 🎭', url='https://t.me/UrvashiTheaters') 
+         ]]
 
         try:
 
@@ -856,6 +859,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
             else:
 
+                buttons = [[
+                    InlineKeyboardButton('🎭 𝐆𝐫𝐨𝐮𝐩 🎭', url='https://t.me/UrvashiTheaters') 
+                 ]]
                 await client.send_cached_media(
 
                     chat_id=query.from_user.id,
