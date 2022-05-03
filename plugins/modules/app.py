@@ -59,7 +59,7 @@ def shortlink(type):
                 )
             )
         
-    except Exception as error:
+            except Exception as error:
         return error
 
     
