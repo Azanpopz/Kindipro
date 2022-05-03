@@ -43,7 +43,7 @@ async def search_app(bot, update):
     )
 
 async def search(bot, update):
-    results = play_scraper.search(update.query)
+    results = play_scraper.search_app(update.query)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
