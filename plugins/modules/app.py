@@ -33,16 +33,16 @@ def shortlink(type):
         
         
   
-"**Title:** `{}`".format(result["title"]) + "\n" \
-"**Description:** `{}`".format(result["description"]) + "\n" \
-"**App ID:** `{}`".format(result["app_id"]) + "\n" \
-"**Developer:** `{}`".format(result["developer"]) + "\n" \
-"**Developer ID:** `{}`".format(result["developer_id"]) + "\n" \
-"**Score:** `{}`".format(result["score"]) + "\n" \
-"**Price:** `{}`".format(result["price"]) + "\n" \
-"**Full Price:** `{}`".format(result["full_price"]) + "\n" \
-"**Free:** `{}`".format(result["free"]) + "\n" \
-\n**•| @KoshikKumar17 |•**"
+        "**Title:** `{}`".format(result["title"]) + "\n" \
+        "**Description:** `{}`".format(result["description"]) + "\n" \
+        "**App ID:** `{}`".format(result["app_id"]) + "\n" \
+        "**Developer:** `{}`".format(result["developer"]) + "\n" \
+        "**Developer ID:** `{}`".format(result["developer_id"]) + "\n" \
+        "**Score:** `{}`".format(result["score"]) + "\n" \
+        "**Price:** `{}`".format(result["price"]) + "\n" \
+        "**Full Price:** `{}`".format(result["full_price"]) + "\n" \
+        "**Free:** `{}`".format(result["free"]) + "\n" \
+        \n**•| @KoshikKumar17 |•**"
         return search
     except Exception as error:
         return error
