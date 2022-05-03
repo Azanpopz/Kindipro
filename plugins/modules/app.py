@@ -16,9 +16,24 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By �
 
 
 
-@Client.on_message(filters.command("app"))
-async def search(bot, update):
+@Koshik.on_message(filters.command("app"))
+async def app(bot, update):
+    koshik = await update.reply_text(
+
+
+    query = update.text.split(None, 1)[1]
+    reply_markup = BUTTONS
     
+    buttons = [[
+            InlineKeyboardButton('🎭 𝐆𝐫𝐨𝐮𝐩 🎭', url='https://t.me/UrvashiTheaters') 
+         ]]
+    await koshik.edit_text(
+        text="**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True),
+        disable_web_page_preview=True,
+        reply_markup=reply_markup
+    )
+                    
+    results = play_scraper.search(update.query)   
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
