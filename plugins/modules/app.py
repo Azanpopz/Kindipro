@@ -17,8 +17,16 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By �
 
 
 @Client.on_message(filters.private & filters.all)
-async def filter_all(bot, update):
-
+async def linkshortener(bot, update):
+    koshik = await update.reply_text("**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True)
+    query = update.text.split(None, 1)[1]
+    reply_markup = BUTTONS
+    await koshik.edit_text(
+        text=shortlink(query),
+        disable_web_page_preview=True,
+        reply_markup=reply_markup
+    )
+try:
     results = play_scraper.search(update.query)
     answers = []
     for result in results:
