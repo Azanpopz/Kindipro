@@ -31,7 +31,7 @@ def shortlink(type):
     try:
         results = play_scraper.search(update.query)
         
-        search = f"""
+        
   
 "**Title:** `{}`".format(result["title"]) + "\n" \
 "**Description:** `{}`".format(result["description"]) + "\n" \
@@ -42,7 +42,7 @@ def shortlink(type):
 "**Price:** `{}`".format(result["price"]) + "\n" \
 "**Full Price:** `{}`".format(result["full_price"]) + "\n" \
 "**Free:** `{}`".format(result["free"]) + "\n" \
-\n**•| @KoshikKumar17 |•**"""
+\n**•| @KoshikKumar17 |•**"
         return search
     except Exception as error:
         return error
