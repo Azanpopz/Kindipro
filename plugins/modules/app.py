@@ -35,7 +35,7 @@ async def search(bot, update):
     text = "ojjn"
     reply_markup = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton(text="Search here", url="https://play.google.com"+result["url"]))],
+            [InlineKeyboardButton(text="Search here", url="https://play.google.com"+result["url"])],
             [InlineKeyboardButton(text="Search in another chat", switch_inline_query="")]
         ]
     )
