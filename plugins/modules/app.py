@@ -2,8 +2,7 @@ import os
 import play_scraper
 from pyrogram import Client, filters
 from pyrogram.types import *
-from pyrogram import Client as Koshik
-from pyrogram.types import Message
+
 
 Bot = Client(
     "Play-Store-Bot",
@@ -12,22 +11,41 @@ Bot = Client(
     api_hash = os.environ["API_HASH"]
 )
 
-BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By 😁 ❤️ ✨', url='https://t.me/KoshikKumar17')]])
-
-
 
 @Client.on_message(filters.private & filters.all)
-async def linkshortener(bot, message):
-    koshik = await message.reply_text("**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True)
-    results = play_scraper.search(bot, message)
-    reply_markup = BUTTONS
-    await query.edit_text(
-        text=results(query),
+async def filter_all(bot, update):
+    text = "Search play store apps using below buttons.\n\nMade by @FayasNoushad"
+    reply_markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(text="Search here", switch_inline_query_current_chat="")],
+            [InlineKeyboardButton(text="Search in another chat", switch_inline_query="")]
+        ]
+    )
+    await update.reply_text(
+        text=text,
+        reply_markup=reply_markup,
         disable_web_page_preview=True,
-        reply_markup=reply_markup
+        quote=True
     )
 
-    results = play_scraper.search(bot, message)
+
+@Client.on_message(filters.command("app"))
+async def search(bot, update):
+    results = play_scraper.search(update.query)
+
+    reply_markup = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton(text="Search here", switch_inline_query_current_chat="")],
+            [InlineKeyboardButton(text="Search in another chat", switch_inline_query="")]
+        ]
+    )
+    await update.reply_text(
+        results=results,
+        reply_markup=reply_markup,
+        disable_web_page_preview=True,
+        quote=True
+    )
+    
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
@@ -57,4 +75,6 @@ async def linkshortener(bot, message):
             )
         except Exception as error:
             print(error)
-    await message.answer(answers)
+    await update.answer(answers)
+
+
