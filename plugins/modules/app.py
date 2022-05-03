@@ -12,7 +12,7 @@ Bot = Client(
     api_hash = os.environ["API_HASH"]
 )
 
-BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By 😁 ❤️ ✨', url='https://play.google.com"+result["url"])]])
+BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton("Play Store", url="https://play.google.com"+result["url"])]])
 
 
 
