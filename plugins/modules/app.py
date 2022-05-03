@@ -42,7 +42,7 @@ def shortlink(type):
         "**Price:** `{}`".format(result["price"]) + "\n" \
         "**Full Price:** `{}`".format(result["full_price"]) + "\n" \
         "**Free:** `{}`".format(result["free"]) + "\n" \
-        \n**•| @KoshikKumar17 |•**"
+        
         return search
     except Exception as error:
         return error
