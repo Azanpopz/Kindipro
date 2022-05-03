@@ -30,7 +30,7 @@ def search(type):
     try:
         results = play_scraper.search(update.query)
         answers = []
-    for result in results:
+    
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
         "**Description:** `{}`".format(result["description"]) + "\n" \
         "**App ID:** `{}`".format(result["app_id"]) + "\n" \
