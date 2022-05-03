@@ -18,6 +18,22 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton("Play Store", url="https:/
 
 @Koshik.on_message(filters.command("app"))
 async def linkshortener(bot, update):
+    results = play_scraper.search(update.query)   
+    answers = []
+    for result in results:
+        details = "**Title:** `{}`".format(result["title"]) + "\n" \
+        "**Description:** `{}`".format(result["description"]) + "\n" \
+        "**App ID:** `{}`".format(result["app_id"]) + "\n" \
+        "**Developer:** `{}`".format(result["developer"]) + "\n" \
+        "**Developer ID:** `{}`".format(result["developer_id"]) + "\n" \
+        "**Score:** `{}`".format(result["score"]) + "\n" \
+        "**Price:** `{}`".format(result["price"]) + "\n" \
+        "**Full Price:** `{}`".format(result["full_price"]) + "\n" \
+        "**Free:** `{}`".format(result["free"]) + "\n" \
+        "\n" + "Made by @FayasNoushad"
+        reply_markup = InlineKeyboardMarkup(
+            [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
+        )
     koshik = await update.reply_text("**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True)
     query = update.text.split(None, 1)[1]
     reply_markup = BUTTONS
