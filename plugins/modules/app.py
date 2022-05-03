@@ -26,7 +26,7 @@ async def linkshortener(bot, update):
         disable_web_page_preview=True,
         reply_markup=reply_markup
     )
-try:
+
     results = play_scraper.search(update.query)
     answers = []
     for result in results:
