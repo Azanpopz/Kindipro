@@ -3,6 +3,7 @@ import play_scraper
 from pyrogram import Client, filters
 from pyrogram.types import *
 from pyrogram import Client as Koshik
+from pyrogram.types import Message
 
 Bot = Client(
     "Play-Store-Bot",
@@ -15,7 +16,7 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By �
 
 
 
-@Client.on_message(filters.command("short"))
+@Client.on_message(filters.command("app"))
 async def search(bot, update):
     results = play_scraper.search(update.query)
     answers = []
