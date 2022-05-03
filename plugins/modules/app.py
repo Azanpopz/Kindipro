@@ -12,9 +12,10 @@ Bot = Client(
 )
 
 
-@Client.on_message(filters.private & filters.all)
-async def filter_all(bot, update):
-    text = "Search play store apps using below buttons.\n\nMade by @FayasNoushad"
+@Client.on_message(filters.command("apps"))
+async def search(bot, update):
+    results = play_scraper.search(update.query)
+
     reply_markup = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton(text="Search here", switch_inline_query_current_chat="")],
@@ -22,12 +23,11 @@ async def filter_all(bot, update):
         ]
     )
     await update.reply_text(
-        text=text,
+        results=results,
         reply_markup=reply_markup,
         disable_web_page_preview=True,
         quote=True
     )
-
 
 @Client.on_message(filters.command("app"))
 async def search(bot, update):
