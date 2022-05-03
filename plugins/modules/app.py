@@ -44,18 +44,7 @@ def search(type):
         reply_markup = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
-        try:
-            answers.append(
-                InlineQueryResultArticle(
-                    title=result["title"],
-                    description=result.get("description", None),
-                    thumb_url=result.get("icon", None),
-                    input_message_content=InputTextMessageContent(
-                        message_text=details, disable_web_page_preview=True
-                    ),
-                    reply_markup=reply_markup
-                )
-            )
+        
         except Exception as error:
             print(error)
             
