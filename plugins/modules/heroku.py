@@ -13,7 +13,8 @@ from utils import humanbytes
 
 HEROKU_API_KEY = environ.get("HEROKU_API_KEY", "")
 HEROKU_APP_NAME = environ.get("HEROKU_AP_NAME", "")
-BT_STRT_TM = time.time()
+BT_STRT_TM = environ.get("BT_STRT_TM", " time.time()")
+
 
 
 
