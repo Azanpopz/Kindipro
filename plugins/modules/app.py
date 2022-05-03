@@ -16,18 +16,19 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By �
 
 
 @Koshik.on_message(filters.command("app"))
-async def search_app(bot, update):
+async def search(bot, update):
     koshik = await update.reply_text("**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True)
     query = update.text.split(None, 1)[1]
     reply_markup = BUTTONS
     await koshik.edit_text(
-        text=search_app(query),
+        text=search(query),
         disable_web_page_preview=True,
         reply_markup=reply_markup
     )
 
-async def search(bot, update):
-    results = play_scraper.search_app(update.query)
+def search(type):
+    try:
+    results = play_scraper.search(update.query)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
