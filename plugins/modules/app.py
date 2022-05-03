@@ -15,22 +15,11 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By �
 
 
 
-@Koshik.on_message(filters.command("app"))
+@Client.on_message(filters.private & filters.all)
 async def search(bot, update):
-    koshik = await update.reply_text("**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True)
-    query = update.text.split(None, 1)[1]
-    reply_markup = BUTTONS
-    await koshik.edit_text(
-        text=search(query),
-        disable_web_page_preview=True,
-        reply_markup=reply_markup
-    )
-
-def search(type):
-    try:
-        results = play_scraper.search(update.query)
-        answers = []
-    
+    results = play_scraper.search(update.query)
+    answers = []
+    for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
         "**Description:** `{}`".format(result["description"]) + "\n" \
         "**App ID:** `{}`".format(result["app_id"]) + "\n" \
@@ -44,10 +33,18 @@ def search(type):
         reply_markup = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
-        
+        try:
+            answers.append(
+                InlineQueryResultArticle(
+                    title=result["title"],
+                    description=result.get("description", None),
+                    thumb_url=result.get("icon", None),
+                    input_message_content=InputTextMessageContent(
+                        message_text=details, disable_web_page_preview=True
+                    ),
+                    reply_markup=reply_markup
+                )
+            )
         except Exception as error:
             print(error)
-            
-
-
-
+    await update.answer(answers)
