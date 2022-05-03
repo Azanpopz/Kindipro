@@ -14,7 +14,7 @@ Bot = Client(
 
 @Client.on_message(filters.command("apps"))
 async def search(bot, update):
-    results = play_scraper.search(update)
+    results = play_scraper.search(update.query)
     text = "ojjn"
     reply_markup = InlineKeyboardMarkup(
         [
@@ -31,7 +31,7 @@ async def search(bot, update):
 
 @Client.on_message(filters.command("app"))
 async def search(bot, update):
-    results = play_scraper.search(update)
+    results = play_scraper.search(update.query)
     text = "ojjn"
     reply_markup = InlineKeyboardMarkup(
         [
