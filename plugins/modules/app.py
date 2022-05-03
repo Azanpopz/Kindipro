@@ -18,7 +18,7 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By �
 
 @Client.on_message(filters.command("app"))
 async def search(bot, update):
-    results = play_scraper.search(update.Message)
+    
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
