@@ -28,8 +28,8 @@ async def search(bot, update):
 
 def search(type):
     try:
-    results = play_scraper.search(update.query)
-    answers = []
+        results = play_scraper.search(update.query)
+        answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
         "**Description:** `{}`".format(result["description"]) + "\n" \
