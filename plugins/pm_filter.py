@@ -993,7 +993,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             
             msg1 = await query.message.reply(
 
-                f'<b> 𝐇𝐞𝐲 👋 {query.from_user.mention} </b>😍\n\n<b>📫 Your File is Ready</b>\n\n'           
+                f'<b> 𝐇𝐞𝐲 👋 {query.from_user.mention} </b>😍\n\n<b>📫 Your File is Ready.\n\n files here Gets Deleted With in 5 Minutes </b>'           
 
                 f'<b>📂 Mᴏᴠɪᴇ Nᴀᴍᴇ</b> : <code>{title}</code>\n\n'              
 
@@ -1020,7 +1020,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
 
             await query.answer('📥𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻📥',)
-            await asyncio.sleep(180)
+            await asyncio.sleep(120)
             await msg1.delete()
             await msg.delete()           
             del msg1, msg
