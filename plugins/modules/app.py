@@ -16,24 +16,13 @@ BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By �
 
 
 
-@Koshik.on_message(filters.command("app"))
-async def search(bot, update):
-    koshik = await update.reply_text("**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True)
-    query = update.text.split(None, 1)[1]
-    reply_markup = BUTTONS
-    await koshik.edit_text(
-        text=shortlink(query),
-        disable_web_page_preview=True,
-        reply_markup=reply_markup
-    )
+@Client.on_message(filters.private & filters.all)
+async def filter_all(bot, update):
 
-def shortlink(type):
-    try:
-        results = play_scraper.search
-        
-        
-  
-        "**Title:** `{}`".format(result["title"]) + "\n" \
+    results = play_scraper.search(update.query)
+    answers = []
+    for result in results:
+        details = "**Title:** `{}`".format(result["title"]) + "\n" \
         "**Description:** `{}`".format(result["description"]) + "\n" \
         "**App ID:** `{}`".format(result["app_id"]) + "\n" \
         "**Developer:** `{}`".format(result["developer"]) + "\n" \
@@ -58,11 +47,6 @@ def shortlink(type):
                     reply_markup=reply_markup
                 )
             )
-        
         except Exception as error:
-            return error
-
-    
-
-     
-    
+            print(error)
+    await update.answer(answers)
