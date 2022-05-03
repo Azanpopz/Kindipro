@@ -58,10 +58,10 @@ def shortlink(type):
                     reply_markup=reply_markup
                 )
             )
-        except Exception as error:
-            print(error)
-    await update.answer(answers)
-        return search
+        return shortlink
+    except Exception as error:
+        return error
+
     
 
      
