@@ -12,26 +12,21 @@ Bot = Client(
     api_hash = os.environ["API_HASH"]
 )
 
-BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By 😁 ❤️ ✨', url='https://t.me/KoshikKumar17')]])
+BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By 😁 ❤️ ✨', url='https://play.google.com"+result["url"])]])
 
 
 
-@Koshik.on_message(filters.command("app"))
-async def app(bot, update):
-    koshik = await update.reply_text(
-
-
+@Koshik.on_message(filters.command("short"))
+async def linkshortener(bot, update):
+    koshik = await update.reply_text("**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True)
     query = update.text.split(None, 1)[1]
-    
-    
-    buttons = [[
-            InlineKeyboardButton('🎭 𝐆𝐫𝐨𝐮𝐩 🎭', url='https://t.me/UrvashiTheaters') 
-         ]]
+    reply_markup = BUTTONS
     await koshik.edit_text(
-        text="**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True),
+        text=shortlink(query),
         disable_web_page_preview=True,
         reply_markup=reply_markup
     )
+
                     
     results = play_scraper.search(update.query)   
     answers = []
