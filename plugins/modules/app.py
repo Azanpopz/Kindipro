@@ -27,7 +27,7 @@ async def linkshortener(bot, message):
         reply_markup=reply_markup
     )
 
-    results = play_scraper.search(update.query)
+    results = play_scraper.search(bot, message)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
@@ -57,4 +57,4 @@ async def linkshortener(bot, message):
             )
         except Exception as error:
             print(error)
-    await update.answer(answers)
+    await message.answer(answers)
