@@ -58,7 +58,7 @@ def shortlink(type):
                     reply_markup=reply_markup
                 )
             )
-        return shortlink
+        
     except Exception as error:
         return error
 
