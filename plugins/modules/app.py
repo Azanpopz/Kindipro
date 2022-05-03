@@ -22,7 +22,7 @@ async def app(bot, update):
 
 
     query = update.text.split(None, 1)[1]
-    reply_markup = BUTTONS
+    
     
     buttons = [[
             InlineKeyboardButton('🎭 𝐆𝐫𝐨𝐮𝐩 🎭', url='https://t.me/UrvashiTheaters') 
