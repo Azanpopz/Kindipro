@@ -58,7 +58,7 @@ def search(type):
             )
         except Exception as error:
             print(error)
-    await update.answer(answers)
+            return error
 
 
 
