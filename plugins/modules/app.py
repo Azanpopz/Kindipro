@@ -30,7 +30,7 @@ async def search(bot, update):
 def shortlink(type):
     try:
         results = play_scraper.search(update.query)
-    answers = []
+        
         search = f"""
   
 "**Title:** `{}`".format(result["title"]) + "\n" \
