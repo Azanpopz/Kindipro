@@ -21,8 +21,8 @@ async def linkshortener(bot, message):
     koshik = await update.reply_text("**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True)
     results = play_scraper.search(bot, message)
     reply_markup = BUTTONS
-    await koshik.edit_text(
-        text=shortlink(query),
+    await query.edit_text(
+        text=results(query),
         disable_web_page_preview=True,
         reply_markup=reply_markup
     )
