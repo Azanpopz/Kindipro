@@ -60,7 +60,7 @@ def shortlink(type):
             )
         
         except Exception as error:
-        return error
+            return error
 
     
 
