@@ -15,10 +15,10 @@ Bot = Client(
 @Client.on_message(filters.command("apps"))
 async def search(bot, update):
     results = play_scraper.search(update)
-
+    text = "ojjn"
     reply_markup = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton(text="Search here", switch_inline_query_current_chat="")],
+            [InlineKeyboardButton(text="Search here", "https://play.google.com"+result["url"])],
             [InlineKeyboardButton(text="Search in another chat", switch_inline_query="")]
         ]
     )
@@ -31,11 +31,11 @@ async def search(bot, update):
 
 @Client.on_message(filters.command("app"))
 async def search(bot, update):
-    results = play_scraper.search
-
+    results = play_scraper.search(update)
+    text = "ojjn"
     reply_markup = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton(text="Search here", switch_inline_query_current_chat="")],
+            [InlineKeyboardButton(text="Search here", "https://play.google.com"+result["url"])],
             [InlineKeyboardButton(text="Search in another chat", switch_inline_query="")]
         ]
     )
