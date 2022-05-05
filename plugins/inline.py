@@ -56,7 +56,7 @@ async def answer(bot, query):
             )
         except Exception as error:
             print(error)
-    await update.answer(answers)
+    await query.answer(answers)
    
     if not await inline_users(query):
         await query.answer(results=[],
