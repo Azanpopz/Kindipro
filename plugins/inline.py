@@ -144,7 +144,7 @@ async def answer(bot, query):
 def get_reply_markup(query):
     buttons = [
         [
-            InlineKeyboardButton('Search again', url="https://play.google.com"+result["url"])
+            InlineKeyboardButton('Search again', url="https://play.google.com")
         ]
         ]
     return InlineKeyboardMarkup(buttons)
