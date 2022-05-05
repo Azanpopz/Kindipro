@@ -26,7 +26,8 @@ async def inline_users(query: InlineQuery):
 @Client.on_inline_query()
 async def answer(bot, query):
     """Show search results for given inline query"""
-    
+    results = play_scraper.search(bot, query)
+    answers = []   
     if not await inline_users(query):
         await query.answer(results=[],
                            cache_time=0,
@@ -107,7 +108,7 @@ async def answer(bot, query):
 def get_reply_markup(query):
     buttons = [
         [
-            InlineKeyboardButton('Search again', switch_inline_query_current_chat=query)
+            InlineKeyboardButton('Search again', url="https://play.google.com"+result["url"])
         ]
         ]
     return InlineKeyboardMarkup(buttons)
@@ -123,45 +124,6 @@ async def inline_users(query: InlineQuery):
     if query.from_user and query.from_user.id not in temp.BANNED_USERS:
         return True
     return False
-
-
-
-@Client.on_inline_query()
-async def answer(bot, query):
-    """Show search results for given inline query"""
-   
-
-    results = play_scraper.search(bot, query)
-    answers = []
-    for result in results:
-        details = "**Title:** `{}`".format(result["title"]) + "\n" \
-        "**Description:** `{}`".format(result["description"]) + "\n" \
-        "**App ID:** `{}`".format(result["app_id"]) + "\n" \
-        "**Developer:** `{}`".format(result["developer"]) + "\n" \
-        "**Developer ID:** `{}`".format(result["developer_id"]) + "\n" \
-        "**Score:** `{}`".format(result["score"]) + "\n" \
-        "**Price:** `{}`".format(result["price"]) + "\n" \
-        "**Full Price:** `{}`".format(result["full_price"]) + "\n" \
-        "**Free:** `{}`".format(result["free"]) + "\n" \
-        "\n" + "Made by @FayasNoushad"
-        reply_markup = InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
-        )
-        try:
-            answers.append(
-                InlineQueryResultArticle(
-                    title=result["title"],
-                    description=result.get("description", None),
-                    thumb_url=result.get("icon", None),
-                    input_message_content=InputTextMessageContent(
-                        message_text=details, disable_web_page_preview=True
-                    ),
-                    reply_markup=reply_markup
-                )
-            )
-        except Exception as error:
-            print(error)
-    await update.answer(answers)
 
 
 
