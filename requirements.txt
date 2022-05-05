@@ -43,6 +43,6 @@ pymongo
 dnspython
 python-dotenv
 play-scraper
-
+pyTelegramBotAPI
 
 
