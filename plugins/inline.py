@@ -24,9 +24,8 @@ async def inline_users(query: InlineQuery):
     return False
 
 @Client.on_inline_query()
-async def answer(bot, query):
-    """Show search results for given inline query"""
-    results = play_scraper.search(bot.query)
+async def search(bot, update):
+    results = play_scraper.search(update.query)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
@@ -56,7 +55,14 @@ async def answer(bot, query):
             )
         except Exception as error:
             print(error)
-    await query.answer(answers)
+    await update.answer(answers)
+
+
+
+
+async def answer(bot, query):
+    """Show search results for given inline query"""
+    
    
     if not await inline_users(query):
         await query.answer(results=[],
