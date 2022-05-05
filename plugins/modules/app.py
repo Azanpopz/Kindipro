@@ -2,7 +2,6 @@ import os
 import play_scraper
 from pyrogram import Client, filters
 from pyrogram.types import *
-from pyrogram.types import Message
 
 
 Bot = Client(
@@ -15,7 +14,7 @@ Bot = Client(
 
 @Client.on_message(filters.private & filters.all)
 async def filter_all(bot, update):
-    text = "Search play store apps using below buttons.\n\nMade by @FayasNoushad"
+    text = "Search play store apps using below buttons.\n\nMade by @i_am_albin_praveen\n\nSupport @musicwithalby"
     reply_markup = InlineKeyboardMarkup(
         [
             [InlineKeyboardButton(text="Search here", switch_inline_query_current_chat="")],
@@ -29,9 +28,10 @@ async def filter_all(bot, update):
         quote=True
     )
 
-@Client.on_message(filters.private & filters.all)
-async def filter_all(bot, update):
-    results = play_scraper.search(bot, message)
+
+@Client.on_inline_query()
+async def search(bot, update):
+    results = play_scraper.search(update.query)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
@@ -48,8 +48,8 @@ async def filter_all(bot, update):
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
         try:
-            await message.reply_text(
-                InlineKeyboardButton(
+            answers.append(
+                InlineQueryResultArticle(
                     title=result["title"],
                     description=result.get("description", None),
                     thumb_url=result.get("icon", None),
@@ -61,7 +61,7 @@ async def filter_all(bot, update):
             )
         except Exception as error:
             print(error)
-    await message.reply_text(message)
+    await update.answer(answers)
 
 
 
