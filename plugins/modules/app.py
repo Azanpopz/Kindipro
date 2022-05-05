@@ -12,7 +12,7 @@ Bot = Client(
 )
 
 
-@Bot.on_message(filters.private & filters.all)
+@Client.on_message(filters.private & filters.all)
 async def filter_all(bot, update):
     text = "Search play store apps using below buttons.\n\nMade by @FayasNoushad"
     reply_markup = InlineKeyboardMarkup(
@@ -28,8 +28,6 @@ async def filter_all(bot, update):
         quote=True
     )
 
-
-@Bot.on_inline_query()
 async def search(bot, update):
     results = play_scraper.search(update.query)
     answers = []
@@ -47,9 +45,9 @@ async def search(bot, update):
         reply_markup = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
-        elif
+        try:
             answers.append(
-                InlineQueryResultArticle(
+                InlineKeyboardButton(
                     title=result["title"],
                     description=result.get("description", None),
                     thumb_url=result.get("icon", None),
@@ -59,9 +57,6 @@ async def search(bot, update):
                     reply_markup=reply_markup
                 )
             )
-        else : 
-            txt = await message.reply_text(f"**THANK YOU 😍**  **TH MEMBER**")
-           
         except Exception as error:
             print(error)
     await update.answer(answers)
