@@ -287,5 +287,4 @@ dispatcher.add_handler(start_handler)
 
 
 
-updater.start_polling(timeout=15, read_latency=4)
-updater.idle()
+
