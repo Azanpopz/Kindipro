@@ -48,7 +48,7 @@ async def filter_all(bot, update):
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
         try:
-            answers.append(
+            await message.reply_text(
                 InlineKeyboardButton(
                     title=result["title"],
                     description=result.get("description", None),
@@ -61,7 +61,7 @@ async def filter_all(bot, update):
             )
         except Exception as error:
             print(error)
-    await update.answer(answers)
+    await message.reply_text(message)
 
 
 
