@@ -44,7 +44,7 @@ You can also check out the source code for the bot [here](https://github.com/bre
 """.format(dispatcher.bot.first_name)
 
 @run_async
-def start(bot: Bot, update: Update):
+def starts(bot: Bot, update: Update):
     if update.effective_chat.type == "private":
         update.effective_message.reply_text(START_TEXT, parse_mode=ParseMode.MARKDOWN)
 
@@ -279,7 +279,7 @@ def makepack_internal(msg, user, png_sticker, emoji, bot, packname, packnum):
 
 kang_handler = CommandHandler('kang', kang, pass_args=True)
 kangurl_handler = CommandHandler('kangurl', kangurl, pass_args=True)
-start_handler = CommandHandler('start', start)
+start_handler = CommandHandler('starts', starts)
 
 dispatcher.add_handler(kang_handler)
 dispatcher.add_handler(kangurl_handler)
