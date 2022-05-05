@@ -28,7 +28,7 @@ async def inline_users(query: InlineQuery):
 
 @Client.on_message(filters.command("app"))
 async def search(client, message):
-    results = play_scraper.search(client, message)
+    results = play_scraper.search(client, Message)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
