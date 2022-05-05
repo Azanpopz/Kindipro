@@ -112,7 +112,25 @@ def get_reply_markup(query):
         ]
     return InlineKeyboardMarkup(buttons)
 
-async def search(bot, update):
+
+
+async def inline_users(query: InlineQuery):
+    if AUTH_USERS:
+        if query.from_user and query.from_user.id in AUTH_USERS:
+            return True
+        else:
+            return False
+    if query.from_user and query.from_user.id not in temp.BANNED_USERS:
+        return True
+    return False
+
+
+
+@Client.on_inline_query()
+async def answer(bot, query):
+    """Show search results for given inline query"""
+   
+
     results = play_scraper.search(update.query)
     answers = []
     for result in results:
