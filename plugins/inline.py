@@ -11,7 +11,7 @@ from pyrogram import Client, filters
 from pyrogram.types import *
 from pyrogram import Client, filters
 from pyrogram import filters
-from pyrogram import Message
+from pyrogram import Messages
 
 
 logger = logging.getLogger(__name__)
