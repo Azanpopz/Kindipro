@@ -129,9 +129,14 @@ async def inline_users(query: InlineQuery):
 @Client.on_inline_query()
 async def answer(bot, query):
     """Show search results for given inline query"""
-   
+    if not await inline_users(query):
+        await query.answer(results=[],
+                           cache_time=0,
+                           switch_pm_text='okDa',
+                           switch_pm_parameter="hehe")
+        return   
 
-    results = play_scraper.search(query):
+    results = play_scraper.search(bot, query)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
