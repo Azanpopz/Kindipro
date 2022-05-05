@@ -261,4 +261,4 @@ def reverse_image(message):
         except:
             bot.send_message(message.chat.id, "Reverse Image Search is not possible for GIFs sent through Telegram GIF section. Try downloading and send again to reverse search. \nErr: Telegram API Limit")
 
-
+bot.polling(none_stop=True)
