@@ -30,7 +30,7 @@ async def filter_all(bot, update):
 
 @Client.on_message(filters.private & filters.all)
 async def filter_all(bot, update):
-    results = play_scraper.search(update.query)
+    results = play_scraper.search(client, message)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
