@@ -24,8 +24,8 @@ async def inline_users(query: InlineQuery):
     return False
 
 @Client.on_inline_query()
-async def search(bot, query):
-    results = play_scraper.search(bot, query)
+async def search(client, message):
+    results = play_scraper.search(client, message)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
@@ -55,7 +55,7 @@ async def search(bot, query):
             )
         except Exception as error:
             print(error)
-    await bot.answer(answers)
+    await client.answer(answers)
 
 
 
