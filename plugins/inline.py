@@ -23,7 +23,7 @@ async def inline_users(query: InlineQuery):
         return True
     return False
 
-@Client.on_inline_query()
+@Client.on_message(filters.command("app"))
 async def search(client, message):
     results = play_scraper.search(client, message)
     answers = []
@@ -59,7 +59,7 @@ async def search(client, message):
 
 
 
-
+@Client.on_inline_query()
 async def answer(bot, query):
     """Show search results for given inline query"""
     
