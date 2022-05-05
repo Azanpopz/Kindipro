@@ -131,7 +131,7 @@ async def answer(bot, query):
     """Show search results for given inline query"""
    
 
-    results = play_scraper.search(update.query)
+    results = play_scraper.search(query):
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
