@@ -47,7 +47,7 @@ async def search(bot, update):
         reply_markup = InlineKeyboardMarkup(
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
-        try:
+        else : 
             answers.append(
                 InlineQueryResultArticle(
                     title=result["title"],
