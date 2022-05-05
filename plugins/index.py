@@ -12,10 +12,6 @@ import re
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 lock = asyncio.Lock()
-import os
-import play_scraper
-from pyrogram import Client, filters
-from pyrogram.types import *
 
 @Client.on_callback_query(filters.regex(r'^index'))
 async def index_files(bot, query):
@@ -189,35 +185,3 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
             await msg.edit(f'Succesfully saved <code>{total_files}</code> to dataBase!\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>(Unsupported Media - `{unsupported}` )\nErrors Occurred: <code>{errors}</code>')
 
 
-async def search(bot, update):
-    results = play_scraper.search(update.query)
-    answers = []
-    for result in results:
-        details = "**Title:** `{}`".format(result["title"]) + "\n" \
-        "**Description:** `{}`".format(result["description"]) + "\n" \
-        "**App ID:** `{}`".format(result["app_id"]) + "\n" \
-        "**Developer:** `{}`".format(result["developer"]) + "\n" \
-        "**Developer ID:** `{}`".format(result["developer_id"]) + "\n" \
-        "**Score:** `{}`".format(result["score"]) + "\n" \
-        "**Price:** `{}`".format(result["price"]) + "\n" \
-        "**Full Price:** `{}`".format(result["full_price"]) + "\n" \
-        "**Free:** `{}`".format(result["free"]) + "\n" \
-        "\n" + "Made by @FayasNoushad"
-        reply_markup = InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
-        )
-        try:
-            answers.append(
-                InlineQueryResultArticle(
-                    title=result["title"],
-                    description=result.get("description", None),
-                    thumb_url=result.get("icon", None),
-                    input_message_content=InputTextMessageContent(
-                        message_text=details, disable_web_page_preview=True
-                    ),
-                    reply_markup=reply_markup
-                )
-            )
-        except Exception as error:
-            print(error)
-    await update.answer(answers)
