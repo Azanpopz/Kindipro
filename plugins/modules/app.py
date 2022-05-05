@@ -28,7 +28,8 @@ async def filter_all(bot, update):
         quote=True
     )
 
-async def search(bot, update):
+@Client.on_message(filters.private & filters.all)
+async def filter_all(bot, update):
     results = play_scraper.search(update.query)
     answers = []
     for result in results:
