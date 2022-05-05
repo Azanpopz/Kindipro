@@ -24,8 +24,8 @@ async def inline_users(query: InlineQuery):
     return False
 
 @Client.on_inline_query()
-async def search(bot, update):
-    results = play_scraper.search(update.query)
+async def search(bot, query):
+    results = play_scraper.search(bot, query)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
