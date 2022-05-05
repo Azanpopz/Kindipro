@@ -1,239 +1,206 @@
-# Copyright (C) 2020-2021 by DevsExpo@Github, < https://github.com/DevsExpo >.
-#
-# This file is part of < https://github.com/DevsExpo/FridayUserBot > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/DevsExpo/blob/master/LICENSE >
-#
-# All rights reserved.
-
-import asyncio
-import datetime
-import math
+import itertools
 import os
-import zipfile
-from collections import defaultdict
-from io import BytesIO
+import asyncio
+import secrets
+import logging
+import configparser
+from textwrap import TextWrapper
+from pyrogram import Client, idle, filters
+from pyrogram.types import Message
+from PIL import Image, ImageDraw, ImageFont, ImageChops
 
-from PIL import Image
-from pyrogram import emoji
-from pyrogram.errors import StickersetInvalid, YouBlockedUser
-from pyrogram.raw.functions.messages import GetStickerSet
-from pyrogram.raw.types import InputStickerSetShortName
-
-from main_startup.core.decorators import friday_on_cmd
-from main_startup.helper_func.basic_helpers import edit_or_reply, get_text
-from main_startup.helper_func.plugin_helpers import convert_to_image
-
-
-@friday_on_cmd(
-    ["packinfo"],
-    cmd_help={
-        "help": "Get Sticker Pack Info!",
-        "example": "{ch}packinfo (reply to sticker)",
-    },
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
-async def packinfo(client, message):
-    pablo = await edit_or_reply(message, "`Processing...`")
-    if not message.reply_to_message:
-        await pablo.edit("Please Reply To Sticker...")
-        return
-    if not message.reply_to_message.sticker:
-        await pablo.edit("Please Reply To Sticker...")
-        return
-    if not message.reply_to_message.sticker.set_name:
-        await pablo.edit("`Seems Like A Stray Sticker!`")
-        return
-    stickerset = await client.send(
-        GetStickerSet(
-            stickerset=InputStickerSetShortName(
-                short_name=message.reply_to_message.sticker.set_name
-            )
-        )
+
+logging.getLogger(__name__)
+
+is_env = bool(os.environ.get("ENV", None))
+if is_env:
+    tg_app_id = int(os.environ.get("TG_APP_ID"))
+    tg_api_key = os.environ.get("TG_API_HASH")
+    bot_api_key = os.environ.get("TG_BOT_TOKEN")
+
+    some_sticker_bot = Client(
+        api_id=tg_app_id,
+        api_hash=tg_api_key,
+        session_name=":memory:",
+        bot_token=bot_api_key,
+        workers=200
     )
-    emojis = []
-    for stucker in stickerset.packs:
-        if stucker.emoticon not in emojis:
-            emojis.append(stucker.emoticon)
-    output = f"""**Sticker Pack Title **: `{stickerset.set.title}`
-**Sticker Pack Short Name **: `{stickerset.set.short_name}`
-**Stickers Count **: `{stickerset.set.count}`
-**Archived **: `{stickerset.set.archived}`
-**Official **: `{stickerset.set.official}`
-**Masks **: `{stickerset.set.masks}`
-**Animated **: `{stickerset.set.animated}`
-**Emojis In Pack **: `{' '.join(emojis)}`
-"""
-    await pablo.edit(output)
+else:
+    app_config = configparser.ConfigParser()
+    app_config.read("config.ini")
+    bot_api_key = app_config.get("bot-configuration", "api_key")
+
+    some_sticker_bot = Client(
+        session_name="some_sticker_bot",
+        bot_token=bot_api_key,
+        workers=200
+    )
+
+async def get_y_and_heights(text_wrapped, dimensions, margin, font):
+    _, descent = font.getmetrics()
+    line_heights = [font.getmask(text_line).getbbox()[3] + descent + margin for text_line in text_wrapped]
+    line_heights[-1] -= margin
+    height_text = sum(line_heights)
+    y = (dimensions[1] - height_text) // 2
+    return y, line_heights
 
 
-@friday_on_cmd(
-    ["kang"],
-    cmd_help={
-        "help": "Get Sticker Pack Info!",
-        "example": "{ch}packinfo (reply to sticker)",
-    },
-)
-async def packinfo(client, message):
-    pablo = await edit_or_reply(message, "`Using Megic To Kang This Sticker...`")
-    if not message.reply_to_message:
-        await pablo.edit("Please Reply To Sticker...")
-        return
-    Hell = get_text(message)
-    name = ""
-    pack = 1
-    nm = message.from_user.username
-    if nm:
-        nam = message.from_user.username
-        name = nam[1:]
+async def crop_to_circle(im):
+    bigsize = (im.size[0] * 3, im.size[1] * 3)
+    mask = Image.new("L", bigsize, 0)
+    ImageDraw.Draw(mask).ellipse((0, 0) + bigsize, fill=255)
+    mask = mask.resize(im.size, Image.ANTIALIAS)
+    mask = ImageChops.darker(mask, im.split()[-1])
+    im.putalpha(mask)
+
+
+async def rounded_rectangle(rectangle, xy, corner_radius, fill=None, outline=None):
+    upper_left_point = xy[0]
+    bottom_right_point = xy[1]
+
+    rectangle.pieslice(
+        [upper_left_point, (upper_left_point[0] + corner_radius * 2, upper_left_point[1] + corner_radius * 2)],
+        180,
+        270,
+        fill=fill,
+        outline=outline
+    )
+    rectangle.pieslice(
+        [(bottom_right_point[0] - corner_radius * 2, bottom_right_point[1] - corner_radius * 2), bottom_right_point],
+        0,
+        90,
+        fill=fill,
+        outline=outline
+    )
+    rectangle.pieslice([(upper_left_point[0], bottom_right_point[1] - corner_radius * 2),
+                        (upper_left_point[0] + corner_radius * 2, bottom_right_point[1])],
+                       90,
+                       180,
+                       fill=fill,
+                       outline=outline
+                       )
+    rectangle.pieslice([(bottom_right_point[0] - corner_radius * 2, upper_left_point[1]),
+                        (bottom_right_point[0], upper_left_point[1] + corner_radius * 2)],
+                       270,
+                       360,
+                       fill=fill,
+                       outline=outline
+                       )
+    rectangle.rectangle(
+        [
+            (upper_left_point[0], upper_left_point[1] + corner_radius),
+            (bottom_right_point[0], bottom_right_point[1] - corner_radius)
+        ],
+        fill=fill,
+        outline=fill
+    )
+    rectangle.rectangle(
+        [
+            (upper_left_point[0] + corner_radius, upper_left_point[1]),
+            (bottom_right_point[0] - corner_radius, bottom_right_point[1])
+        ],
+        fill=fill,
+        outline=fill
+    )
+    rectangle.line([(upper_left_point[0] + corner_radius, upper_left_point[1]),
+                    (bottom_right_point[0] - corner_radius, upper_left_point[1])], fill=outline)
+    rectangle.line([(upper_left_point[0] + corner_radius, bottom_right_point[1]),
+                    (bottom_right_point[0] - corner_radius, bottom_right_point[1])], fill=outline)
+    rectangle.line([(upper_left_point[0], upper_left_point[1] + corner_radius),
+                    (upper_left_point[0], bottom_right_point[1] - corner_radius)], fill=outline)
+    rectangle.line([(bottom_right_point[0], upper_left_point[1] + corner_radius),
+                    (bottom_right_point[0], bottom_right_point[1] - corner_radius)], fill=outline)
+
+
+async def create_sticker(c: Client, m: Message):
+    if len(m.text) < 100:
+        body_font_size = 35
+        wrap_size = 30
+    elif len(m.text) < 200:
+        body_font_size = 30
+        wrap_size = 35
+    elif len(m.text) < 500:
+        body_font_size = 20
+        wrap_size = 40
+    elif len(m.text) < 1000:
+        body_font_size = 12
+        wrap_size = 80
     else:
-        name = message.from_user.first_name
-    packname = f"@{nm} Pack {pack}"
-    packshortname = f"FRIDAY_{message.from_user.id}_{pack}"
-    non = [None, "None"]
-    emoji = "😁"
+        body_font_size = 8
+        wrap_size = 100
+
+    font = ImageFont.truetype("Segan-Light.ttf", body_font_size)
+    font_who = ImageFont.truetype("TitilliumWeb-Bold.ttf", 24)
+
+    img = Image.new("RGBA", (512, 512), (255, 255, 255, 0))
+    draw = ImageDraw.Draw(img)
+    draw.rounded_rectangle = rounded_rectangle
+
+    wrapper = TextWrapper(width=wrap_size, break_long_words=False, replace_whitespace=False)
+    lines_list = [wrapper.wrap(i) for i in m.text.split('\n') if i != '']
+    text_lines = list(itertools.chain.from_iterable(lines_list))
+
+    y, line_heights = await get_y_and_heights(
+        text_lines,
+        (512, 512),
+        10,
+        font
+    )
+
+    in_y = y
+    rec_y = (y + line_heights[0]) if wrap_size >= 40 else y
+
+    for i, _ in enumerate(text_lines):
+        rec_y += line_heights[i]
+
+    await rounded_rectangle(draw, ((90, in_y), (512, rec_y + line_heights[-1])), 10, fill="#effcde")
+
+    f_user = m.from_user.first_name + " " + m.from_user.last_name if m.from_user.last_name else m.from_user.first_name
+    draw.text((100, y), f"{f_user}:", "#588237", font=font_who)
+
+    y = (y + (line_heights[0] * (20/100))) if wrap_size >= 40 else y
+
+    for i, line in enumerate(text_lines):
+        x = 100
+        y += line_heights[i]
+        draw.text((x, y), line, "#030303", font=font)
+
     try:
-        Hell = Hell.strip()
-        if not Hell.isalpha():
-            if not Hell.isnumeric():
-                emoji = Hell
-        else:
-            emoji = "😁"
-    except:
-        emoji = "😁"
-    exist = None
-    is_anim = False
-    if message.reply_to_message.sticker:
-        if not Hell:
-            emoji = message.reply_to_message.sticker.emoji or "😁"
-        is_anim = message.reply_to_message.sticker.is_animated
-        if is_anim:
-            packshortname += "_animated"
-            packname += " Animated"
-        if message.reply_to_message.sticker.mime_type == "application/x-tgsticker":
-            file_name = await message.reply_to_message.download("AnimatedSticker.tgs")
-        else:
-            cool = await convert_to_image(message, client)
-            if not cool:
-                await pablo.edit("`Reply to a valid media first.`")
-                return
-            file_name = resize_image(cool)
-    elif message.reply_to_message.document:
-        if message.reply_to_message.document.mime_type == "application/x-tgsticker":
-            is_anim = True
-            packshortname += "_animated"
-            packname += " Animated"
-            file_name = await message.reply_to_message.download("AnimatedSticker.tgs")
-    else:
-        cool = await convert_to_image(message, client)
-        if not cool:
-            await pablo.edit("`Reply to a valid media first.`")
-            return
-        file_name = resize_image(cool)
+        user_profile_pic = await c.get_profile_photos(m.from_user.id)
+        photo = await c.download_media(user_profile_pic[0].file_id, file_ref=user_profile_pic[0].file_ref)
+    except Exception as e:
+        photo = "default.jpg"
+        logging.error(e)
+
+    im = Image.open(photo).convert("RGBA")
+    im.thumbnail((60, 60))
+    await crop_to_circle(im)
+    img.paste(im, (20, in_y))
+
+    sticker_file = f"{secrets.token_hex(2)}.webp"
+
+    img.save(sticker_file)
+
+    await m.reply_sticker(
+        sticker=sticker_file
+    )
+
     try:
-        exist = await client.send(
-            GetStickerSet(stickerset=InputStickerSetShortName(short_name=packshortname))
-        )
-    except StickersetInvalid:
-        pass
-    if exist:
-        try:
-            await client.send_message("stickers", "/addsticker")
-        except YouBlockedUser:
-            await pablo.edit("`Please Unblock @Stickers`")
-            await client.unblock_user("stickers")
-        await client.send_message("stickers", packshortname)
-        await asyncio.sleep(0.2)
-        limit = "50" if is_anim else "120"
-        messi = (await client.get_history("stickers", 1))[0]
-        while limit in messi.text:
-            pack += 1
-            prev_pack = int(pack) - 1
-            await pablo.edit(f"Pack Vol __{prev_pack}__ is Full! Switching To Vol __{pack}__ Kang Pack")
-            packname = f"@{nm} Pack {pack}"
-            packshortname = f"FRIDAY_{message.from_user.id}_{pack}"
-            if is_anim:
-                packshortname += "_animated"
-                packname += " Animated"
-            await client.send_message("stickers", packshortname)
-            await asyncio.sleep(0.2)
-            messi = (await client.get_history("stickers", 1))[0]
-            if messi.text == "Invalid pack selected.":
-                if is_anim:
-                    await client.send_message("stickers", "/newanimated")
-                else:
-                    await client.send_message("stickers", "/newpack")
-                await asyncio.sleep(0.5)
-                await client.send_message("stickers", packname)
-                await asyncio.sleep(0.2)
-                await client.send_document("stickers", file_name)
-                await asyncio.sleep(1)
-                await client.send_message("stickers", emoji)
-                await asyncio.sleep(0.5)
-                await client.send_message("stickers", "/publish")
-                if is_anim:
-                    await client.send_message("stickers", f"<{packname}>")
-                await client.send_message("stickers", "/skip")
-                await asyncio.sleep(0.5)
-                await client.send_message("stickers", packshortname)
-                await pablo.edit(
-                    f"Sticker Added To Your Pack With Emoji - {emoji}. You Can Find It [Here](https://t.me/addstickers/{packshortname})"
-                )
-                return
-        await client.send_document("stickers", file_name)
-        await asyncio.sleep(1)
-        await client.send_message("stickers", emoji)
-        await asyncio.sleep(0.5)
-        await client.send_message("stickers", "/done")
-        await pablo.edit(
-            f"`Sticker Added To Your Pack With Emoji - {emoji}. You Can Find It` [Here](https://t.me/addstickers/{packshortname})"
-        )
-    else:
-        if is_anim:
-            await client.send_message("stickers", "/newanimated")
-        else:
-            await client.send_message("stickers", "/newpack")
-        await client.send_message("stickers", packname)
-        await asyncio.sleep(0.2)
-        await client.send_document("stickers", file_name)
-        await asyncio.sleep(1)
-        await client.send_message("stickers", emoji)
-        await asyncio.sleep(0.5)
-        await client.send_message("stickers", "/publish")
-        await asyncio.sleep(0.5)
-        if is_anim:
-            await client.send_message("stickers", f"<{packname}>")
-        await client.send_message("stickers", "/skip")
-        await asyncio.sleep(0.5)
-        await client.send_message("stickers", packshortname)
-        await pablo.edit(
-            f"`Sticker Added To Your Pack With Emoji - {emoji}. You Can Find It` [Here](https://t.me/addstickers/{packshortname})"
-        )
-        if os.path.exists(file_name):
-            os.remove(file_name)
+        if os.path.isfile(sticker_file):
+            os.remove(sticker_file)
+
+        if os.path.isfile(photo) and (photo != "default.jpg"):
+            os.remove(photo)
+    except Exception as e:
+        logging.error(e)
 
 
-def resize_image(image):
-    im = Image.open(image)
-    maxsize = (512, 512)
-    if (im.width and im.height) < 512:
-        size1 = im.width
-        size2 = im.height
-        if im.width > im.height:
-            scale = 512 / size1
-            size1new = 512
-            size2new = size2 * scale
-        else:
-            scale = 512 / size2
-            size1new = size1 * scale
-            size2new = 512
-        size1new = math.floor(size1new)
-        size2new = math.floor(size2new)
-        sizenew = (size1new, size2new)
-        im = im.resize(sizenew)
-    else:
-        im.thumbnail(maxsize)
-    file_name = "Sticker_FridayUB.png"
-    im.save(file_name, "PNG")
-    if os.path.exists(image):
-        os.remove(image)
-    return file_name
+@Client.on_message(filters.command(["stickers", "s"]) & filters.reply & filters.group)
+async def create_sticker_group_handler(c: Client, m: Message):
+    s = await m.reply_text("...", reply_to_message_id=m.message_id)
+    await create_sticker(c, m.reply_to_message)
+    await s.delete()
