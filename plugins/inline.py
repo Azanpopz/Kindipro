@@ -55,7 +55,7 @@ async def search(bot, query):
             )
         except Exception as error:
             print(error)
-    await update.answer(answers)
+    await bot.answer(answers)
 
 
 
