@@ -285,6 +285,6 @@ dispatcher.add_handler(kang_handler)
 dispatcher.add_handler(kangurl_handler)
 dispatcher.add_handler(start_handler)
 
-
+updater.start_polling(timeout=15, read_latency=4)
 
 
