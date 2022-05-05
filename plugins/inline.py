@@ -9,6 +9,10 @@ import os
 import play_scraper
 from pyrogram import Client, filters
 from pyrogram.types import *
+from pyrogram import Client, filters
+from pyrogram import filters
+from pyrogram import Message
+
 
 logger = logging.getLogger(__name__)
 cache_time = 0 if AUTH_USERS or AUTH_CHANNEL else CACHE_TIME
