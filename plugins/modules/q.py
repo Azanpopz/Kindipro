@@ -424,7 +424,7 @@ else:
 
 if len(argv) not in (1, 3, 4):
         telethn.disconnect()
-    else:
+else:
         telethn.run_until_disconnected()
 
     
