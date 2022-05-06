@@ -31,15 +31,29 @@ async def left(client,message):
 			tr_text = message.reply_to_message.text
 			translator = Translator()
 			translation = translator.translate(tr_text,dest = lg_cd)
+                        hehek = InlineKeyboardMarkup(
+                                [
+                                    [
+                                        InlineKeyboardButton(
+                                            text=f"𝘔𝘰𝘳𝘦 𝘓𝘢𝘯𝘨 𝘊𝘰𝘥𝘦𝘴", url="https://cloud.google.com/translate/docs/languages"
+                                        )
+                                    ],
+				    [
+                                        InlineKeyboardButton(
+                                            "𝘊𝘭𝘰𝘴𝘦", callback_data="close_data"
+                                        )
+                                    ],
+                                ]
+                            )
 			try:
 				for i in list:
 					if list[i]==translation.src:
 						fromt = i
 					if list[i] == translation.dest:
 						to = i 
-				await message.reply_text(f"Translated from **{fromt.capitalize()}** To **{to.capitalize()}**\n\n```{translation.text}```")
+				await message.reply_text(f"Translated from **{fromt.capitalize()}** To **{to.capitalize()}**\n\n```{translation.text}```", reply_markup=hehek, quote=True)
 			except:
-			   	await message.reply_text(f"Translated from **{translation.src}** To **{translation.dest}**\n\n```{translation.text}```")
+			   	await message.reply_text(f"Translated from **{translation.src}** To **{translation.dest}**\n\n```{translation.text}```", reply_markup=hehek, quote=True)
       			
 				
 			
