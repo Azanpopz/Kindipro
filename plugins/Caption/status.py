@@ -71,7 +71,7 @@ source_button=InlineKeyboardMarkup(
 
 
 
-@autocaption.on_message(filters.command("caption") & filters.private)
+@Client.on_message(filters.command("caption") & filters.private)
 async def start(bot, cmd):
       await bot.send_message(
           chat_id = cmd.chat.id,
@@ -83,7 +83,7 @@ async def start(bot, cmd):
       )
 
 
-@autocaption.on_message(filters.command("help") & filters.private)
+@Client.on_message(filters.command("help") & filters.private)
 async def help(bot, cmd):
       await bot.send_message(
           chat_id = cmd.chat.id,
@@ -95,7 +95,7 @@ async def help(bot, cmd):
       )
 
 
-@autocaption.on_message(filters.command("about") & filters.private)
+@Client.on_message(filters.command("about") & filters.private)
 async def about(bot, cmd):
       await bot.send_message(
           chat_id = cmd.chat.id,
@@ -107,7 +107,7 @@ async def about(bot, cmd):
       )
 
 
-@autocaption.on_message(filters.command("source") & filters.private)
+@Client.on_message(filters.command("source") & filters.private)
 async def about(bot, cmd):
       await bot.send_message(
           chat_id = cmd.chat.id,
@@ -122,7 +122,7 @@ async def about(bot, cmd):
 
 # call_backs 
 
-@autocaption.on_callback_query()
+@Client.on_callback_query()
 async def button(bot, cmd: CallbackQuery):
     cb_data = cmd.data
     if "about_data" in cb_data:
