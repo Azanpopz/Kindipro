@@ -418,7 +418,7 @@ if WEBHOOK:
         else:
             updater.bot.set_webhook(url=URL + TOKEN)
 
-    else:
+else:
         LOGGER.info("Finally Miku Is In Online")
         updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True, allowed_updates=Update.ALL_TYPES)
 
