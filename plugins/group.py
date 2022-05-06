@@ -31,16 +31,15 @@ async def left(client,message):
 			tr_text = message.reply_to_message.text
 			translator = Translator()
 			translation = translator.translate(tr_text,dest = lg_cd)
-                        
 			try:
 				for i in list:
 					if list[i]==translation.src:
 						fromt = i
 					if list[i] == translation.dest:
 						to = i 
-				await message.reply_text(f"Translated from **{fromt.capitalize()}** To **{to.capitalize()}**\n\n```{translation.text}```"}
+				await message.reply_text(f"Translated from **{fromt.capitalize()}** To **{to.capitalize()}**\n\n```{translation.text}```")
 			except:
-			   	await message.reply_text(f"Translated from **{translation.src}** To **{translation.dest}**\n\n```{translation.text}```"}
+			   	await message.reply_text(f"Translated from **{translation.src}** To **{translation.dest}**\n\n```{translation.text}```")
       			
 				
 			
