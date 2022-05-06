@@ -49,24 +49,3 @@ pyTelegramBotAPI
 
 
 
-future
-multicolorcaptcha
-emoji
-lxml
-textblob==0.17.1
-telethon==1.24.0
-spamwatch
-alphabet_detector
-cachetools
-dnspython==2.1.0
-fontTools
-gtts
-tswift
-
-
-
-bing_image_downloader
-
-
-
-
