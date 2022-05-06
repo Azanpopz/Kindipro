@@ -408,7 +408,7 @@ __help__ = """
 
     
 
-    if WEBHOOK:
+if WEBHOOK:
         LOGGER.info("Using webhooks.")
         updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
 
