@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 import os
 
-from caption_config import Config
+from status import Config
 from pyrogram import Client 
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
