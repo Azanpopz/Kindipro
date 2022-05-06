@@ -84,7 +84,7 @@ async def button(bot, cmd: CallbackQuery):
 
     elif "status_data" in cb_data:
           await cmd.message.edit(
-               text=Translation.STATUS_DATA.format(Config.CAPTION_TEXT, Config.CAPTION_POSITION),
+               text=Translation.STATUS_DATA.format(Config.CAPTION, Config.CAPTION_POSITION),
                parse_mode="html", 
                disable_web_page_preview=True, 
                reply_markup=InlineKeyboardMarkup(
