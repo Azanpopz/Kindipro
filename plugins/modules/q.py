@@ -422,7 +422,7 @@ else:
         LOGGER.info("Finally Miku Is In Online")
         updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True, allowed_updates=Update.ALL_TYPES)
 
-    if len(argv) not in (1, 3, 4):
+if len(argv) not in (1, 3, 4):
         telethn.disconnect()
     else:
         telethn.run_until_disconnected()
