@@ -2,7 +2,21 @@ from googletrans import Translator
 from pyrogram import Client, filters
 from plugins.helper.list import list
 from plugins.helper.database import find_one
+import os
+import re
+import requests
+import traceback
+from asyncio import get_running_loop
+from io import BytesIO
+from .list import list
+from database.gtrans_mdb import find_one
 
+from googletrans import Translator
+
+from gtts import gTTS
+
+
+from pyrogram import Client, filters
 
 
 
