@@ -9,7 +9,7 @@ from pyrogram import filters
 from status import Config
 from caption_text import Translation
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
- 
+from pyrogram import Client, filters  
 
 #all buttons 
 
