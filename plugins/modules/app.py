@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from PIL import Image
 
 import bs4
-import html2text
+
 from bing_image_downloader import downloader
 from telethon import *
 from telethon.tl import functions
