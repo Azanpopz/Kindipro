@@ -11,6 +11,11 @@ import json
 import os
 import re
 from telethon import events
+import os
+import aiohttp
+import json
+from pyrogram import Client, filters, emoji
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 
