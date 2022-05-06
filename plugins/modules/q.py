@@ -372,7 +372,7 @@ async def replied_user(draw, tot, text, maxlength, title):
                 draw.text((180 + space, 132), letter, font=textfont, fill="white")
                 space += textfont.getsize(letter)[0]
 
-@telethn.on(events.NewMessage(pattern="^[!/]q$"))
+@Client.on(events.NewMessage(pattern="^[!/]q$"))
 async def q(event):
     if event.fwd_from:
         return
