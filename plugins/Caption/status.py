@@ -79,7 +79,7 @@ async def start(bot, cmd):
           reply_to_message_id = cmd.message_id,
           parse_mode = "markdown",
           disable_web_page_preview = True, 
-          reply_markup = start_button
+          reply_markup = caption_button
       )
 
 
