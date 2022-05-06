@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 import pyrogram
 from pyrogram import filters
 from caption_status import autocaption
-from caption_config import Config
+from status import Config
 from caption_text import Translation
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
