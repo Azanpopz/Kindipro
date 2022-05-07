@@ -11,6 +11,7 @@ import requests
 async def sticker_image(_, msg: Message):
         
         message = await msg.reply("Converting...")
+    if msg.photo:
         user_id = msg.from_user.id
         message_id = msg.message_id
         name_format = f"StarkBots_{user_id}_{message_id}"
