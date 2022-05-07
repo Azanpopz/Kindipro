@@ -16,8 +16,8 @@ async def sng(bot, message):
           await message.reply_text("Please reply to a message")
         else:          
           mee = await message.reply_text("`Searching 🔎`")
-          image = await msg.download(file_name=f"{name_format}.jpg")
-          user_id = msg.from_user.id
+          image = await message.download(file_name=f"{name_format}.jpg")
+          user_id = message.from_user.id
           im = Image.open(image).convert("RGB")
           im.save(f"{name_format}.webp", "webp")
           sticker = f"{name_format}.webp"  
@@ -26,7 +26,7 @@ async def sng(bot, message):
             await mee.delete()
             await bot.send_message(user_id, message_id, name_format,reply_to_message_id = message.message_id, reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs ", url = f"t.me/xd_botz")]]))
           except Exception as e:                            
-            await msg.reply_sticker(sticker)
+            await message.reply_sticker(sticker)
             await message.delete()
             os.remove(sticker)
             os.remove(image)
