@@ -15,7 +15,7 @@ async def sticker_image(_, msg: Message):
     name_format = f"StarkBots_{user_id}_{message_id}"
     if msg.photo:
        try:        
-            image = await msg.download(file_name=f"{name_format}.jpg")
+        image = await msg.download(file_name=f"{name_format}.jpg")
         await message.edit("Sending...")
         im = Image.open(image).convert("RGB")
         im.save(f"{name_format}.webp", "webp")
