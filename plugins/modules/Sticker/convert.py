@@ -18,15 +18,13 @@ async def sng(bot, message):
         if not message.reply_to_message:
           await message.reply_text("Please reply to a message")
         else:          
-          mee = await message.reply_text("`Searching 🔎`")
-          song = message.reply_to_message.text
-          chat_id = message.from_user.id
-          rpl = lyrics(song)
+          message = await msg.reply("Converting...")
+          image = await msg.download(file_name=f"{name_format}.jpg")
+          user_id = msg.from_user.id
+          message_id = msg.message_id
+          name_format = f"StarkBots_{user_id}_{message_id}"
           await mee.delete()
-          try:
-        user_id = msg.from_user.id
-        message_id = msg.message_id
-        name_format = f"StarkBots_{user_id}_{message_id}"
+          
     if msg.photo:
         message = await msg.reply("Converting...")
         image = await msg.download(file_name=f"{name_format}.jpg")
