@@ -94,7 +94,7 @@ async def inline_handlers(_, inline: InlineQuery):
             )
         
             else:
-                for i in range(len(torrentList)):
+                for i in range(len(results)):
                     answers.append(
                         InlineQueryResultArticle(
                             title=f"{torrentList[i]['Name']}",
