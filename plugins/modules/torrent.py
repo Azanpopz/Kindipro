@@ -46,6 +46,8 @@ async def sta_handler(_, message: Message):
 @Client.on_inline_query()
 async def inline_handlers(_, inline: InlineQuery):
     search_ts = inline.query
+    results = play_scraper.search(update.query)
+  
     answers = []
     if search_ts == "":
         answers.append(
@@ -78,10 +80,8 @@ async def inline_handlers(_, inline: InlineQuery):
                     reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🔍Search Again", switch_inline_query_current_chat="PB ")]])
                 )
             )
-        else:
-            results = play_scraper.search(update.query)
-            if not results:
-                answers.append(
+        try:
+            answers.append(
                 InlineQueryResultArticle(
                     title=result["title"],
                     description=result.get("description", None),
@@ -92,35 +92,6 @@ async def inline_handlers(_, inline: InlineQuery):
                     reply_markup=reply_markup
                 )
             )
-        
-            else:
-                for i in range(len(results)):
-                    answers.append(
-                        InlineQueryResultArticle(
-                            title=f"{torrentList[i]['Name']}",
-                            description=f"Seeders: {torrentList[i]['Seeders']}, Leechers: {torrentList[i]['Leechers']}\nSize: {torrentList[i]['Size']}",
-                            input_message_content=InputTextMessageContent(
-                                message_text=f"**Title:** `{}`".format(result["title"]) + "\n" \
-                                             f"**Description:** `{}`".format(result["description"]) + "\n" \
-                                             f"**App ID:** `{}`".format(result["app_id"]) + "\n" \
-                                             f"**Developer:** `{}`".format(result["developer"]) + "\n" \
-                                             f"**Developer ID:** `{}`".format(result["developer_id"]) + "\n" \
-                                             f"**Score:** `{}`".format(result["score"]) + "\n" \
-                                             f"**Price:** `{}`".format(result["price"]) + "\n" \
-                                             f"**Full Price:** `{}`".format(result["full_price"]) + "\n" \
-                                             f"**Free:** `{}`".format(result["free"]) + "\n" \
-                                             f"\n" + "Made by @FayasNoushad",
-                                parse_mode="Markdown"
-                            ),
-                            reply_markup=InlineKeyboardMarkup(
-                                [[InlineKeyboardButton("𝗦𝗲𝗮𝗿𝗰𝗵 𝗔𝗴𝗮𝗶𝗻 🌶✨", switch_inline_query_current_chat="PB ")]])
-                        )
-                    )
-
-except Exception as error:
+        except Exception as error:
             print(error)
     await update.answer(answers)
-
-
-
-      
