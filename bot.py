@@ -27,17 +27,7 @@ class Bot(Client):
             sleep_threshold=5,
             parse_mode="html",
         )
-    else:
-        app_config = configparser.ConfigParser()
-        app_config.read("config.ini")
-        bot_api_key = app_config.get("bot-configuration", "api_key")
-
-        some_sticker_bot = Client(
-            session_name="some_sticker_bot",
-            bot_token=bot_api_key,
-            workers=200
-        )
-
+    
     async def start(self):
         b_users, b_chats = await db.get_banned()
         temp.BANNED_USERS = b_users
