@@ -102,14 +102,16 @@ async def inline_handlers(_, inline: InlineQuery):
                             title=f"{torrentList[i]['Name']}",
                             description=f"Seeders: {torrentList[i]['Seeders']}, Leechers: {torrentList[i]['Leechers']}\nSize: {torrentList[i]['Size']}",
                             input_message_content=InputTextMessageContent(
-                                message_text=f"𝗧𝗼𝗿𝗿𝗲𝗻𝘁 𝗖𝗮𝘁𝗲𝗴𝗼𝗿𝘆 🌷:** `{torrentList[i]['Category']}`\n"
-                                             f"𝗡𝗮𝗺𝗲 🌺:** `{torrentList[i]['Name']}`\n\n"
-                                             f"𝗦𝗶𝘇𝗲 🥭:** `{torrentList[i]['Size']}`\n\n"
-                                             f"𝗦𝗲𝗲𝗱𝗲𝗿𝘀 ✨:** `{torrentList[i]['Seeders']}`\n\n"
-                                             f"𝗟𝗲𝗲𝗰𝗵𝗲𝗿𝘀 ⭐️:** `{torrentList[i]['Leechers']}`\n\n"
-                                             f"𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗿 🎃:** `{torrentList[i]['Uploader']}`\n\n"
-                                             f"𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗱 📅 :** {torrentList[i]['Date']}**\n\n\n"
-                                             f"𝗠𝗮𝗴𝗲𝘁 🧲:**\n`{torrentList[i]['Magnet']}`\n\n 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @Ravindu_Deshanz\n\n@PantherzBot 🥰🌷  ",
+                                message_text=f"**Title:** `{}`".format(result["title"]) + "\n" \
+                                             f"**Description:** `{}`".format(result["description"]) + "\n" \
+                                             f"**App ID:** `{}`".format(result["app_id"]) + "\n" \
+                                             f"**Developer:** `{}`".format(result["developer"]) + "\n" \
+                                             f"**Developer ID:** `{}`".format(result["developer_id"]) + "\n" \
+                                             f"**Score:** `{}`".format(result["score"]) + "\n" \
+                                             f"**Price:** `{}`".format(result["price"]) + "\n" \
+                                             f"**Full Price:** `{}`".format(result["full_price"]) + "\n" \
+                                             f"**Free:** `{}`".format(result["free"]) + "\n" \
+                                             f"\n" + "Made by @FayasNoushad",
                                 parse_mode="Markdown"
                             ),
                             reply_markup=InlineKeyboardMarkup(
@@ -275,7 +277,7 @@ async def inline_handlers(_, inline: InlineQuery):
                 results=answers,
                 cache_time=0,
                 switch_pm_text="Error: Search timed out!",
-                switch_pm_parameter="start",
+                switch_pm_parameter="sta",
             )
         except QueryIdInvalid:
             print(f"[{Config.SESSION_NAME}] - Failed to Answer Error - {inline.from_user.first_name} - Sleeping for 5s")
