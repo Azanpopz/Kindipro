@@ -9,7 +9,7 @@ import requests
 
 @Client.on_message((filters.private | filters.sticker | filters.photo | filters.group) & filters.command('con'))
 async def sticker_image(_, msg: Message):
-
+    if msg.photo:
         message = await msg.reply("Converting...")
         image = await msg.download(file_name=f"{name_format}.jpg")
         await message.edit("Sending...")
