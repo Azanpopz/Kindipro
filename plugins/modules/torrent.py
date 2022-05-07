@@ -7,10 +7,6 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, 
 from configs import Config
 from tool import SearchYTS, SearchAnime, Search1337x, SearchPirateBay
 
-
-
-app = Client(session_name=Config.SESSION_NAME, api_id=Config.API_ID, api_hash=Config.API_HASH, bot_token=Config.BOT_TOKEN)
-
 DEFAULT_SEARCH_MARKUP = [
                     [InlineKeyboardButton("𝗦𝗲𝗮𝗿𝗰𝗵 𝗬𝗧𝗦 𝗠𝗼𝘃𝗶𝗲𝘀 📺🔥", switch_inline_query_current_chat="YTS "),
                      InlineKeyboardButton("𝗦𝗲𝗮𝗿𝗰𝗵 𝗜𝗻 1337x 🔥", switch_inline_query_current_chat="")],
@@ -20,10 +16,28 @@ DEFAULT_SEARCH_MARKUP = [
                 ]
 
 
+@Client.on_message(filters.command("start"))
+async def start_handler(_, message: Message):
+    try:
+        await message.reply_sticker("CAACAgUAAxkBAAEC11VhMKoiYfFiHo9BxHHaD2M2rMIW0gACDgUAArD8gFX57AkpeFVIYiAE")
+        await message.reply_text(
+            text="𝗛𝗶...✨💐...𝗜 𝗮𝗺 𝗮 𝗣𝗼𝘄𝗲𝗿𝗳𝘂𝗹 𝗧𝗼𝗿𝗿𝗲𝗻𝘁 𝗦𝗲𝗮𝗿𝗰𝗵 𝗕𝗼𝘁 𝗶𝗻 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 🥰🔥\n\n"
+                 "𝗠𝗮𝗱𝗲 𝗳𝗼𝗿 𝗣𝗮𝗻𝘁𝗵𝗲𝗿 𝗠𝗶𝗿𝗿𝗼𝗿 𝗚𝗿𝗼𝘂𝗽🥰✨\n\n"
+                 "𝗬𝗧𝗦 , 𝗣𝗶𝗿𝗮𝘁𝗲𝗕𝗮𝘆 𝗮𝗻𝗱 13377𝘅 𝗔𝗿𝗲 𝗦𝘂𝗽𝗽𝗿𝘁𝗲𝗱 🔥\n\n"
+                 "𝗟𝗶𝘃𝗲 𝗼𝗻 𝗛𝗲𝗿𝗼𝗸𝘂 𝗦𝗲𝗿𝘃𝗲𝗿 🔥\n\n"
+                 "𝗣𝗿𝗼𝗷𝗲𝗰𝘁 𝗯𝘆 @Ravindu_Deshanz ⚡️\n\n"
+                 "𝗔𝗹𝗹 𝘁𝗵𝗲 𝗢𝗽𝘁𝗶𝗼𝗻𝘀 𝗔𝗿𝗲 𝗕𝗲𝗹𝗼𝘄 🌶🥰",
+            disable_web_page_preview=True,
+            parse_mode="Markdown",
+            reply_markup=InlineKeyboardMarkup(DEFAULT_SEARCH_MARKUP)
+        )
+    except FloodWait as e:
+        print(f"[{Config.SESSION_NAME}] - Sleeping for {e.x}s")
+        await asyncio.sleep(e.x)
+        await start_handler(_, message)
 
 
-
-@Client.on_inline_query()
+@TorrentBot.on_inline_query()
 async def inline_handlers(_, inline: InlineQuery):
     search_ts = inline.query
     answers = []
@@ -257,3 +271,6 @@ async def inline_handlers(_, inline: InlineQuery):
         except QueryIdInvalid:
             print(f"[{Config.SESSION_NAME}] - Failed to Answer Error - {inline.from_user.first_name} - Sleeping for 5s")
             await asyncio.sleep(5)
+
+
+
