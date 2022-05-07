@@ -169,13 +169,13 @@ async def start_handler(c: Client, m: Message): await m.reply_text(
 
 async def create_sticker(c: Client, m: Message):
     if len(m.text) < 100:
-        body_font_size = 35
+        body_font_size = 55
         wrap_size = 30
     elif len(m.text) < 200:
-        body_font_size = 30
+        body_font_size = 50
         wrap_size = 35
     elif len(m.text) < 500:
-        body_font_size = 20
+        body_font_size = 40
         wrap_size = 40
     elif len(m.text) < 1000:
         body_font_size = 12
