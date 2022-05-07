@@ -34,7 +34,7 @@ async def sta_handler(_, message: Message):
     except FloodWait as e:
         print(f"[{Config.SESSION_NAME}] - Sleeping for {e.x}s")
         await asyncio.sleep(e.x)
-        await start_handler(_, message)
+        await sta_handler(_, message)
 
 
 @Client.on_inline_query()
@@ -58,7 +58,7 @@ async def inline_handlers(_, inline: InlineQuery):
                 reply_markup=InlineKeyboardMarkup(DEFAULT_SEARCH_MARKUP)
             )
         )
-    elif search_ts.startswith("PB"):
+    elif search_ts.staswith("PB"):
         query = search_ts.split(" ", 1)[-1]
         if (query == "") or (query == " "):
             answers.append(
@@ -160,7 +160,7 @@ async def inline_handlers(_, inline: InlineQuery):
                             thumb_url=torrentList[i]["Poster"]
                         )
                     )
-    elif search_ts.startswith("!a"):
+    elif search_ts.staswith("!a"):
         query = search_ts.split(" ", 1)[-1]
         if (query == "") or (query == " "):
             answers.append(
