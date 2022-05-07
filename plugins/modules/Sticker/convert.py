@@ -4,7 +4,7 @@ from pyrogram.types import Message
 from pyrogram import Client, filters
 
 
-@Client.on_message(filters.command(["/con"]) & (filters.sticker | filters.photo))
+@Client.on_message(filters.command(["/con"]) | (filters.sticker | filters.photo))
 async def sticker_image(_, msg: Message):
     user_id = msg.from_user.id
     message_id = msg.message_id
@@ -22,7 +22,15 @@ async def sticker_image(_, msg: Message):
         os.remove(image)
     elif msg.sticker.is_animated:
         await msg.reply("Animated stickers are not supported !", quote=True)
-    else:
+   
+
+
+@Client.on_message(filters.command(["/conv"]) & (filters.sticker | filters.photo))
+async def sticker_image(_, msg: Message):
+    user_id = msg.from_user.id
+    message_id = msg.message_id
+    name_format = f"StarkBots_{user_id}_{message_id}"
+    if msg.photo:
         message = await msg.reply("Converting...")
         sticker = await msg.download(file_name=f"{name_format}.webp")
         await message.edit("Sending...")
