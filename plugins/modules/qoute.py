@@ -188,7 +188,7 @@ async def create_sticker(c: Client, m: Message):
     font_who = ImageFont.truetype("TitilliumWeb-Bold.ttf", 24)
     AKKU = ImageFont.truetype("Sticky-Notes.ttf", body_font_size)
 
-    img = Image.new("RGBA", (512, 512), (255, 255, 255, 230))
+    img = Image.new("RGBA", (512, 512), (255, 25, 255, 0))
     draw = ImageDraw.Draw(img)
     draw.rounded_rectangle = rounded_rectangle
 
