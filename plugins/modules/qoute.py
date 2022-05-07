@@ -219,7 +219,7 @@ async def create_sticker(c: Client, m: Message):
     for i, line in enumerate(text_lines):
         x = 100
         y += line_heights[i]
-        draw.text((x, y), line, "#ffffff", font=font)
+        draw.text((x, y), line, "#ffffff", font=font_who)
 
     try:
         user_profile_pic = await c.get_profile_photos(m.from_user.id)
