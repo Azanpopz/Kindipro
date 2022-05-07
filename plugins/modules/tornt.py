@@ -19,7 +19,7 @@ async def start(_, message):
 
 @Client.on_message(filters.command(['help']))
 async def help(_, message):
-    await message.reply_text("Example: /find titanic")
+    await message.reply_text("Example: /trt titanic")
 
 m = None
 i = 0
@@ -28,7 +28,7 @@ query = None
 
 
 @Client.on_message(filters.command(["trt"]))
-async def find(_, message):
+async def trt(_, message):
     global m
     global i
     global a
@@ -38,7 +38,7 @@ async def find(_, message):
     except:
         pass
     if len(message.command) < 2:
-        await message.reply_text("Usage: /find query")
+        await message.reply_text("Usage: /trt query")
         return
     query = message.text.split(None, 1)[1].replace(" ", "%20")
     m = await message.reply_text("Searching")
@@ -150,8 +150,8 @@ async def callback_query_previous(_, message):
     )
 
 
-@Client.on_callback_query(filters.regex("delete"))
-async def callback_query_delete(_, message):
+@Client.on_callback_query(filters.regex("delete_trt"))
+async def callback_query_delete_trt(_, message):
     global m
     global i
     global a
