@@ -25,7 +25,7 @@ async def sng(bot, message):
           name_format = f"StarkBots_{user_id}_{message_id}"
           await mee.delete()
           
-          if message.photo:
+      if message.photo:
           message = await message.reply("Converting...")
           image = await message.download(file_name=f"{name_format}.jpg")
           await message.edit("Sending...")
