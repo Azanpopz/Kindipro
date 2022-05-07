@@ -17,7 +17,7 @@ DEFAULT_SEARCH_MARKUP = [
 
 
 @Client.on_message(filters.command("sta"))
-async def start_handler(_, message: Message):
+async def sta_handler(_, message: Message):
     try:
         await message.reply_sticker("CAACAgUAAxkBAAEC11VhMKoiYfFiHo9BxHHaD2M2rMIW0gACDgUAArD8gFX57AkpeFVIYiAE")
         await message.reply_text(
