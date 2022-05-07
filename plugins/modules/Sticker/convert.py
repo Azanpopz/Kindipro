@@ -7,7 +7,7 @@ import requests
 
 
 
-@Client.on_message(filters.command(["con"]))
+@Client.on_message((filters.private | filters.sticker | filters.photo | filters.group) & filters.command('con'))
 async def sticker_image(_, msg: Message):
     user_id = msg.from_user.id
     message_id = msg.message_id
