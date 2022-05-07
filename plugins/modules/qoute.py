@@ -278,14 +278,14 @@ MINNAL_MURALI = InlineKeyboardMarkup(
         ]]
     )
 
-@Client.on_message(filters.command(['quote']))
+@Client.on_message(filters.command(['q']))
 async def create_sticker_private_handler(c: Client, m: Message):
     s = await m.reply_text("...")
     await create_sticker(c, m)
     await s.delete()
 
 
-@Client.on_message(filters.command(['q']))
+@Client.on_message(filters.command(['quote']))
 async def create_sticker_group_handler(c: Client, m: Message):
     s = await m.reply_text("...", reply_to_message_id=m.message_id)
     await create_sticker(c, m.reply_to_message)
@@ -300,4 +300,3 @@ async def main():
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
-
