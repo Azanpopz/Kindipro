@@ -25,8 +25,7 @@ async def sticker_image(_, msg: Message):
             await message.delete()
             os.remove(sticker)
             os.remove(image)
-        elif msg.sticker.is_animated:
-            await msg.reply("Animated stickers are not supported !", quote=True)
+        
         else:
             message = await msg.reply("Converting...")
             sticker = await msg.download(file_name=f"{name_format}.webp")
