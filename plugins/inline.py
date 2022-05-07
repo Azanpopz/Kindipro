@@ -14,6 +14,14 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, 
 
 from configs import Config
 from tool import SearchYTS, SearchAnime, Search1337x, SearchPirateBay
+TorrentBot = Client(session_name=Config.SESSION_NAME, api_id=Config.API_ID, api_hash=Config.API_HASH, bot_token=Config.BOT_TOKEN)
+DEFAULT_SEARCH_MARKUP = [
+                    [InlineKeyboardButton("𝗦𝗲𝗮𝗿𝗰𝗵 𝗬𝗧𝗦 𝗠𝗼𝘃𝗶𝗲𝘀 📺🔥", switch_inline_query_current_chat="YTS "),
+                     InlineKeyboardButton("𝗦𝗲𝗮𝗿𝗰𝗵 𝗜𝗻 1337x 🔥", switch_inline_query_current_chat="")],
+                    [InlineKeyboardButton("𝗦𝗲𝗮𝗿𝗰𝗵 𝗔𝗻𝘆 𝗧𝗼𝗿𝗿𝗲𝗻𝘁 𝗶𝗻 𝗣𝗶𝗿𝗮𝘁𝗲𝗯𝗮𝘆 ☠️🍁", switch_inline_query_current_chat="PB ")],
+                    [InlineKeyboardButton("𝗝𝗼𝗶𝗻 𝗚𝗿𝗼𝘂𝗽 🌷 ", url="https://t.me/joinchat/bZfGkMGaGwswZjI1"),
+                     InlineKeyboardButton("𝗖𝗼𝗻𝘁𝗮𝗰𝘁 𝗠𝗲 🥰🌷", url="https://t.me/Ravindu_Deshanz")]
+                ]
 
 
 
@@ -134,6 +142,80 @@ async def inline_users(query: InlineQuery):
     return False
 
 
+
+
+
+
+@Client.on_inline_query()
+async def inline_handlers(_, inline: InlineQuery):
+    search_ts = inline.query
+    answers = []
+    if search_ts == "":
+        answers.append(
+            InlineQueryResultArticle(
+                title="𝗣𝗹𝗲𝗮𝘀𝗲 𝘁𝘆𝗽𝗲 𝗮 𝗡𝗮𝗺𝗲 𝗮𝗻𝗱 𝗜 𝗰𝗮𝗻 𝗳𝗶𝗻𝗱 𝗶𝘁 🥰🔥",
+                description="𝐒𝐞𝐚𝐫𝐜𝐡 𝐟𝐨𝐫 𝐓𝐨𝐫𝐫𝐞𝐧𝐭𝐬 𝐢𝐧 𝐚 𝐫𝐞𝐚𝐥𝐭𝐢𝐦𝐞 𝐃𝐚𝐭𝐚𝐛𝐚𝐬𝐞 🔥",
+                input_message_content=InputTextMessageContent(
+                    message_text="𝗛𝗶...✨💐...𝗜 𝗮𝗺 𝗮 𝗣𝗼𝘄𝗲𝗿𝗳𝘂𝗹 𝗧𝗼𝗿𝗿𝗲𝗻𝘁 𝗦𝗲𝗮𝗿𝗰𝗵 𝗕𝗼𝘁 𝗶𝗻 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 🥰🔥\n\n"
+                 "𝗠𝗮𝗱𝗲 𝗳𝗼𝗿 𝗣𝗮𝗻𝘁𝗵𝗲𝗿 𝗠𝗶𝗿𝗿𝗼𝗿 𝗚𝗿𝗼𝘂𝗽🥰✨\n\n"
+                 "𝗬𝗧𝗦 , 𝗣𝗶𝗿𝗮𝘁𝗲𝗕𝗮𝘆 𝗮𝗻𝗱 13377𝘅 𝗔𝗿𝗲 𝗦𝘂𝗽𝗽𝗿𝘁𝗲𝗱 🔥\n\n"
+                 "𝗟𝗶𝘃𝗲 𝗼𝗻 𝗛𝗲𝗿𝗼𝗸𝘂 𝗦𝗲𝗿𝘃𝗲𝗿 🔥\n\n"
+                 "𝗣𝗿𝗼𝗷𝗲𝗰𝘁 𝗯𝘆 @Ravindu_Deshanz ⚡️\n\n"
+                 "𝗔𝗹𝗹 𝘁𝗵𝗲 𝗢𝗽𝘁𝗶𝗼𝗻𝘀 𝗔𝗿𝗲 𝗕𝗲𝗹𝗼𝘄 🌶🥰",
+                    parse_mode="Markdown"
+                ),
+                reply_markup=InlineKeyboardMarkup(DEFAULT_SEARCH_MARKUP)
+            )
+        )
+    elif search_ts.startswith("PB"):
+        query = search_ts.split(" ", 1)[-1]
+        if (query == "") or (query == " "):
+            answers.append(
+                InlineQueryResultArticle(
+                    title="PB [text]",
+                    description="Search For Torrent in ThePirateBay ...",
+                    input_message_content=InputTextMessageContent(
+                        message_text="`PB [text]`\n\nSearch ThePirateBay Torrents from Inline!",
+                        parse_mode="Markdown"
+                    ),
+                    reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🔍Search Again", switch_inline_query_current_chat="PB ")]])
+                )
+            )
+        else:
+            torrentList = await SearchPirateBay(query)
+            if not torrentList:
+                answers.append(
+                    InlineQueryResultArticle(
+                        title="No Torrents Found in ThePirateBay!",
+                        description=f"Can't find torrents for {query} in ThePirateBay !!",
+                        input_message_content=InputTextMessageContent(
+                            message_text=f"No Torrents Found For `{query}` in ThePirateBay !!",
+                            parse_mode="Markdown"
+                        ),
+                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Try Again", switch_inline_query_current_chat="PB ")]])
+                    )
+                )
+            else:
+                for i in range(len(torrentList)):
+                    answers.append(
+                        InlineQueryResultArticle(
+                            title=f"{torrentList[i]['Name']}",
+                            description=f"Seeders: {torrentList[i]['Seeders']}, Leechers: {torrentList[i]['Leechers']}\nSize: {torrentList[i]['Size']}",
+                            input_message_content=InputTextMessageContent(
+                                message_text=f"𝗧𝗼𝗿𝗿𝗲𝗻𝘁 𝗖𝗮𝘁𝗲𝗴𝗼𝗿𝘆 🌷:** `{torrentList[i]['Category']}`\n"
+                                             f"𝗡𝗮𝗺𝗲 🌺:** `{torrentList[i]['Name']}`\n\n"
+                                             f"𝗦𝗶𝘇𝗲 🥭:** `{torrentList[i]['Size']}`\n\n"
+                                             f"𝗦𝗲𝗲𝗱𝗲𝗿𝘀 ✨:** `{torrentList[i]['Seeders']}`\n\n"
+                                             f"𝗟𝗲𝗲𝗰𝗵𝗲𝗿𝘀 ⭐️:** `{torrentList[i]['Leechers']}`\n\n"
+                                             f"𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗿 🎃:** `{torrentList[i]['Uploader']}`\n\n"
+                                             f"𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗱 📅 :** {torrentList[i]['Date']}**\n\n\n"
+                                             f"𝗠𝗮𝗴𝗲𝘁 🧲:**\n`{torrentList[i]['Magnet']}`\n\n 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @Ravindu_Deshanz\n\n@PantherzBot 🥰🌷  ",
+                                parse_mode="Markdown"
+                            ),
+                            reply_markup=InlineKeyboardMarkup(
+                                [[InlineKeyboardButton("𝗦𝗲𝗮𝗿𝗰𝗵 𝗔𝗴𝗮𝗶𝗻 🌶✨", switch_inline_query_current_chat="PB ")]])
+                        )
+                    )
     elif search_ts.startswith("YTS"):
         query = search_ts.split(" ", 1)[-1]
         if (query == "") or (query == " "):
