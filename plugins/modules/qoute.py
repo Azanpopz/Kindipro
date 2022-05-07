@@ -199,7 +199,7 @@ async def create_sticker(c: Client, m: Message):
     y, line_heights = await get_y_and_heights(
         text_lines,
         (512, 512),
-        20,
+        10,
         font
     )
 
