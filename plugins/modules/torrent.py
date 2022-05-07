@@ -6,6 +6,12 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, 
 
 from configs import Config
 from tool import SearchYTS, SearchAnime, Search1337x, SearchPirateBay
+import os
+import play_scraper
+from pyrogram import Client, filters
+from pyrogram.types import *
+
+
 
 DEFAULT_SEARCH_MARKUP = [
                     [InlineKeyboardButton("𝗦𝗲𝗮𝗿𝗰𝗵 𝗬𝗧𝗦 𝗠𝗼𝘃𝗶𝗲𝘀 📺🔥", switch_inline_query_current_chat="YTS "),
@@ -73,19 +79,22 @@ async def inline_handlers(_, inline: InlineQuery):
                 )
             )
         else:
-            torrentList = await SearchPirateBay(query)
+            torrentList = play_scraper.search(update.query)
             if not torrentList:
                 answers.append(
-                    InlineQueryResultArticle(
-                        title="No Torrents Found in ThePirateBay!",
-                        description=f"Can't find torrents for {query} in ThePirateBay !!",
-                        input_message_content=InputTextMessageContent(
-                            message_text=f"No Torrents Found For `{query}` in ThePirateBay !!",
-                            parse_mode="Markdown"
-                        ),
-                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Try Again", switch_inline_query_current_chat="PB ")]])
-                    )
+                InlineQueryResultArticle(
+                    title=result["title"],
+                    description=result.get("description", None),
+                    thumb_url=result.get("icon", None),
+                    input_message_content=InputTextMessageContent(
+                        message_text=details, disable_web_page_preview=True
+                    ),
+                    reply_markup=reply_markup
                 )
+            )
+        except Exception as error:
+            print(error)
+    await update.answer(answers)
             else:
                 for i in range(len(torrentList)):
                     answers.append(
