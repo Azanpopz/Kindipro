@@ -11,15 +11,15 @@ app = Client("trntsrcbot", api_id=int(os.environ.get("API_ID")), api_hash=os.env
 print("\nBot Started\n")
 
 
-@Client.on_message(filters.command(['starrt']))
+@Client.on_message(filters.command(['torrent']))
 async def start(_, message):
-    await message.reply_text("Hello I'm PirateBay Torrent Scraper Bot\nSend /help To Show Help Screen\nBot by @unkusr")
+    await message.reply_text("Hello I'm PirateBay Torrent Scraper Bot\nSend /help_torrent To Show Help Screen\nBot by @unkusr")
 
 
 
-@Client.on_message(filters.command(['help']))
+@Client.on_message(filters.command(['help_torrent']))
 async def help(_, message):
-    await message.reply_text("Example: /trt titanic")
+    await message.reply_text("Example: /find titanic")
 
 m = None
 i = 0
@@ -27,8 +27,8 @@ a = None
 query = None
 
 
-@Client.on_message(filters.command(["trt"]))
-async def trt(_, message):
+@Client.on_message(filters.command(["find"]))
+async def find(_, message):
     global m
     global i
     global a
@@ -38,7 +38,7 @@ async def trt(_, message):
     except:
         pass
     if len(message.command) < 2:
-        await message.reply_text("Usage: /trt query")
+        await message.reply_text("Usage: /find query")
         return
     query = message.text.split(None, 1)[1].replace(" ", "%20")
     m = await message.reply_text("Searching")
@@ -150,8 +150,8 @@ async def callback_query_previous(_, message):
     )
 
 
-@Client.on_callback_query(filters.regex("delete_trt"))
-async def callback_query_delete_trt(_, message):
+@Client.on_callback_query(filters.regex("delete"))
+async def callback_query_delete(_, message):
     global m
     global i
     global a
