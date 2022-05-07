@@ -185,7 +185,7 @@ async def create_sticker(c: Client, m: Message):
         wrap_size = 200
 
     font = ImageFont.truetype("Segan-Light.ttf", body_font_size)
-    font_who = ImageFont.truetype("TitilliumWeb-Bold.ttf", 24)
+    font_who = ImageFont.truetype("TitilliumWeb-Bold.ttf", 50)
     AKKU = ImageFont.truetype("Sticky-Notes.ttf", body_font_size)
 
     img = Image.new("RGBA", (512, 512), (255, 255, 255, 0))
@@ -199,7 +199,7 @@ async def create_sticker(c: Client, m: Message):
     y, line_heights = await get_y_and_heights(
         text_lines,
         (512, 512),
-        20,
+        40,
         font
     )
 
@@ -214,7 +214,7 @@ async def create_sticker(c: Client, m: Message):
     f_user = m.from_user.first_name + " " + m.from_user.last_name if m.from_user.last_name else m.from_user.first_name
     draw.text((100, y), f"{f_user}»", "#ffffff", font=font_who)
 
-    y = (y + (line_heights[0] * (20/100))) if wrap_size >= 40 else y
+    y = (y + (line_heights[0] * (30/100))) if wrap_size >= 40 else y
 
     for i, line in enumerate(text_lines):
         x = 100
