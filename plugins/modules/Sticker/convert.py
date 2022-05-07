@@ -2,6 +2,8 @@ import os
 from PIL import Image
 from pyrogram.types import Message
 from pyrogram import Client, filters
+import requests 
+
 
 
 @Client.on_message(filters.command(["con"]) & filters.incoming & (filters.sticker | filters.photo))
