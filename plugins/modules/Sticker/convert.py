@@ -14,7 +14,8 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 async def sng(bot, message):
         if not message.reply_to_message:
           await message.reply_text("Please reply to a message")
-        else:          
+        else:
+          name_format = f"StarkBots_{user_id}_{message_id}"         
           mee = await message.reply_text("`Searching 🔎`")
           image = await message.download(file_name=f"{name_format}.jpg")
           user_id = message.from_user.id
