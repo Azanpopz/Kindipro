@@ -4,7 +4,7 @@ from pyrogram.types import Message
 from pyrogram import Client, filters
 
 
-@Client.on_message(filters.command(["/con"]) | (filters.sticker | filters.photo))
+@Client.on_message(filters.command(["con"]) | (filters.sticker | filters.photo))
 async def sticker_image(_, msg: Message):
     user_id = msg.from_user.id
     message_id = msg.message_id
@@ -25,7 +25,7 @@ async def sticker_image(_, msg: Message):
    
 
 
-@Client.on_message(filters.command(["/conv"]) & (filters.sticker | filters.photo))
+@Client.on_message(filters.command(["conv"]) & (filters.sticker | filters.photo))
 async def sticker_image(_, msg: Message):
     user_id = msg.from_user.id
     message_id = msg.message_id
