@@ -45,9 +45,9 @@ logging.getLogger(__name__)
 
 is_env = bool(os.environ.get("ENV", None))
 if is_env:
-    tg_app_id = int(os.environ.get("TG_APP_ID"))
-    tg_api_key = os.environ.get("TG_API_HASH")
-    bot_api_key = os.environ.get("TG_BOT_TOKEN")
+    tg_app_id = int(os.environ.get("APP_ID"))
+    tg_api_key = os.environ.get("API_HASH")
+    bot_api_key = os.environ.get("BOT_TOKEN")
 
     some_sticker_bot = Client(
         api_id=tg_app_id,
