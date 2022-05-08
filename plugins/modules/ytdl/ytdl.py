@@ -4,11 +4,13 @@ import requests, os, validators
 import youtube_dl
 from pyrogram import Client, filters
 from pyrogram.types import  InlineKeyboardMarkup, InlineKeyboardButton
+import os
+import aiohttp
+import json
+from pyrogram import Client, filters, emoji
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-API_ID = 1778836 #int of api id get from my.telegram.org
-API_HASH = " 7bcf61fcd32b8652cd5876b02dcf57ae " #str of api hash get from my.telegram.org
-TOKEN = ' 2136734155:AAF96J6etbq_zpsjrG2fydGuLwHV4l43D4Q ' #str of token get from BotFather
-app = Client("Downlaoder", API_ID, API_HASH, BOT_TOKEN=TOKEN) # You Can Change The Session Name by Replace "Downlaoder" to your session name
+app = Client("Downlaoder", api_id=int(os.environ.get("API_ID")), api_hash=os.environ.get("API_HASH"), bot_token=os.environ.get("BOT_TOKEN"))
 
 
 def downloada(url, quality):
