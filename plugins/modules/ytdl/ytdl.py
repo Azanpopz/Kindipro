@@ -69,7 +69,7 @@ def downloada(url, quality):
 def start(c, m): # c Mean Client | m Mean Message
     m.reply_text('Hi Welcome To @iLoaderBot \n Just Send Video Url To me and i\'ll try to upload the video and send it to you') #Edit it and add your Bot ID :)
 
-@Client.on_message(filters.command(["ytdl"]) filters.regex(
+@Client.on_message(filters.command(["ytdl"]) & filters.regex(
     r"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"))
 def webpage(c, m): # c Mean Client | m Mean Message
     url1 = m.text
