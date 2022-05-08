@@ -34,14 +34,6 @@ rs_img = [
     "https://telegra.ph/file/5b0406dd7b743de513c46.jpg",
     "https://telegra.ph/file/5c91495538b0c78af8afe.jpg"]
 
-cyp = Client(
-    'cyp_bot',
-    api_id=api_id, 
-    api_hash=api_hash, 
-    bot_token=bot_token,
-    sleep_threshold=60
-)
-print("bot starting")
 
 @Client.on_message(filters.command(['rs']) & filters.private)
 def rs(client, message):
