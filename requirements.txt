@@ -76,6 +76,7 @@ youtube-dl
 wget
 
 git+https://github.com/pyrogram/pyrogram@master
-pytgcalls==3.0.0.dev16
-pytgcalls
+
+
 py-youtube==1.1.2
+py-tgcalls==0.8.2
