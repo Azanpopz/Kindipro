@@ -1,6 +1,7 @@
 from telegram import Update
 from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters
-from plugins.modules.ytdl.spotify
+
+from telegram.plugins.modules.ytdl import spotify
 
 
 def text_finder(txt):
