@@ -91,7 +91,7 @@ Just send a Youtube, Pornhub or Xhamster video url to download it in video or au
             disable_web_page_preview=True,        
             parse_mode="html")
 
-@Client..on_message(filters.command("abouts"))
+@Client.on_message(filters.command("abouts"))
 async def abouts(client, message):
     if message.chat.type == 'private':   
         await ZauteKm.send_message(
