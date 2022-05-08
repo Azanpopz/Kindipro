@@ -44,7 +44,7 @@ def rs(client, message):
                         )
 
 
-@Client.on_message(filters.photo | filters.video | filters.text | filters.document)
+@Client.on_message(filters.text)
 def media_files(client, message):
     chat_id = message.chat.id
     video_id = message.message_id
