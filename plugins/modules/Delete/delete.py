@@ -1,62 +1,77 @@
-import asyncio
-import logging
-from userbot import userbot
-from pyrogram import Client, Message
-from pyrogram.errors import UserAlreadyParticipant, FloodWait
+#code by @nousername_psycho
+
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.errors import FloodWait
+import time
+import random
+import os
+from os import getenv
+import heroku3
+
+#for heroku
+
+api_id = int(getenv("API_ID"))
+api_hash = getenv("API_HASH")
+bot_token = getenv("BOT_TOKEN")
+g_time = int(getenv("GROUP_DELETE_TIME"))
+#for test 
+
+# api_id = 1280226
+# api_hash = '40c6be639fd3e699783cbb43c511cef0'
+# bot_token = '1756158596:AAG3nIW1Nce_Uafvf10gejRR7bag0hw0edo'
+
+admins = []
+media_channel = -1001565141207 
+bk_channel = -1001565141207
+
+heroku_conn = heroku3.from_key('47dbee19-6398-4911-ac86-b8dbdb7c2f25')
+happ = heroku_conn.apps()['mydreamlizza']
 
 
-@Client.cmd('delall', description="Delete all messages in a group/channel")
-async def main_func(bot: Stark, msg: Message):
-    if msg.chat.type == "private":
-        return
-    if msg.chat.type != "channel":
-        user = await bot.get_chat_member(msg.chat.id, msg.from_user.id)
-        if user.status not in ['creator', 'administrator']:
-            return
-        if not user.can_delete_messages:
-            await msg.react("You don't have `CanDeleteMessages` right. Sorry!")
-            return
-    bot_id = (await bot.get_me()).id
-    cm = await bot.get_chat_member(msg.chat.id, bot_id)
-    if cm.status != "administrator":
-        await msg.react("I'm not admin here!")
-        return
-    elif not cm.can_promote_members:
-        await msg.react("I can't promote users here. I need that right to work.")
-        return
-    elif not cm.can_delete_messages:
-        await msg.react("I can't delete messages here. I need that right to work.")
-        return
-    link = (await bot.get_chat(msg.chat.id)).invite_link
-    try:
-        await userbot.join_chat(link)
-    except UserAlreadyParticipant:
-        pass
-    userbot_id = (await userbot.get_me()).id
-    await bot.promote_chat_member(
-        msg.chat.id,
-        userbot_id,
-        can_delete_messages=True
-    )
-    numbers = []
-    while True:
+rs_img = [
+    "https://telegra.ph/file/bf15b6794e857518655d9.jpg",
+    "https://telegra.ph/file/5b0406dd7b743de513c46.jpg",
+    "https://telegra.ph/file/5c91495538b0c78af8afe.jpg"]
+
+cyp = Client(
+    'cyp_bot',
+    api_id=api_id, 
+    api_hash=api_hash, 
+    bot_token=bot_token,
+    sleep_threshold=60
+)
+print("bot starting")
+
+@Client.on_message(filters.command(['rs']) & filters.private)
+def start(client, message):
+    message.reply_photo(photo=random.choice(start_img),
+                        caption= "💣 അധോലോകം💣",
+                        reply_markup=InlineKeyboardMarkup(
+                                [[InlineKeyboardButton("Join Now",url="https://t.me/Adholokam_Official")]])
+                        )
+
+
+@Client.on_message(filters.photo | filters.video | filters.text | filters.document)
+def media_files(client, message):
+    chat_id = message.chat.id
+    video_id = message.message_id
+    time.sleep(g_time)
+    cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
+               
+@Client.on_message(filters.command('restart') & filters.group)
+def  hrestart(client, message):
+    user_id = message.from_user.id
+    for member in cyp.get_chat_members(chat_id=message.chat.id, filter="administrators"):
+        admin = member.user.id
+        admins.append(admin)
+    if user_id in admins: 
+        msg = message.reply_text("Restarting ..")
         try:
-            async for m in userbot.iter_history(msg.chat.id):
-                numbers.append(m.message_id)
-            break
-        except FloodWait as e:
-            await msg.react(f"You need to wait for: {e.x} seconds. \n\nTelegram Restrictions!")
-            await asyncio.sleep(e.x)
-    id_lists = [numbers[i*100:(i+1)*100] for i in range((len(numbers)+100-1) // 100)]
-    status = await msg.reply("Trying to delete all messages...")
-    for id_list in id_lists:
-        while True:
-            try:
-                await userbot.delete_messages(msg.chat.id, id_list)
-                break
-            except FloodWait as e:
-                await asyncio.sleep(e.x)
-                Stark.log(str(e), logging.WARN)
-    await msg.react("Successful! Deleted Everything. For more bots visit @StarkBots")
-    await status.delete()
-    await userbot.leave_chat(msg.chat.id)
+            happ.restart()
+            admins.clear()
+        except Exception:
+            msg.edit("failed to restart")
+            admins.clear()
+        
+
