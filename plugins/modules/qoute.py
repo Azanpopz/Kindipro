@@ -45,7 +45,14 @@ if is_env:
     tg_app_id = int(os.environ.get("TG_APP_ID"))
     tg_api_key = os.environ.get("TG_API_HASH")
     bot_api_key = os.environ.get("TG_BOT_TOKEN")
-
+    some_sticker_bot = Client(
+        api_id=tg_app_id,
+        api_hash=tg_api_key,
+        session_name=":memory:",
+        bot_token=bot_api_key,
+        workers=200
+    )
+else:
 
     app_config = configparser.ConfigParser()
     app_config.read("config.ini")
