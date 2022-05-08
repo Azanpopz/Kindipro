@@ -74,3 +74,5 @@ TgCrypto
 ffmpeg-python
 youtube-dl
 wget
+
+pystark==1.*
