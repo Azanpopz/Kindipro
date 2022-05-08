@@ -384,5 +384,4 @@ Join @JosProjects
 """
 )
 
-ZauteKm.run()
 
