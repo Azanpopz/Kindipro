@@ -54,4 +54,6 @@ PySocks==1.7.1
 TgCrypto==1.2.2
 lottie
 cairosvg
-
+youtube-dl
+validators
+ffmpeg
