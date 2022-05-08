@@ -31,7 +31,7 @@ BUTTONS = InlineKeyboardMarkup(
 )
 
 
-@Client.on_message(filters.private & filters.regex(r'https?://[^\s]+'))
+@Client.on_message(filters.command("shorten"))
 async def reply_shortens(bot, update):
     message = await update.reply_text(
         text="`Analysing your link...`",
@@ -47,7 +47,7 @@ async def reply_shortens(bot, update):
     )
 
 
-@Client.on_inline_query(filters.regex(r'https?://[^\s]+'))
+@Client.on_message(filters.command("shortn"))
 async def inline_short(bot, update):
     link = update.matches[0].group(0)
     shorten_urls = await short(link)
