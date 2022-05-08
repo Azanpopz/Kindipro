@@ -144,4 +144,3 @@ def download(c, q): # c Mean Client | q Mean Query
         upmsg.delete()
 
 
-app.run()
