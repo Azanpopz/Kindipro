@@ -1,5 +1,5 @@
 from telegram import Update
-from plugins.modules.ytdl ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters
+from telegram ext.plugins.modules.ytdl import Updater, CallbackContext, CommandHandler, MessageHandler, Filters
 from telegram.plugins.modules.ytdl import spotify
 
 
