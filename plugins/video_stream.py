@@ -9,8 +9,8 @@ from py_youtube import ytdl
 API_ID = os.environ.get("API_ID",12345)
 API_HASH = os.environ.get("API_HASH","")
 SESSION_NAME = os.environ.get("SESSION_NAME","")
-CHAT = os.environ.get("CHAT","")
-ADMIN = int(os.environ.get("ADMIN", 923943045))
+GROUPS = os.environ.get("GROUPS","")
+ADMINS = int(os.environ.get("ADMINS", 923943045))
 
 app = Client(SESSION_NAME, API_ID, API_HASH)
 
