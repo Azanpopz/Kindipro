@@ -294,7 +294,7 @@ async def create_sticker_group_handler(c: Client, m: Message):
 
 async def main():
     await some_sticker_bot.start()
-    
+    await idle()
 
 
 if __name__ == "__main__":
