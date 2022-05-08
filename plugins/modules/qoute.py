@@ -11,10 +11,7 @@ from pyrogram import Client, idle, filters
 from pyrogram.types import Message
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+
 
 START_TEXT = """**👋𝙷𝚎𝚕𝚕𝚘 ᴅᴇᴀʀ **
 
@@ -49,14 +46,7 @@ if is_env:
     tg_api_key = os.environ.get("TG_API_HASH")
     bot_api_key = os.environ.get("TG_BOT_TOKEN")
 
-    some_sticker_bot = Client(
-        api_id=tg_app_id,
-        api_hash=tg_api_key,
-        session_name=":memory:",
-        bot_token=bot_api_key,
-        workers=200
-    )
-else:
+
     app_config = configparser.ConfigParser()
     app_config.read("config.ini")
     bot_api_key = app_config.get("bot-configuration", "api_key")
