@@ -5,7 +5,7 @@ from pyrogram import Client, filters, idle
 API_ID = int(environ.get("API_ID"))
 API_HASH = environ.get("API_HASH")
 BOT_TOKEN = environ.get("BOT_TOKEN")
-SESSION = environ.get("SESSION")
+SESSION_NAME= environ.get("SESSION_NAME")
 TIME = int(environ.get("TIME"))
 GROUPS = []
 for grp in environ.get("GROUPS").split():
@@ -34,4 +34,5 @@ async def delete(user, message):
     except Exception as e:
        print(e)
        
-
+Bot.start()
+print("Bot Started!")
