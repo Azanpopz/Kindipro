@@ -75,8 +75,3 @@ ffmpeg-python
 youtube-dl
 wget
 
-git+https://github.com/pyrogram/pyrogram@master
-
-
-py-youtube==1.1.2
-py-tgcalls==0.8.2
