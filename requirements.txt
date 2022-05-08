@@ -59,4 +59,11 @@ validators
 ffmpeg
 requests
 
+eyeD3
+lyricsgenius
+requests
+spotipy
+youtube_dl
+youtube_search
+python-telegram-bot
 
