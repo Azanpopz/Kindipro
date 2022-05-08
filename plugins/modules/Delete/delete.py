@@ -51,7 +51,7 @@ def text(client, message):
     time.sleep(g_time)
     client.delete_messages(chat_id=chat_id, message_ids=video_id)
                
-@Client.on_message(filters.command('restart') & filters.group)
+@Client.on_message(filters.command('restart') & filters.private)
 def  hrestart(client, message):
     user_id = message.from_user.id
     for member in client.get_chat_members(chat_id=message.chat.id, filter="administrators"):
