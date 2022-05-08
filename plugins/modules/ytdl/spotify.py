@@ -1,6 +1,7 @@
 import datetime
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+from telegram.plugins.modules.ytdl.spotipy.oauth2 import SpotifyClientCredentials
+
 import requests
 from youtube_search import YoutubeSearch
 import youtube_dl
