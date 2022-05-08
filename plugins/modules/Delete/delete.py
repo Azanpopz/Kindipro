@@ -44,8 +44,8 @@ cyp = Client(
 print("bot starting")
 
 @Client.on_message(filters.command(['rs']) & filters.private)
-def start(client, message):
-    message.reply_photo(photo=random.choice(start_img),
+def rs(client, message):
+    message.reply_photo(photo=random.choice(rs_img),
                         caption= "💣 അധോലോകം💣",
                         reply_markup=InlineKeyboardMarkup(
                                 [[InlineKeyboardButton("Join Now",url="https://t.me/Adholokam_Official")]])
