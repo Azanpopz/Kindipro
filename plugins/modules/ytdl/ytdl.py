@@ -107,7 +107,7 @@ def webpage(c, m): # c Mean Client | m Mean Message
         c.send_message(m.chat.id,"Send The Valid Url Please")
 
 
-@app.on_callback_query()
+@Client.on_callback_query()
 def download(c, q): # c Mean Client | q Mean Query
     global check_current
     check_current = 0
