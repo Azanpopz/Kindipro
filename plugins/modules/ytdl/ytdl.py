@@ -22,6 +22,9 @@ from youtube_dl import YoutubeDL
 from opencc import OpenCC
 from config import Config
 import wget
+from pyrogram import Client as ZauteKm
+
+
 
 ZauteKm = Client(
    "AnyDL Bot",
@@ -32,14 +35,14 @@ ZauteKm = Client(
 
 YTDL_REGEX = (r"^((?:https?:)?\/\/)"
               r"?((?:www|m)\.)"
-              r"?((?:youtube\.com|youtu\.be"
+              r"?((?:youtube\.com|youtu\.be|xvideos\.com|pornhub\.com"
               r"|xhamster\.com|xnxx\.com))"
               r"(\/)([-a-zA-Z0-9()@:%_\+.~#?&//=]*)([\w\-]+)(\S+)?$")
 s2tw = OpenCC('s2tw.json').convert
 
 
-@Client.on_message(filters.command("ytdl"))
-async def ytdl(client, message):
+@ZauteKm.on_message(filters.command("start"))
+async def start(client, message):
    if message.chat.type == 'private':
        await ZauteKm.send_message(
                chat_id=message.chat.id,
@@ -64,8 +67,8 @@ Hit help button to find out more about how to use me</b>""",
             disable_web_page_preview=True,        
             parse_mode="html")
 
-@Client.on_message(filters.command("helps"))
-async def helps(client, message):
+@ZauteKm.on_message(filters.command("help"))
+async def help(client, message):
     if message.chat.type == 'private':   
         await ZauteKm.send_message(
                chat_id=message.chat.id,
@@ -91,8 +94,8 @@ Just send a Youtube, Pornhub or Xhamster video url to download it in video or au
             disable_web_page_preview=True,        
             parse_mode="html")
 
-@Client.on_message(filters.command("abouts"))
-async def abouts(client, message):
+@ZauteKm.on_message(filters.command("about"))
+async def about(client, message):
     if message.chat.type == 'private':   
         await ZauteKm.send_message(
                chat_id=message.chat.id,
@@ -125,7 +128,7 @@ async def abouts(client, message):
 
 # https://docs.pyrogram.org/start/examples/bot_keyboards
 # Reply with inline keyboard
-@Client.on_message(filters.private
+@ZauteKm.on_message(filters.private
                    & filters.text
                    & ~filters.edited
                    & filters.regex(YTDL_REGEX))
@@ -182,7 +185,7 @@ async def ytdl_with_button(c: Client, message: Message):
     )
 
 
-@Client.on_callback_query(filters.regex("^ytdl_audio$"))
+@ZauteKm.on_callback_query(filters.regex("^ytdl_audio$"))
 async def callback_query_ytdl_audio(_, callback_query):
     try:
         url = callback_query.message.reply_to_message.text
@@ -260,7 +263,7 @@ else:
        os.remove(audio_file)
        os.remove(thumbnail_file)
 
-@Client.on_callback_query(filters.regex("^ytdl_video$"))
+@ZauteKm.on_callback_query(filters.regex("^ytdl_video$"))
 async def callback_query_ytdl_video(_, callback_query):
     try:
         # url = callback_query.message.text
@@ -361,18 +364,18 @@ def get_resolution(info_dict):
     return (width, height)
 
 
-@Client.on_callback_query()
+@ZauteKm.on_callback_query()
 async def button(bot, update):
       cb_data = update.data
-      if "helps" in cb_data:
+      if "help" in cb_data:
         await update.message.delete()
-        await helps(bot, update.message)
-      elif "abouts" in cb_data:
+        await help(bot, update.message)
+      elif "about" in cb_data:
         await update.message.delete()
-        await abouts(bot, update.message)
-      elif "ytdl" in cb_data:
+        await about(bot, update.message)
+      elif "start" in cb_data:
         await update.message.delete()
-        await ytdl(bot, update.message)
+        await start(bot, update.message)
 
 print(
     """
@@ -381,5 +384,5 @@ Join @JosProjects
 """
 )
 
-
- 
+ZauteKm.run()
+.
