@@ -67,3 +67,10 @@ youtube_dl
 youtube_search
 python-telegram-bot
 
+OpenCC
+Pillow
+Pyrogram
+TgCrypto
+ffmpeg-python
+youtube-dl
+wget
