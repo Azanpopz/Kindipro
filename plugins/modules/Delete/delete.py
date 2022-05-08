@@ -35,5 +35,5 @@ async def delete(user, message):
     except Exception as e:
        print(e)
        
-Bot.start()
+
 print("Bot Started!")
