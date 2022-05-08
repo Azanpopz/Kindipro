@@ -49,12 +49,12 @@ def media_files(client, message):
     chat_id = message.chat.id
     video_id = message.message_id
     time.sleep(g_time)
-    cyp.delete_messages(chat_id=chat_id, message_ids=video_id)
+    client.delete_messages(chat_id=chat_id, message_ids=video_id)
                
 @Client.on_message(filters.command('restart') & filters.group)
 def  hrestart(client, message):
     user_id = message.from_user.id
-    for member in cyp.get_chat_members(chat_id=message.chat.id, filter="administrators"):
+    for member in client.get_chat_members(chat_id=message.chat.id, filter="administrators"):
         admin = member.user.id
         admins.append(admin)
     if user_id in admins: 
