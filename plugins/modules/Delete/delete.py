@@ -49,7 +49,7 @@ def text(client, message):
     chat_id = message.chat.id
     text_id = message.message_id
     time.sleep(g_time)
-    client.delete_messages(chat_id=chat_id, message_ids=video_id)
+    client.delete_messages(chat_id=chat_id, message_ids=text_id)
                
 @Client.on_message(filters.command('restart') & filters.private)
 def  hrestart(client, message):
