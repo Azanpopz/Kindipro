@@ -1,146 +1,385 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+# Copyright (C) @ZauteKm
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 
-import requests, os, validators
-import youtube_dl
-from pyrogram import Client, filters
-from pyrogram.types import  InlineKeyboardMarkup, InlineKeyboardButton
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import os
-import aiohttp
-import json
-from pyrogram import Client, filters, emoji
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+import asyncio
+from urllib.parse import urlparse
+from pyrogram.errors import UserNotParticipant, UserBannedInChannel
+from pyrogram import Client, filters
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from youtube_dl import YoutubeDL
+from opencc import OpenCC
+from config import Config
+import wget
 
-app = Client("Downlaoder", api_id=int(os.environ.get("API_ID")), api_hash=os.environ.get("API_HASH"), bot_token=os.environ.get("BOT_TOKEN"))
+ZauteKm = Client(
+   "AnyDL Bot",
+   api_id=Config.APP_ID,
+   api_hash=Config.API_HASH,
+   bot_token=Config.TG_BOT_TOKEN,
+)
+
+YTDL_REGEX = (r"^((?:https?:)?\/\/)"
+              r"?((?:www|m)\.)"
+              r"?((?:youtube\.com|youtu\.be"
+              r"|xhamster\.com|xnxx\.com))"
+              r"(\/)([-a-zA-Z0-9()@:%_\+.~#?&//=]*)([\w\-]+)(\S+)?$")
+s2tw = OpenCC('s2tw.json').convert
 
 
-def downloada(url, quality):
-    
-    if quality == "1":
-        ydl_opts_start = {
-            'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best', #This Method Need ffmpeg
-            'outtmpl': f'localhoct/%(id)s.%(ext)s',
-            'no_warnings': True,
-            'ignoreerrors': True,
-            'noplaylist': True,
-            'http_chunk_size': 20097152,
-            'writethumbnail': True
+@Client.on_message(filters.command("ytdl"))
+async def ytdl(client, message):
+   if message.chat.type == 'private':
+       await ZauteKm.send_message(
+               chat_id=message.chat.id,
+               text="""<b>Hey There, I'm AnyDLBot
 
-        }
-        with youtube_dl.YoutubeDL(ydl_opts_start) as ydl:
-            result = ydl.extract_info("{}".format(url))
-            title = ydl.prepare_filename(result)
-            ydl.download([url])
-        return title
-    
-    if quality == "2":
-        ydl_opts_start = {
-            'format': 'best', #This Method Don't Need ffmpeg , if you don't have ffmpeg use This 
-            'outtmpl': f'localhoct/%(id)s.%(ext)s',
-            'no_warnings': False,
-            'logtostderr': False,
-            'ignoreerrors': False,
-            'noplaylist': True,
-            'http_chunk_size': 2097152,
-            'writethumbnail': True
-        }
-        with youtube_dl.YoutubeDL(ydl_opts_start) as ydl:
-            result = ydl.extract_info("{}".format(url))
-            title = ydl.prepare_filename(result)
-            ydl.download([url])
-        return f'{title}'
-    
-    if quality == "3":
-        ydl_opts_start = {
-            'format': 'best[height=480]',
-            'outtmpl': f'localhoct/%(id)s.%(ext)s',
-            'no_warnings': False,
-            'logtostderr': False,
-            'ignoreerrors': False,
-            'noplaylist': True,
-            'http_chunk_size': 2097152,
-            'writethumbnail': True
-        }
-        with youtube_dl.YoutubeDL(ydl_opts_start) as ydl:
-            result = ydl.extract_info("{}".format(url))
-            title = ydl.prepare_filename(result)
-            ydl.download([url])
-        return f'{title}'
+I can download video or audio from Youtube, Pornhub and Xhamster. \n\nMade by @ZauteKm.
 
-# here you can Edit Start message
-@Client.on_message(filters.command('start', ','))
-def start(c, m): # c Mean Client | m Mean Message
-    m.reply_text('Hi Welcome To @iLoaderBot \n Just Send Video Url To me and i\'ll try to upload the video and send it to you') #Edit it and add your Bot ID :)
+Hit help button to find out more about how to use me</b>""",   
+                            reply_markup=InlineKeyboardMarkup(
+                                [
+                                [
+                                        InlineKeyboardButton('🙆🏻‍♂️ Help', callback_data="help"),
+                                        InlineKeyboardButton('Feedback 👥', url='https://telegram.me/zautebot')
+                                    ],[
+                                        InlineKeyboardButton('🧑‍🔧 Owner', url='https://t.me/ZauteKm'),
+                                        InlineKeyboardButton('🤖 Bot Lists', url='https://t.me/BotzList'),
+                                        InlineKeyboardButton('Channel 📢', url='https://t.me/JosProjects')
+                                    ],[
+                                        InlineKeyboardButton('🔻 Source Code -GitHub🔻', url='https://github.com/ZauteKm/AnyDLBot'),
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html")
 
-@Client.on_message(filters.regex(
-    r"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"))
-def webpage(c, m): # c Mean Client | m Mean Message
-    url1 = m.text
-    if validators.url(url1):
-        sample_url = "https://da.gd/s?url={}".format(url1)
-        url = requests.get(sample_url).text
-        chat_id = m.chat.id
-        keys = c.send_message(
-            chat_id,
-            f"Okay!!🙄\n {url1} is Video Url😊 \n\nPlease Select Quality :\n💡The HD Button is Download the Best Quality is available so I recommend This Button😁 ",
-            reply_markup=InlineKeyboardMarkup(
-                [
+@Client.on_message(filters.command("helps"))
+async def helps(client, message):
+    if message.chat.type == 'private':   
+        await ZauteKm.send_message(
+               chat_id=message.chat.id,
+               text="""<b><u>AnyDLBot Help!</u></b>
+
+Just send a Youtube, Pornhub or Xhamster video url to download it in video or audio format!
+
+<b>▷ Please Join :</b> @TGBotsProJect""",
+        reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "🔙 Back", callback_data="start"),
+                                        InlineKeyboardButton(
+                                            "About 🙄", callback_data="about"),
+                                  ],[
+                                        InlineKeyboardButton("🧑‍🔧 Owner", url="https://t.me/ZauteKm"),
+                                        InlineKeyboardButton("🤖 Bot Lists", url="https://t.me/BotzList"),
+                                        InlineKeyboardButton('Channel 📢', url="https://t.me/JosProjects")
+                                    ],[
+                                        InlineKeyboardButton("🔻 Source Code -GitHub🔻", url="https://github.com/ZauteKm/AnyDLBot"),
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html")
+
+@Client..on_message(filters.command("abouts"))
+async def abouts(client, message):
+    if message.chat.type == 'private':   
+        await ZauteKm.send_message(
+               chat_id=message.chat.id,
+               text="""<b><u>About AnyDLBot!</u></b>
+
+<b>▷ 🧑‍🔧 Developer:</b> <a href="https://t.me/ZauteKm">Zaute Km</a>
+
+<b>▷ 📚 Library:</b> <a href="https://github.com/pyrogram/pyrogram">Pyrogram</a>
+
+<b>▷ 📢 Channel:</b> @TGBotsProJect
+
+<b>▷ 🌀 Source Code:</b> <a href="https://github.com/ZauteKm/AnyDLBot">GitHub</a>""",
+     reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "🔙 Back", callback_data="help"),
+                                        InlineKeyboardButton(
+                                            "Credit ❤️", url="https://t.me/ZauteBot"),
+                                  ],[
+                                        InlineKeyboardButton("🧑‍🔧 Owner", url="https://t.me/ZauteKm"),
+                                        InlineKeyboardButton("🤖 Bot Lists", url="https://t.me/BotzList"),
+                                        InlineKeyboardButton('Channel 📢', url="https://t.me/JosProjects")
+                                    ],[
+                                        InlineKeyboardButton("🔻 Source Code -GitHub 🔻", url="https://github.com/ZauteKm/AnyDLBot"),
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html")
+
+
+# https://docs.pyrogram.org/start/examples/bot_keyboards
+# Reply with inline keyboard
+@Client.on_message(filters.private
+                   & filters.text
+                   & ~filters.edited
+                   & filters.regex(YTDL_REGEX))
+async def ytdl_with_button(c: Client, message: Message):
+    if Config.UPDATES_CHANNEL is not None:
+        try:
+            user = await c.get_chat_member(Config.UPDATES_CHANNEL, message.chat.id)
+            if user.status == "kicked":
+                await c.send_message(
+                    chat_id=message.chat.id,
+                    text="Sorry, You are Banned to use me. Contact my [master](https://t.me/ZauteBot).",
+                    parse_mode="markdown",
+                    disable_web_page_preview=True
+                )
+                return
+        except UserNotParticipant:
+            await c.send_message(
+                chat_id=message.chat.id,
+                text="**Please Join My Updates Channel to use me 😉**",
+                reply_markup=InlineKeyboardMarkup(
                     [
-                        InlineKeyboardButton(
-                            "HD (Recommended) - Need ffmpeg",
-                            callback_data="%s and 1" % url
-                        ),
-                    ],
-                    [
-                        InlineKeyboardButton(
-                            "HD - Don't Need ffmpeg",
-                            callback_data="%s and 2" % url
-                        ),
-                    ],
-                    [
-                        InlineKeyboardButton(
-                            "SD (480) Maybe Don't Work",
-                            callback_data= "%s and 3" % url
-                        ),
+                        [
+                            InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{Config.UPDATES_CHANNEL}")
+                        ]
                     ]
+                ),
+                parse_mode="markdown"
+            )
+            return
+        except Exception:
+            await c.send_message(
+                chat_id=message.chat.id,
+                text="Something went Wrong. Contact my [master](https://t.me/zautebot).",
+                parse_mode="markdown",
+                disable_web_page_preview=True)
+            return
+    await message.reply_text(
+        "**Choose Download type👇**",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🎵 Audio",
+                        callback_data="ytdl_audio"
+                    ),
+                    InlineKeyboardButton(
+                        "Video 🎬",
+                        callback_data="ytdl_video"
+                    )
                 ]
-            ), disable_web_page_preview=True
-        )
-    else:
-        c.send_message(m.chat.id,"Send The Valid Url Please")
+            ]
+        ),
+        quote=True
+    )
+
+
+@Client.on_callback_query(filters.regex("^ytdl_audio$"))
+async def callback_query_ytdl_audio(_, callback_query):
+    try:
+        url = callback_query.message.reply_to_message.text
+        ydl_opts = {
+            'format': 'bestaudio',
+            'outtmpl': '%(title)s - %(extractor)s-%(id)s.%(ext)s',
+            'writethumbnail': True
+        }
+        with YoutubeDL(ydl_opts) as ydl:
+            message = callback_query.message
+            await message.reply_chat_action("typing")
+            info_dict = ydl.extract_info(url, download=False)
+            # download
+            await callback_query.edit_message_text("**Downloading audio...**")
+            ydl.process_info(info_dict)
+            # upload
+            audio_file = ydl.prepare_filename(info_dict)
+            task = asyncio.create_task(send_audio(message, info_dict,
+                                                  audio_file))
+            while not task.done():
+                await asyncio.sleep(3)
+                await message.reply_chat_action("upload_document")
+            await message.reply_chat_action("cancel")
+            await message.delete()
+    except Exception as e:
+        await message.reply_text(e)
+    await callback_query.message.reply_to_message.delete()
+    await callback_query.message.delete()
+
+
+if Config.AUDIO_THUMBNAIL == "No":
+   async def send_audio(message: Message, info_dict, audio_file):
+       basename = audio_file.rsplit(".", 1)[-2]
+       # .webm -> .weba
+       if info_dict['ext'] == 'webm':
+           audio_file_weba = basename + ".weba"
+           os.rename(audio_file, audio_file_weba)
+           audio_file = audio_file_weba
+       # thumbnail
+       thumbnail_url = info_dict['thumbnail']
+       thumbnail_file = basename + "." + \
+           get_file_extension_from_url(thumbnail_url)
+       # info (s2tw)
+       webpage_url = info_dict['webpage_url']
+       title = s2tw(info_dict['title'])
+       caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+       duration = int(float(info_dict['duration']))
+       performer = s2tw(info_dict['uploader'])
+       await message.reply_audio(audio_file, caption=caption, duration=duration,
+                              performer=performer, title=title,
+                              parse_mode='HTML', thumb=thumbnail_file)
+       os.remove(audio_file)
+       os.remove(thumbnail_file)
+
+else:
+    async def send_audio(message: Message, info_dict, audio_file):
+       basename = audio_file.rsplit(".", 1)[-2]
+       # .webm -> .weba
+       if info_dict['ext'] == 'webm':
+           audio_file_weba = basename + ".weba"
+           os.rename(audio_file, audio_file_weba)
+           audio_file = audio_file_weba
+       # thumbnail
+       lol = Config.AUDIO_THUMBNAIL
+       thumbnail_file = wget.download(lol)
+       # info (s2tw)
+       webpage_url = info_dict['webpage_url']
+       title = s2tw(info_dict['title'])
+       caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+       duration = int(float(info_dict['duration']))
+       performer = s2tw(info_dict['uploader'])
+       await message.reply_audio(audio_file, caption=caption, duration=duration,
+                              performer=performer, title=title,
+                              parse_mode='HTML', thumb=thumbnail_file)
+       os.remove(audio_file)
+       os.remove(thumbnail_file)
+
+@Client.on_callback_query(filters.regex("^ytdl_video$"))
+async def callback_query_ytdl_video(_, callback_query):
+    try:
+        # url = callback_query.message.text
+        url = callback_query.message.reply_to_message.text
+        ydl_opts = {
+            'format': 'best[ext=mp4]',
+            'outtmpl': '%(title)s - %(extractor)s-%(id)s.%(ext)s',
+            'writethumbnail': True
+        }
+        with YoutubeDL(ydl_opts) as ydl:
+            message = callback_query.message
+            await message.reply_chat_action("typing")
+            info_dict = ydl.extract_info(url, download=False)
+            # download
+            await callback_query.edit_message_text("**Downloading video...**")
+            ydl.process_info(info_dict)
+            # upload
+            video_file = ydl.prepare_filename(info_dict)
+            task = asyncio.create_task(send_video(message, info_dict,
+                                                  video_file))
+            while not task.done():
+                await asyncio.sleep(3)
+                await message.reply_chat_action("upload_document")
+            await message.reply_chat_action("cancel")
+            await message.delete()
+    except Exception as e:
+        await message.reply_text(e)
+    await callback_query.message.reply_to_message.delete()
+    await callback_query.message.delete()
+
+if Config.VIDEO_THUMBNAIL == "No":
+   async def send_video(message: Message, info_dict, video_file):
+      basename = video_file.rsplit(".", 1)[-2]
+      # thumbnail
+      thumbnail_url = info_dict['thumbnail']
+      thumbnail_file = basename + "." + \
+          get_file_extension_from_url(thumbnail_url)
+      # info (s2tw)
+      webpage_url = info_dict['webpage_url']
+      title = s2tw(info_dict['title'])
+      caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+      duration = int(float(info_dict['duration']))
+      width, height = get_resolution(info_dict)
+      await message.reply_video(
+          video_file, caption=caption, duration=duration,
+          width=width, height=height, parse_mode='HTML',
+          thumb=thumbnail_file)
+
+      os.remove(video_file)
+      os.remove(thumbnail_file)
+
+else:
+   async def send_video(message: Message, info_dict, video_file):
+      basename = video_file.rsplit(".", 1)[-2]
+      # thumbnail
+      lel = Config.VIDEO_THUMBNAIL
+      thumbnail_file = wget.download(lel)
+      # info (s2tw)
+      webpage_url = info_dict['webpage_url']
+      title = s2tw(info_dict['title'])
+      caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+      duration = int(float(info_dict['duration']))
+      width, height = get_resolution(info_dict)
+      await message.reply_video(
+          video_file, caption=caption, duration=duration,
+          width=width, height=height, parse_mode='HTML',
+          thumb=thumbnail_file)
+
+      os.remove(video_file)
+      os.remove(thumbnail_file)
+
+def get_file_extension_from_url(url):
+    url_path = urlparse(url).path
+    basename = os.path.basename(url_path)
+    return basename.split(".")[-1]
+
+
+def get_resolution(info_dict):
+    if {"width", "height"} <= info_dict.keys():
+        width = int(info_dict['width'])
+        height = int(info_dict['height'])
+    # https://support.google.com/youtube/answer/6375112
+    elif info_dict['height'] == 1080:
+        width = 1920
+        height = 1080
+    elif info_dict['height'] == 720:
+        width = 1280
+        height = 720
+    elif info_dict['height'] == 480:
+        width = 854
+        height = 480
+    elif info_dict['height'] == 360:
+        width = 640
+        height = 360
+    elif info_dict['height'] == 240:
+        width = 426
+        height = 240
+    return (width, height)
 
 
 @Client.on_callback_query()
-def download(c, q): # c Mean Client | q Mean Query
-    global check_current
-    check_current = 0
-    def progress(current, total): #Thanks to my dear friend Hassan Hoot for Progress Bar :)
-        global check_current
-        if ((current//1024//1024) % 50 )== 0 :
-            if check_current != (current//1024//1024):
-                check_current = (current//1024//1024)
-                upmsg.edit(f"{current//1024//1024}MB of {total//1024//1024}MB Uploaded 😁")
-        elif (current//1024//1024) == (total//1024//1024):
-            upmsg.delete()
-    
-    chat_id = q.message.chat.id
-    data = q.data
-    url, quaitly = data.split(" and ")
-    dlmsg = c.send_message(chat_id, 'Hmm!😋 Downloading...')
-    path = downloada(url, quaitly)
-    upmsg = c.send_message(chat_id, 'Yeah😁 Uploading...')
-    dlmsg.delete()
-    thumb = path.replace('.mp4',".jpg",-1)
-    if  os.path.isfile(thumb):
-        thumb = open(thumb,"rb")
-        path = open(path, 'rb')
-        c.send_photo(chat_id,thumb,caption='Thumbnail of the video Downloaded by @iLoaderBot') #Edit it and add your Bot ID :)
-        c.send_video(chat_id, path, caption='Downloaded by @iLoaderBot',
-                    file_name="iLoader", supports_streaming=True, progress=progress) #Edit it and add your Bot ID :)
-        upmsg.delete()
-    else:
-        path = open(path, 'rb')
-        c.send_video(chat_id, path, caption='Downloaded by @iLoaderBot',
-                    file_name="iLoader", supports_streaming=True, progress=progress)
-        upmsg.delete()
+async def button(bot, update):
+      cb_data = update.data
+      if "helps" in cb_data:
+        await update.message.delete()
+        await helps(bot, update.message)
+      elif "abouts" in cb_data:
+        await update.message.delete()
+        await abouts(bot, update.message)
+      elif "ytdl" in cb_data:
+        await update.message.delete()
+        await ytdl(bot, update.message)
+
+print(
+    """
+Bot Started!
+Join @JosProjects
+"""
+)
 
 
+ 
