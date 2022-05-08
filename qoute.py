@@ -292,12 +292,12 @@ async def create_sticker_group_handler(c: Client, m: Message):
     await s.delete()
 
 
-async def main():
+async def bot():
     await some_sticker_bot.start()
     await idle()
 
 
-if __name__ == "__main__":
+if __name__ == "__bot__":
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    loop.run_until_complete(bot())
 
