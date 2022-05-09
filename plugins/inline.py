@@ -43,21 +43,6 @@ async def inline_users(query: InlineQuery):
 
 
 @Client.on_inline_query()
-async def search(client, query):
-    answers = []
-    if query.query == "SAF_ONE":
-        answers.append(
-            InlineQueryResultPhoto(
-                title="Deploy Your Own Radio Player",
-                thumb_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
-                photo_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
-                caption=f"{REPLY_MESSAGE}\n\n<b>© Powered By : \n@AsmSafone | @AsmSupport 👑</b>",
-                reply_markup=InlineKeyboardMarkup(buttons)
-                )
-            )
-        await query.answer(results=answers, cache_time=0)
-        return 
-
 async def answer(bot, query):
     """Show search results for given inline query"""
     
@@ -105,7 +90,8 @@ async def answer(bot, query):
         if f_caption is None:
             f_caption = f"{file.file_name}"
         results.append(
-            InlineQueryResultCachedDocument(
+            InlineQueryResultCachedMedia(
+                photo_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg"
                 title=file.file_name,
                 file_id=file.file_id,
                 caption=f_caption,
