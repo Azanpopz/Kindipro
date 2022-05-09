@@ -1,5 +1,11 @@
 import os
 
+import os
+import re
+import sys
+import heroku3
+
+
 ENVIRONMENT = bool(os.environ.get('ENVIRONMENT', False))
 
 if ENVIRONMENT:
@@ -14,3 +20,12 @@ else:
     API_ID = 0
     API_HASH = ""
     BOT_TOKEN = ""
+
+
+
+
+class Config:
+
+    # Mendatory Variables
+    REPLY_MESSAGE=os.environ.get("REPLY_MESSAGE", None)
+    REPLY_MESSAGE = REPLY_MESSAGE or None
