@@ -22,7 +22,7 @@ BTN_URL_REGEX = re.compile(
 )
 
 
-USERNAME=e.username
+
 
 
 imdb = IMDb() 
