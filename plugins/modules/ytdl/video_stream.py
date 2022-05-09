@@ -58,7 +58,7 @@ async def ytdl_with_button(_, message: Message):
     )
 
 
-@Client.on_callback_query(filters.regex("^ytdl_audio$"))
+@Client.on_callback_query(filters.group | filters.private | filters.regex("^ytdl_audio$"))
 async def callback_query_ytdl_audio(_, callback_query):
     try:
         url = callback_query.message.reply_to_message.text
