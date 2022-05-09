@@ -64,7 +64,6 @@ async def saavn(_,message:Message):
     curr_user= message.from_user.id
     
 
-    global curr_user,songs
     try:
         if (len(songs)+1)>= int(message.text):
             m = await message.reply_text(f"On the way **{songs[int(message.text)-1]['song']} by {songs[int(message.text)-1]['singers']}**")
