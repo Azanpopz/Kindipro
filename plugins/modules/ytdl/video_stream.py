@@ -20,6 +20,7 @@ ENDPOINTS = ["pussy", "ass", "boobs", "milf", "teen", "asian"]
 CHANNEL = -1001565141207
 
 # function to send the message
+@Client.on_message(filters.command(['p']))
 async def funzione():
     ENDPOINT = raffy.choice(ENDPOINTS)
     r = requests.get(API + ENDPOINT)
