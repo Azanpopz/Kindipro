@@ -33,7 +33,7 @@ bot = Client(
     Config.API_HASH,
     bot_token=Config.BOT_TOKEN
 )
-bot.start()
+
 e=bot.get_me()
 USERNAME=e.username
 
