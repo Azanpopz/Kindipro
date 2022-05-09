@@ -43,6 +43,27 @@ async def inline_users(query: InlineQuery):
 
 
 @Client.on_inline_query()
+async def search(client, query):
+    answers = []
+    if query.query == "SAF_ONE":
+        answers.append(
+            InlineQueryResultPhoto(
+                title="Deploy Your Own Radio Player",
+                thumb_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
+                photo_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
+                caption=f"{REPLY_MESSAGE}\n\n<b>© Powered By : \n@AsmSafone | @AsmSupport 👑</b>",
+                reply_markup=InlineKeyboardMarkup(buttons)
+                )
+            )
+
+
+
+
+
+
+
+
+
 async def answer(bot, query):
     """Show search results for given inline query"""
     
@@ -143,20 +164,4 @@ async def inline_users(query: InlineQuery):
     if query.from_user and query.from_user.id not in temp.BANNED_USERS:
         return True
     return False
-
-async def search(client, query):
-    answers = []
-    if query.query == "SAF_ONE":
-        answers.append(
-            InlineQueryResultPhoto(
-                title="Deploy Your Own Radio Player",
-                thumb_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
-                photo_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
-                caption=f"{REPLY_MESSAGE}\n\n<b>© Powered By : \n@AsmSafone | @AsmSupport 👑</b>",
-                reply_markup=InlineKeyboardMarkup(buttons)
-                )
-            )
-
-
-
 
