@@ -91,7 +91,7 @@ async def answer(bot, query):
             f_caption = f"{file.file_name}"
         results.append(
             InlineQueryResultCachedMedia(
-                photo_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg"
+                photo_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
                 title=file.file_name,
                 file_id=file.file_id,
                 caption=f_caption,
