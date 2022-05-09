@@ -29,7 +29,7 @@ from yt_dlp import YoutubeDL
 
 
 
-e=bot.get_me()
+
 USERNAME=e.username
 
 from user import USER
