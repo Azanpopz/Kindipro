@@ -75,3 +75,4 @@ ffmpeg-python
 youtube-dl
 wget
 
+youtube_search_python
