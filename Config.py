@@ -24,7 +24,7 @@ else:
 
 
 
-class Config:
+class Configs:
 
     # Mendatory Variables
     REPLY_MESSAGE=os.environ.get("REPLY_MESSAGE", None)
