@@ -24,25 +24,8 @@ import asyncio
 import subprocess
 from os import path
 from pyrogram import emoji
-try:
-    from yt_dlp import YoutubeDL
-    from pytgcalls.exceptions import GroupCallNotFoundError
-except ModuleNotFoundError:
-    file=os.path.abspath("requirements.txt")
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', file, '--upgrade'])
-    os.execl(sys.executable, sys.executable, *sys.argv)
-from config import Config
-from asyncio import sleep
-from pyrogram import Client
-from signal import SIGINT
-from random import randint
-from pytgcalls import GroupCallFactory
-from pyrogram.errors import FloodWait
-from pyrogram.utils import MAX_CHANNEL_ID
-from pyrogram.raw.types import InputGroupCall
-from pyrogram.methods.messages.download_media import DEFAULT_DOWNLOAD_DIR
-from pyrogram.raw.functions.phone import EditGroupCallTitle, CreateGroupCall
-
+from yt_dlp import YoutubeDL
+    
 
 bot = Client(
     "RadioPlayerVC",
