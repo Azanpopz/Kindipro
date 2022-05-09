@@ -11,7 +11,7 @@ from Config import Configs
 from pyrogram.handlers import InlineQueryHandler
 from pyrogram.types import InlineQueryResultArticle, InlineQueryResultPhoto, InputTextMessageContent, InlineKeyboardButton, InlineKeyboardMarkup
 
-REPLY_MESSAGE=Config.REPLY_MESSAGE
+REPLY_MESSAGE=Configs.REPLY_MESSAGE
 
 buttons = [
             [
