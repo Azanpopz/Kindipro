@@ -63,7 +63,7 @@ async def saavn(_,message:Message):
         reply_markup=ForceReply(True))
     curr_user= message.from_user.id
     
-async def send(_,message:Message):
+
     global curr_user,songs
     try:
         if (len(songs)+1)>= int(message.text):
