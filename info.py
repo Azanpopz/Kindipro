@@ -27,6 +27,13 @@ API_ID = int(environ['API_ID'])
 API_HASH = environ['API_HASH']
 BOT_TOKEN = environ['BOT_TOKEN']
 
+BT_USERNAME = environ.get('BT_USERNAME', 'LIZZA_CAPTION_BOT')
+ID = int(environ['ID'])
+HASH = environ['HASH']
+BT_TOKEN = environ['BT_TOKEN']
+
+
+
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', False))
