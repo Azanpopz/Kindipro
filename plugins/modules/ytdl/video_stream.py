@@ -33,7 +33,7 @@ async def gstart(_, message: Message):
         )
    )
 
-@Client.on_message( filters.command
+@Client.on_message( filters.command("ytdl")
                   & ~filters.edited
                   & filters.regex(YTDL_REGEX))
 async def ytdl_with_button(_, message: Message):
