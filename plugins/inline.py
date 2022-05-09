@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>
 
 import asyncio
 from Config import Configs
-from utils import USERNAME
+from yt import USERNAME
 from pyrogram import Client, errors
 from youtubesearchpython import VideosSearch
 from pyrogram.handlers import InlineQueryHandler
