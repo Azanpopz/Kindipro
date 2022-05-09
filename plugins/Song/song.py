@@ -63,7 +63,6 @@ async def saavn(_,message:Message):
         reply_markup=ForceReply(True))
     curr_user= message.from_user.id
     
-@Client.on_message(filters.private)
 async def send(_,message:Message):
     global curr_user,songs
     try:
