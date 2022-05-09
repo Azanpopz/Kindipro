@@ -12,7 +12,8 @@ from pyrogram.raw.all import layer
 from database.ia_filterdb import Media
 from database.users_chats_db import db
 from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR
-from caption_config import ID, HASH, BT_TOKEN, BT_USERNAME
+from caption_config import Config
+
 
 from utils import temp
 
