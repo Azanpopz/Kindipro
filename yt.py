@@ -27,12 +27,7 @@ from pyrogram import emoji
 from yt_dlp import YoutubeDL
     
 
-bot = Client(
-    "RadioPlayerVC",
-    Config.API_ID,
-    Config.API_HASH,
-    bot_token=Config.BOT_TOKEN
-)
+
 
 e=bot.get_me()
 USERNAME=e.username
