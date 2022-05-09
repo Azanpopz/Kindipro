@@ -8,6 +8,21 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors import FloodWait
 
+
+import os , glob
+from os import error
+import logging
+import pyrogram
+import time
+import math
+from decouple import config
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import User, Message, Sticker, Document
+
+
+
+
 CAPTION_TEXT=Config.CAPTION
 BUTTON_TEXT=Config.BUTTON_TEXT
 URL_LINK=Config.URL_LINK
@@ -15,6 +30,20 @@ BT_TOKEN=Config.BT_TOKEN
 ID=Config.ID
 HASH=Config.HASH
 BT_USERNAME=Config.BT_USERNAME
+
+
+
+
+
+@Client.on_message(filters.command(["pings"]))
+async def ping(bot, message):
+    start_t = time.time()
+    rm = await message.reply_text("Checking")
+    end_t = time.time()
+    time_taken_s = (end_t - start_t) * 1000
+    await rm.edit(f"Pong!\n{time_taken_s:.3f} ms")
+
+
 
 
 @Client.on_message(filters.media & filters.channel)
