@@ -75,5 +75,3 @@ ffmpeg-python
 youtube-dl
 wget
 
-apscheduler
-pytz
