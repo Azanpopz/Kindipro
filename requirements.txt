@@ -75,4 +75,16 @@ ffmpeg-python
 youtube-dl
 wget
 
+wget
+wheel
+psutil
+heroku3
+requests
+tgcrypto
+ffmpeg-python
+python-dotenv
+youtube_search
 youtube_search_python
+pyrogram==1.4.16
+pytgcalls==3.0.0.dev21
+git+https://github.com/asmsafone/downloader
