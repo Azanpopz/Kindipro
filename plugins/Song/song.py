@@ -15,7 +15,7 @@ search_base_url = "https://www.jiosaavn.com/api.php?__call=autocomplete.get&_for
 song_details_base_url = "https://www.jiosaavn.com/api.php?__call=song.getDetails&cc=in&_marker=0%3F_marker%3D0&_format=json&pids="
 lyrics_base_url = "https://www.jiosaavn.com/api.php?__call=lyrics.getLyrics&ctx=web6dot0&api_version=4&_format=json&_marker=0%3F_marker%3D0&lyrics_id="
 
-@Client.on_message(filters.command("saavn") & filters.group & ~filters.edited)
+@Client.on_message(filters.command(['saavn']))
 async def saavn(_,message:Message):
     global curr_user,songs
     songs = []
@@ -63,14 +63,14 @@ async def saavn(_,message:Message):
         reply_markup=ForceReply(True))
     curr_user= message.from_user.id
     
-@Client.on_message(filters.group)
+@Client.on_message(filters.command(['sav']))
 async def send(_,message:Message):
     global curr_user,songs
     try:
         if (len(songs)+1)>= int(message.text):
             m = await message.reply_text(f"On the way **{songs[int(message.text)-1]['song']} by {songs[int(message.text)-1]['singers']}**")
             file= wget.download(songs[int(message.text)-1]['media_url'])
-            ffile = file.replace("mp4", "m4a")
+            ffile = file.replace("mp4", "mp4")
             os.rename(file, ffile)
             await message.reply_audio(audio=ffile, title=songs[int(message.text)-1]['song'], performer=songs[int(message.text)-1]['singers'])
             os.remove(ffile)
