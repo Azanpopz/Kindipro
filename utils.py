@@ -21,6 +21,10 @@ BTN_URL_REGEX = re.compile(
     r"(\[([^\[]+?)\]\((buttonurl|buttonalert):(?:/{0,2})(.+?)(:same)?\))"
 )
 
+
+USERNAME=e.username
+
+
 imdb = IMDb() 
 
 BANNED = {}
