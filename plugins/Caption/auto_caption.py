@@ -11,6 +11,10 @@ from pyrogram.errors import FloodWait
 CAPTION_TEXT=Config.CAPTION
 BUTTON_TEXT=Config.BUTTON_TEXT
 URL_LINK=Config.URL_LINK
+BT_TOKEN=Config.BT_TOKEN
+ID=Config.ID
+HASH=Config.HASH
+BT_USERNAME=Config.BT_USERNAME
 
 
 @Client.on_message(filters.media & filters.channel)
