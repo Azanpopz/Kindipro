@@ -70,7 +70,7 @@ async def send(_,message:Message):
         if (len(songs)+1)>= int(message.text):
             m = await message.reply_text(f"On the way **{songs[int(message.text)-1]['song']} by {songs[int(message.text)-1]['singers']}**")
             file= wget.download(songs[int(message.text)-1]['media_url'])
-            ffile = file.replace("mp4", "mp4")
+            ffile = file.replace("mp4", "m4a")
             os.rename(file, ffile)
             await message.reply_audio(audio=ffile, title=songs[int(message.text)-1]['song'], performer=songs[int(message.text)-1]['singers'])
             os.remove(ffile)
