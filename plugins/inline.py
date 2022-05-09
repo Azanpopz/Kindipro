@@ -8,6 +8,24 @@ from info import CACHE_TIME, AUTH_USERS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION
 
 
 
+from pyrogram.handlers import InlineQueryHandler
+from pyrogram.types import InlineQueryResultArticle, InlineQueryResultPhoto, InputTextMessageContent, InlineKeyboardButton, InlineKeyboardMarkup
+
+REPLY_MESSAGE=Config.REPLY_MESSAGE
+
+buttons = [
+            [
+                InlineKeyboardButton("❔ HOW TO USE ME ❔", callback_data="help"),
+            ],
+            [
+                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
+                InlineKeyboardButton("SUPPORT", url="https://t.me/AsmSupport"),
+            ],
+            [
+                InlineKeyboardButton("🤖 MAKE YOUR OWN BOT 🤖", url="https://heroku.com/deploy?template=https://github.com/AsmSafone/RadioPlayerV3"),
+            ]
+         ]
+
 
 
 logger = logging.getLogger(__name__)
@@ -126,7 +144,18 @@ async def inline_users(query: InlineQuery):
         return True
     return False
 
-
+async def search(client, query):
+    answers = []
+    if query.query == "SAF_ONE":
+        answers.append(
+            InlineQueryResultPhoto(
+                title="Deploy Your Own Radio Player",
+                thumb_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
+                photo_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
+                caption=f"{REPLY_MESSAGE}\n\n<b>© Powered By : \n@AsmSafone | @AsmSupport 👑</b>",
+                reply_markup=InlineKeyboardMarkup(buttons)
+                )
+            )
 
 
 
