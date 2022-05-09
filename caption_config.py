@@ -6,7 +6,7 @@ class Config(object):
     CAPTION = os.environ.get("CAPTION", "╔════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ═════╗\n♻️ 𝙅𝙊𝙄𝙉 :- @nasrani_update\n♻️ 𝙅𝙊𝙄𝙉 :- @NasraniSeries\n╚════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ═════╝")
     BUTTON_TEXT = os.environ.get("BUTTON", "🔻Join Channel🔻")
     URL_LINK = os.environ.get("LINK", "T.ME/Nasrani_update")
-    BOT_USERNAME = os.environ.get("BOT_USERNAME", "MINNAL_MURALI_ROBOT")
+    BT_USERNAME = os.environ.get("BT_USERNAME", "LIZZA_CAPTION_BOT")
 
 
 
