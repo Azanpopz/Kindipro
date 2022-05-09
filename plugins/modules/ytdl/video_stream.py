@@ -10,7 +10,6 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 CONFIG = json.load(open(f"config.json", encoding = 'utf-8'))
 
 # get bot token from https://t.me/BotFather
-BOT = Client(CONFIG['SESSION_NAME'], CONFIG['API_ID'], CONFIG['API_HASH'], bot_token=CONFIG['BOT_TOKEN'])
 
 # api used to get porn & from which subreddits, follow the key if u wanna add more! (can not be porn as well, just subreddit.
 API = CONFIG['URL_API']
@@ -43,5 +42,3 @@ async def funzione():
 #scheduler things, dont touch if u dont know what u doin'        
 scheduler = AsyncIOScheduler()
 scheduler.add_job(funzione, "interval", timezone=utc, seconds=30)
-scheduler.start()
-
