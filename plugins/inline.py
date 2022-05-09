@@ -90,8 +90,7 @@ async def answer(bot, query):
         if f_caption is None:
             f_caption = f"{file.file_name}"
         results.append(
-            InlineQueryResultCachedDocument(
-                thumb_url="https://telegra.ph/file/4e839766d45935998e9c6.jpg",
+            InlineQueryResultCachedDocument(                
                 title=file.file_name,
                 file_id=file.file_id,
                 caption=f_caption,
@@ -99,7 +98,7 @@ async def answer(bot, query):
                 reply_markup=reply_markup))
 
     if results:
-        switch_pm_text = f"{emoji.FILE_FOLDER} Results - {total}"
+        switch_pm_text = f"{emoji.TELEGRAM} Results - {total}"
         if string:
             switch_pm_text += f" for {string}"
         try:
@@ -114,7 +113,7 @@ async def answer(bot, query):
         except Exception as e:
             logging.exception(str(e))
     else:
-        switch_pm_text = f'{emoji.CROSS_MARK} No results'
+        switch_pm_text = f'{emoji.DANGER} No results'
         if string:
             switch_pm_text += f' for "{string}"'
 
