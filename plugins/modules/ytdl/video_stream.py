@@ -5,7 +5,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from youtube_dl import YoutubeDL
 from opencc import OpenCC
-from config import Config
+
 
 
 Bellayt = Client(
