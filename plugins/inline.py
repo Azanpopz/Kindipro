@@ -35,9 +35,9 @@ async def search(bot, update):
         )
         try:
             await update.reply_photo(
-        title=result["title"],
-        description=result.get("description", None),
-        thumb_url=result.get("icon", None),
+            title=result["title"],
+            description=result.get("description", None),
+            thumb_url=result.get("icon", None),
         
         
                   
