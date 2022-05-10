@@ -15,12 +15,12 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 
 
-@Client.on_message(filters.private & filters.text)
+@Client.on_message(filters.private & filters.text & filters.photo)
 async def filter_text(bot, update):
     results = requests.get(API + requests.utils.requote_uri(update.query)).json()["result"][:50]
     answers = []
-    await update.reply_text(
-        title=update.query.capitalize(),
+    await update.reply_photo(
+        title=update.bot.capitalize(),
         description=result,
         caption="Made by @FayasNoushad",
         photo_url=result,
@@ -35,18 +35,7 @@ async def filter_text(bot, update):
     )
 
 
-@Client.on_inline_query(["im"])
-results = requests.get(API + requests.utils.requote_uri(update.query)).json()["result"][:50]
-answers = []
-    for result in results:
-        answers.append(
-            InlineQueryResultPhoto(
-                title=update.query.capitalize(),
-                description=result,
-                caption="Made by @FayasNoushad",
-                photo_url=result
-            )
-        )
+
     await update.answer(answers)
 
 
