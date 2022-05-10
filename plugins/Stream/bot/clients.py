@@ -5,7 +5,7 @@ import asyncio
 import logging
 from ..vars import Var
 from pyrogram import Client
-from WebStreamer.utils import TokenParser
+from plugins.Stream.utils import TokenParser
 from . import multi_clients, work_loads, StreamBot
 
 
