@@ -34,12 +34,12 @@ async def search(bot, update):
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
         try:
-        await update.reply_photo(
+            await update.reply_photo(
         title=result["title"],
         description=result.get("description", None),
         thumb_url=result.get("icon", None),
-        input_message_content=InputTextMessageContent(
-        message_text=details, disable_web_page_preview=True
+        
+        
                   
         reply_markup=InlineKeyboardMarkup(
             [
