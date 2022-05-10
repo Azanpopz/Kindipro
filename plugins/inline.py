@@ -1,6 +1,6 @@
 import os
 import requests
-from pyrogram import Client, filters, Messages
+from pyrogram import Client, filters
 from pyrogram.types import *
 
 
@@ -16,13 +16,13 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 
 @Client.on_message(filters.command(['img']))
-async def search(bot, message):
-    message = await message.reply_text(
+async def search(bot, update):
+    message = await update.reply_text(
     text="`Analysing your link...`",
     disable_web_page_preview=True,
     quote=True
     )
-    results = play_scraper.search(message.bot)
+    results = play_scraper.search(update.bot)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
@@ -39,7 +39,7 @@ async def search(bot, message):
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
         try:
-            await message.reply_photo(
+            await update.reply_photo(
             title=result["title"],
             description=result.get("description", None),
             thumb_url=result.get("icon", None),
@@ -58,7 +58,7 @@ async def search(bot, message):
 
         except Exception as error:
             print(error)
-    await message.answer(answers)
+    await update.answer(answers)
 
     
 
