@@ -63,7 +63,7 @@ async def start_services():
     if Var.ON_HEROKU:
         print("                        app running on =>> {}".format(Var.FQDN))
     print("------------------------------------------------------------------")
-    await idle()
+    
 
 async def cleanup():
     await server.cleanup()
