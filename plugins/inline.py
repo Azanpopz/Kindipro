@@ -17,7 +17,7 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 @Client.on_message(filters.command(['img']))
 async def search(bot, message):
-    message = await update.reply_text(
+    message = await message.reply_text(
     text="`Analysing your link...`",
     disable_web_page_preview=True,
     quote=True
