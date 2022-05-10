@@ -42,7 +42,7 @@ async def start(bot, update):
     )
 
 
-@Client.on_message(filters.command(["google"] & filters.private & filters.text)
+@Client.on_message(filters.command(["google"]) & filters.private & filters.text)
 async def filter(bot, update):
     await update.reply_text(
         text="`Click the button below for searching...`",
