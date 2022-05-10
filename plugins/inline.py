@@ -39,7 +39,7 @@ async def search(update, message):
     disable_web_page_preview=True,
     quote=True
     )
-    results = play_scraper.search(update, message)
+    results = play_scraper.search(update, message).json()["result"][:1]
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
