@@ -1,8 +1,25 @@
+import asyncio
+import re
+import math
+import os
+import time
+import ffmpeg
+import aiofiles
+import aiohttp
+import wget
+from pyrogram import Client, filters
+from pyrogram.errors import FloodWait, MessageNotModified
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
+
+import requests
+
 import os
 import requests
 from pyrogram import Client, filters
 from pyrogram.types import *
 import play_scraper
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
+
 
 Bot = Client(
     "Image-Search-Bot",
@@ -16,13 +33,13 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 
 @Client.on_message(filters.command(['img']))
-async def search(bot, update):
+async def search(update, message):
     message = await update.reply_text(
     text="`Analysing your link...`",
     disable_web_page_preview=True,
     quote=True
     )
-    results = play_scraper.search(update.bot)
+    results = play_scraper.search(update, message)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
