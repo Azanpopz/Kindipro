@@ -16,7 +16,7 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 
 @Client.on_message(filters.command(["img"]) & filters.private & filters.text & filters.photo)
-async def filter_text(bot, update):
+async def search(bot, update):
     results = requests.get(API + requests.utils.requote_uri(update.query)).json()["result"][:50]
     answers = []
     await update.reply_photo(
@@ -36,7 +36,7 @@ async def filter_text(bot, update):
 
 
 
-    await update.answer(answers)
+    await update.reply_photo(answers)
 
 
 
