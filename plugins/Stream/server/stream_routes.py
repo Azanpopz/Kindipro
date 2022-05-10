@@ -9,9 +9,9 @@ import secrets
 import mimetypes
 from aiohttp import web
 from aiohttp.http_exceptions import BadStatusLine
-from WebStreamer.bot import multi_clients, work_loads
-from WebStreamer.server.exceptions import FIleNotFound, InvalidHash
-from WebStreamer import Var, utils, StartTime, __version__, StreamBot
+from plugins.Stream.bot import multi_clients, work_loads
+from plugins.Stream.server.exceptions import FIleNotFound, InvalidHash
+from plugins.Stream import Var, utils, StartTime, __version__, StreamBot
 
 
 routes = web.RouteTableDef()
