@@ -75,3 +75,8 @@ ffmpeg-python
 youtube-dl
 wget
 
+
+humanize
+hachoir
+pymongo
+dnspython
