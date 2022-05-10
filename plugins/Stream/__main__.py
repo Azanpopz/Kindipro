@@ -9,7 +9,7 @@ from aiohttp import web
 from pyrogram import idle
 from plugins.Stream import utils
 from plugins.Stream import StreamBot
-from plugins.server import web_server
+from plugins.Stream server import web_server
 from plugins.Stream.bot.clients import initialize_clients
 
 
