@@ -75,7 +75,7 @@ async def search(update, message):
 
         except Exception as error:
             print(error)
-    await message.answer(answers)
+    await message.reply_photo(answers)
 
     
 
