@@ -34,7 +34,7 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 @Client.on_message(filters.command(['img']))
 async def search(update, message):
-    message = await update.reply_text(
+    message = await message.reply_text(
     text="`Analysing your link...`",
     disable_web_page_preview=True,
     quote=True
@@ -56,7 +56,7 @@ async def search(update, message):
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
         try:
-            await update.reply_photo(
+            await message.reply_photo(
             title=result["title"],
             description=result.get("description", None),
             thumb_url=result.get("icon", None),
@@ -75,7 +75,7 @@ async def search(update, message):
 
         except Exception as error:
             print(error)
-    await update.answer(answers)
+    await message.answer(answers)
 
     
 
