@@ -31,8 +31,8 @@ async def filter_text(bot, update):
 
 
 @Client.on_inline_query(["im"])
-   results = requests.get(API + requests.utils.requote_uri(update.query)).json()["result"][:50]
-   answers = []
+results = requests.get(API + requests.utils.requote_uri(update.query)).json()["result"][:50]
+answers = []
     for result in results:
         answers.append(
             InlineQueryResultPhoto(
