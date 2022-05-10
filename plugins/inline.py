@@ -2,7 +2,7 @@ import os
 import requests
 from pyrogram import Client, filters
 from pyrogram.types import *
-
+import play_scraper
 
 Bot = Client(
     "Image-Search-Bot",
