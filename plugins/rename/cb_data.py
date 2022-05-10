@@ -1,9 +1,9 @@
-from helper.progress import progress_for_pyrogram
+from database.progress import progress_for_pyrogram
 from pyrogram import Client, filters
 from pyrogram.types import (  InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from helper.database import find
+from database.database import find
 import os
 from PIL import Image
 import time
