@@ -17,8 +17,13 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 @Client.on_message(filters.private & filters.text)
 async def filter_text(bot, update):
+    results = requests.get(API + requests.utils.requote_uri(update.query)).json()["result"][:50]
+    answers = []
     await update.reply_text(
-        text=f"Click the button below for searching your query.\n\nQuery: `{update.text}`",
+        title=update.query.capitalize(),
+        description=result,
+        caption="Made by @FayasNoushad",
+        photo_url=result,
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="Search Here", switch_inline_query_current_chat=update.text)],
