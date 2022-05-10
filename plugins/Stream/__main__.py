@@ -7,10 +7,10 @@ import logging
 from .vars import Var
 from aiohttp import web
 from pyrogram import idle
-from WebStreamer import utils
-from WebStreamer import StreamBot
-from WebStreamer.server import web_server
-from WebStreamer.bot.clients import initialize_clients
+from plugins.Stream import utils
+from plugins import StreamBot
+from plugins.server import web_server
+from plugins.Stream.bot.clients import initialize_clients
 
 
 logging.basicConfig(
