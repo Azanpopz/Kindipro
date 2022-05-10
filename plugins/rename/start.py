@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
 import humanize
-from helper.database import  insert 
+from database.Database import  insert 
 
 @Client.on_message(filters.private & filters.command(["r"]))
 async def start(client,message):
