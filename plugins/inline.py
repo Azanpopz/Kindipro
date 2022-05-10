@@ -58,7 +58,7 @@ async def filter(bot, update):
 
 
 @Client.on_inline_query(['start','help'])
-async def inline(bot, update):
+
     results = google(update.query)
     answers = []
     for result in results:
