@@ -1,51 +1,24 @@
-# Author: Fayas (https://github.com/FayasNoushad) (@FayasNoushad)
-
 import os
 import requests
-from requests.utils import requote_uri
 from pyrogram import Client, filters
 from pyrogram.types import *
 
-API = "https://api.abirhasan.wtf/google?query="
-
 
 Bot = Client(
-    "Google-Search-Bot",
-    bot_token = os.environ["BOT_TOKEN"],
-    api_id = int(os.environ["API_ID"]),
-    api_hash = os.environ["API_HASH"]
+    "Image-Search-Bot",
+    bot_token=os.environ.get("BOT_TOKEN"),
+    api_id=int(os.environ.get("API_ID")),
+    api_hash=os.environ.get("API_HASH")
 )
 
-
-START_TEXT = """Hello {}
-I am a google search bot.
-
-> `I can search from google. Use me in inline.`
-
-Made by @FayasNoushad"""
-
-JOIN_BUTTON = [
-    InlineKeyboardButton(
-        text='⚙ Join Updates Channel ⚙',
-        url='https://telegram.me/nasrani_update'
-    )
-]
+API = "https://apibu.herokuapp.com/api/y-images?query="
 
 
-@Client.on_message(filters.private & filters.command(["start"]))
-async def start(bot, update):
+
+@Client.on_message(filters.private & filters.text)
+async def filter_text(bot, update):
     await update.reply_text(
-        text=START_TEXT.format(update.from_user.mention),
-        reply_markup=InlineKeyboardMarkup([JOIN_BUTTON]),
-        disable_web_page_preview=True,
-        quote=True
-    )
-
-
-@Client.on_message(filters.command(["google"]) & filters.private & filters.text)
-async def filter(bot, update):
-    await update.reply_text(
-        text="`Click the button below for searching...`",
+        text=f"Click the button below for searching your query.\n\nQuery: `{update.text}`",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="Search Here", switch_inline_query_current_chat=update.text)],
@@ -57,47 +30,20 @@ async def filter(bot, update):
     )
 
 
-@Client.on_inline_query(['start','help'])
-
-    results = google(update.query)
+@Client.on_inline_query(["im"])
+async def search(bot, update):
+    results = requests.get(API + requests.utils.requote_uri(update.query)).json()["result"][:50]
     answers = []
     for result in results:
         answers.append(
-            InlineQueryResultArticle(
-                title=result["title"],
-                description=result["description"],
-                input_message_content=InputTextMessageContent(
-                    message_text=result["text"],
-                    disable_web_page_preview=True
-                ),
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [InlineKeyboardButton(text="Link", url=result["link"])],
-                        JOIN_BUTTON
-                    ]
-                )
+            InlineQueryResultPhoto(
+                title=update.query.capitalize(),
+                description=result,
+                caption="Made by @FayasNoushad",
+                photo_url=result
             )
         )
     await update.answer(answers)
-
-
-def google(query):
-    r = requests.get(API + requote_uri(query))
-    informations = r.json()["results"][:50]
-    results = []
-    for info in informations:
-        text = f"**Title:** `{info['title']}`"
-        text += f"\n**Description:** `{info['description']}`"
-        text += f"\n\nMade by @FayasNoushad"
-        results.append(
-            {
-                "title": info['title'],
-                "description": info['description'],
-                "text": text,
-                "link": info['link']
-            }
-        )
-    return results
 
 
 
