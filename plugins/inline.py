@@ -1,6 +1,6 @@
 import os
 import requests
-from pyrogram import Client, filters
+from pyrogram import Client, filters, Message
 from pyrogram.types import *
 
 
@@ -16,8 +16,13 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 
 @Client.on_message(filters.command(['img']))
-async def search(bot, update):
-    results = play_scraper.search(update.bot)
+async def search(bot, message):
+    message = await update.reply_text(
+    text="`Analysing your link...`",
+    disable_web_page_preview=True,
+    quote=True
+    )
+    results = play_scraper.search(message.bot)
     answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
@@ -34,26 +39,26 @@ async def search(bot, update):
             [[InlineKeyboardButton(text="Play Store", url="https://play.google.com"+result["url"])]]
         )
         try:
-            await update.reply_photo(
+            await message.reply_photo(
             title=result["title"],
             description=result.get("description", None),
             thumb_url=result.get("icon", None),
         
         
                   
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton(text="Search Here", switch_inline_query_current_chat=update.text)],
-                [InlineKeyboardButton(text="Search in another chat", switch_inline_query=update.text)]
-            ]
-        ),
-        disable_web_page_preview=True,
-        quote=True
-    )
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [InlineKeyboardButton(text="Search Here", switch_inline_query_current_chat=update.text)],
+                    [InlineKeyboardButton(text="Search in another chat", switch_inline_query=update.text)]
+                ]
+            ),
+            disable_web_page_preview=True,
+            quote=True
+        )
 
         except Exception as error:
             print(error)
-    await update.answer(answers)
+    await message.answer(answers)
 
     
 
