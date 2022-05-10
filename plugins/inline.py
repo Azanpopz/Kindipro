@@ -17,6 +17,8 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 @Client.on_message(filters.command(["img"]) & filters.private & filters.text & filters.photo)
 async def search(bot, update):
+    results = play_scraper.search(update.bot)
+    answers = []
     for result in results:
         details = "**Title:** `{}`".format(result["title"]) + "\n" \
         "**Description:** `{}`".format(result["description"]) + "\n" \
