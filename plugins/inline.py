@@ -32,7 +32,7 @@ JOIN_BUTTON = [
 ]
 
 
-@Bot.on_message(filters.private & filters.command(["start"]))
+@Client.on_message(filters.private & filters.command(["start"]))
 async def start(bot, update):
     await update.reply_text(
         text=START_TEXT.format(update.from_user.mention),
@@ -42,7 +42,7 @@ async def start(bot, update):
     )
 
 
-@Bot.on_message(filters.private & filters.text)
+@Client.on_message(filters.private & filters.text)
 async def filter(bot, update):
     await update.reply_text(
         text="`Click the button below for searching...`",
@@ -57,7 +57,7 @@ async def filter(bot, update):
     )
 
 
-@Bot.on_inline_query()
+@Client.on_inline_query()
 async def inline(bot, update):
     results = google(update.query)
     answers = []
