@@ -17,7 +17,7 @@ async def start(client,message):
 
 
 
-@Client.on_message(filters.command(["rr"]) & ( filters.document | filters.audio | filters.video ))
+@Client.on_message( filters.chat(CHANNEL_ID) & filters.command(["rr"]))
 async def send_doc(client,message):
        media = await client.get_messages(message.chat.id,message.message_id)
        file = media.document or media.video or media.audio 
