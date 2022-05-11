@@ -3,7 +3,7 @@
 from pyrogram import Client, filters
 from config import CHANNEL_ID, FORWARD_MESSAGE, B
 import json
-from utils import replace_mdisk_link, get_mdisk
+from util import replace_mdisk_link, get_mdisk
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.types import Message
 from pyrogram.types import MessageEntity
