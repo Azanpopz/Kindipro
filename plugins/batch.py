@@ -32,7 +32,7 @@ async def batch(c, m):
 
         global channel_id
         print("Started")
-        if CHANNELS is True:
+        if BATCH is True:
             if len(m.command) < 2:
                 await m.reply_text(BATCH)
             else:
