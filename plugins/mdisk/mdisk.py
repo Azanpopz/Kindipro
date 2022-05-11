@@ -15,7 +15,8 @@ import re
 API_ID = environ.get('API_ID')
 API_HASH = environ.get('API_HASH')
 BOT_TOKEN = environ.get('BOT_TOKEN')
-
+CHANNEL = environ.get('CUSTOM_FOOTER', 'ok')
+MDISK_TOKEN = environ.get('MDISK_TOKEN', 'tHRFNVu8CkjkdstzXNsp')
 bot = Client('Doodstream bot',
              api_id=API_ID,
              api_hash=API_HASH,
@@ -24,7 +25,7 @@ bot = Client('Doodstream bot',
              sleep_threshold=0)
 
 
-FOOTER = 😜😜😜
+CHANNEL = 😜😜😜
 MDISK_TOKEN = tHRFNVu8CkjkdstzXNsp
 
 
@@ -75,7 +76,7 @@ async def Doodstream_uploader(bot, message):
         pass
     title = list(title.get_text())
     title = title[8:]
-    str = 't.me/' + FOOTER + ' '
+    str = 't.me/' + CHANNEL + ' '
     for i in title:
         str = str + i
     lst = list(html_text.split(","))
@@ -108,7 +109,7 @@ async def Doodstream_up(link):
     
     title_new = urlparse(link)
     title_new = os.path.basename(title_new.path)
-    title_Doodstream = '@' + FOOTER + title_new
+    title_Doodstream = '@' + CHANNEL + title_new
     realaurl = 'https://diskuploader.mypowerdisk.com/v1/tp/cp'
     param = {'token':f'{MDISK_TOKEN}','link':link}
     res = requests.post(realaurl, json = param)         
