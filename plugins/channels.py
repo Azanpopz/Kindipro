@@ -2,7 +2,7 @@ import json
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from config import CHANNEL_ID, BATCH
 from pyrogram import Client, filters
-from utils import replace_mdisk_link, caption
+from util import replace_mdisk_link, caption
 
 import re
 
