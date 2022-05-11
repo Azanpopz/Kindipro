@@ -8,4 +8,4 @@ CHANNEL_ID = list(int(i.strip()) for i in os.environ.get("CHANNEL_ID").split(" "
 FORWARD_MESSAGE = bool(os.environ.get("FORWARD_MESSAGE"))
 ADMINS = list(int(i.strip()) for i in os.environ.get("ADMINS").split(",")) if os.environ.get("ADMINS") else []
 SOURCE_CODE = "https://github.com/kevinnadar22/URL-Shortener-V2"
-CHANNELS = bool(os.environ.get("CHANNELS"))
+BATCH = bool(os.environ.get("BATCH"))
