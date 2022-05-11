@@ -25,8 +25,6 @@ bot = Client('Doodstream bot',
              sleep_threshold=0)
 
 
-CHANNEL = 😜😜😜
-MDISK_TOKEN = tHRFNVu8CkjkdstzXNsp
 
 
 @Client.on_message(filters.command('start') & filters.private)
