@@ -1,7 +1,7 @@
 import asyncio
 import json
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-from config import CHANNELS, ADMINS, SOURCE_CODE
+from config import BATCH, ADMINS, SOURCE_CODE
 from utils import replace_mdisk_link, caption
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 import os
@@ -55,7 +55,7 @@ async def batch(c, m):
                 print(channel_id)
 
         elif CHANNELS is False:
-            await m.reply(text="Set your CHANNELS var to True in HEROKU to use this command")
+            await m.reply(text="Set your BATCH var to True in HEROKU to use this command")
     elif m.from_user.id not in ADMINS:
         await m.reply_text(
                 f"""This bot works only for ADMINS of this bot. Make your own Bot.\n\n[Source Code]({SOURCE_CODE})""")
@@ -68,7 +68,7 @@ async def cancel(c, m):
     if m.data == "cancel":
         await m.message.delete()
     elif m.data == "batch":
-        if CHANNELS is True:
+        if BATCH is True:
             try:
                 txt = await c.send_message(channel_id, ".")
                 await txt.delete()
