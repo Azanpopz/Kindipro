@@ -80,3 +80,12 @@ humanize
 hachoir
 pymongo
 dnspython
+
+
+aiohttp==3.7.4
+requests
+bs4
+tgcrypto
+pyshorteners
+#doodstream
+unshortenit
