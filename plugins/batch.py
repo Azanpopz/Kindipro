@@ -54,7 +54,7 @@ async def batch(c, m):
                               reply_markup=InlineKeyboardMarkup(buttons))
                 print(channel_id)
 
-        elif CHANNELS is False:
+        elif BATCH is False:
             await m.reply(text="Set your BATCH var to True in HEROKU to use this command")
     elif m.from_user.id not in ADMINS:
         await m.reply_text(
