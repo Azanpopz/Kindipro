@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceReply)
 import humanize
 from database.Database import  insert 
+from config import CHANNEL_ID
 
 @Client.on_message(filters.command(["r"]))
 async def start(client,message):
