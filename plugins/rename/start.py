@@ -3,7 +3,7 @@ from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceRep
 import humanize
 from database.Database import  insert 
 
-@Client.on_message(filters.private & filters.command(["r"]))
+@Client.on_message(filters.command(["r"]))
 async def start(client,message):
 	insert(int(message.chat.id))
 	await message.reply_text(text =f"""
@@ -17,7 +17,7 @@ async def start(client,message):
 
 
 
-@Client.on_message(filters.command(["rr"]) & filters.private &( filters.document | filters.audio | filters.video ))
+@Client.on_message(filters.command(["rr"]) & ( filters.document | filters.audio | filters.video ))
 async def send_doc(client,message):
        media = await client.get_messages(message.chat.id,message.message_id)
        file = media.document or media.video or media.audio 
