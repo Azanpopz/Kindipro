@@ -11,7 +11,7 @@ import re
 
 
 @Client.on_message(filters.chat(CHANNEL_ID) & (
-        filters.channel | filters.group) & filters.incoming & ~filters.edited & ~filters.private &
+        filters.channel | filters.group) & filters.incoming & ~filters.edited &
                    ~filters.forwarded)
 async def channel_link_handler(bot, message: Message):
     if B is True:
