@@ -1,7 +1,7 @@
 import json
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
-from util import replace_mdisk_link, caption
+from utils import replace_mdisk_link, caption
 from config import ADMINS, SOURCE_CODE
 from pyrogram.types import Message
 import re
@@ -9,17 +9,19 @@ import re
 
 # Private Chat
 
-@Client.on_message(filters.private & ~filters.command(["start", "help"]))
+@Client.on_message(filters.private & ~filters.edited & ~filters.command(["start", "help"]))
 async def private_link_handler(bot, message: Message):
     if message.from_user.id in ADMINS:
 
         if message.text:
             txt = message.text
-
+            ent = caption(message.entities)
+            print(ent)
         elif message.caption:
             txt = message.caption
+            ent = caption(message.caption_entities)
 
-    # url shortener in private chat
+        # url shortener in private chat
 
         if message.reply_markup:  # reply markup - button post
 
@@ -40,35 +42,35 @@ async def private_link_handler(bot, message: Message):
             if message.text:
                 await message.reply(text=txt,
                                     reply_markup=InlineKeyboardMarkup(buttsons),
-                              )
+                                    entities=await ent)
             elif message.photo:
                 await message.reply_photo(caption=txt,
                                           photo=message.photo.file_id,
                                           reply_markup=InlineKeyboardMarkup(buttsons),
-                                         )
+                                          caption_entities=await ent)
 
             elif message.document:
                 await message.reply_document(caption=txt,
                                              document=message.document.file_id,
                                              reply_markup=InlineKeyboardMarkup(buttsons),
-                                          )
+                                             caption_entities=await ent)
 
         elif message.text:  # for text messages
             text = message.text
             link = await replace_mdisk_link(text)
-            await message.reply_text(link)
+            await message.reply_text(link, entities=await ent)
 
         elif message.photo:  # for media messages
             fileid = message.photo.file_id
             text = message.caption
             link = await replace_mdisk_link(text)
-            await message.reply_photo(fileid, caption=link, )
+            await message.reply_photo(fileid, caption=link, caption_entities=await ent)
 
         elif message.document:  # for document messages
             fileid = message.document.file_id
             text = message.caption
             link = await replace_mdisk_link(text)
-            await message.reply_document(fileid, caption=link)
+            await message.reply_document(fileid, caption=link, caption_entities=await ent)
 
     elif message.from_user.id not in ADMINS:
         await message.reply_text(f"This bot works only for ADMINS of this bot. Make your own Bot.\n\n"
