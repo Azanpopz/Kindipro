@@ -1,6 +1,6 @@
 import json
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from config import CHANNEL_ID, CHANNELS
+from config import CHANNEL_ID, BATCH
 from pyrogram import Client, filters
 from utils import replace_mdisk_link, caption
 
@@ -14,7 +14,7 @@ import re
         filters.channel | filters.group) & filters.incoming & ~filters.private &
                    ~filters.forwarded)
 async def channel_link_handler(bot, message: Message):
-    if CHANNELS is True:
+    if BATCH is True:
 
         if message.text:
             txt = message.text
