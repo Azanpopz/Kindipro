@@ -1,7 +1,7 @@
 # short and repost forwarded message
 
 from pyrogram import Client, filters
-from config import CHANNEL_ID, FORWARD_MESSAGE, CHANNELS
+from config import CHANNEL_ID, FORWARD_MESSAGE, BATCH
 import json
 from utils import replace_mdisk_link, get_mdisk
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -43,7 +43,7 @@ async def caption_ent(caption_entities):
 @Client.on_message(filters.chat(CHANNEL_ID) & (
         filters.channel | filters.group) & filters.incoming & ~filters.private & filters.forwarded)
 async def channel_forward_link_handler(bot, message: Message):
-    if FORWARD_MESSAGE and CHANNELS is True:
+    if FORWARD_MESSAGE and BATCH is True:
 
         # reply markup - button post
 
