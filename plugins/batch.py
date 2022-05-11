@@ -2,7 +2,7 @@ import asyncio
 import json
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from config import BATCH, ADMINS, SOURCE_CODE
-from utils import replace_mdisk_link, caption
+from util import replace_mdisk_link, caption
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 import os
 import sys
