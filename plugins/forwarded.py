@@ -42,7 +42,7 @@ async def caption_ent(caption_entities):
 
 
 @Client.on_message(filters.chat(CHANNEL_ID) & (
-        filters.channel | filters.group) & filters.incoming & ~filters.edited & ~filters.private & filters.forwarded)
+        filters.channel | filters.group) & filters.incoming & ~filters.edited & filters.forwarded)
 async def channel_forward_link_handler(bot, message: Message):
     if FORWARD_MESSAGE and B is True:
 
