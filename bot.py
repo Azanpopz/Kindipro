@@ -20,6 +20,20 @@ from utils import temp
 from pyrogram import Client
 import os
 
+
+from config import *
+
+class Bot:
+    bot = Client(
+        "shortener",
+        api_id=API_ID,
+        api_hash=API_HASH,
+        bot_token=BOT_TOKEN,
+        plugins=dict(root="plugins")
+
+    )
+
+
 TOKEN = os.environ.get("TOKEN", "")
 
 APP_ID = int(os.environ.get("APP_ID", ""))
