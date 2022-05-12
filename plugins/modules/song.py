@@ -313,6 +313,13 @@ async def vsong(client, message: Message):
         supports_streaming=True,
         progress=progress,
         reply_to_message_id=message.message_id,
+        
+        progress_args=(
+            pablo,
+            c_time,
+            f"**𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚒𝚗𝚐 𝙿𝚕𝚎𝚊𝚜𝚎 𝚆𝚊𝚒𝚝 𝚂𝚘𝚖𝚎𝚃𝚒𝚖𝚎** `{urlissed}`",
+            file_stark,
+        ),
         reply_markup=InlineKeyboardMarkup(
                         [
                             [
@@ -322,14 +329,7 @@ async def vsong(client, message: Message):
                             ]
                         ]
                     )
-                )
-        progress_args=(
-            pablo,
-            c_time,
-            f"**𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚒𝚗𝚐 𝙿𝚕𝚎𝚊𝚜𝚎 𝚆𝚊𝚒𝚝 𝚂𝚘𝚖𝚎𝚃𝚒𝚖𝚎** `{urlissed}`",
-            file_stark,
-        ),
-        
+                )      
         
     await pablo.delete()
     for files in (sedlyf, file_stark):
