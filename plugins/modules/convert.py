@@ -1,8 +1,8 @@
 import subprocess
 from threading import Thread
 from pyrogram import Client, filters
-from pykeyboard import InlineKeyboard
-from pyrogram.types import InlineKeyboardButton
+
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import time
 import asyncio
 import re
