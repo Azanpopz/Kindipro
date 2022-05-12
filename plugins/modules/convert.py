@@ -127,7 +127,7 @@ async def ffmpeg(client, message):
         message = message.reply_to_message
         chat_id = str(message.chat.id)
         message_id = str(message.message_id)
-        keyboard = InlineKeyboard()
+        keyboard = InlineKeyboardMarkup()
         keyboard.row(
             InlineKeyboardButton('240p', message_id + "#240#" + str(chat_id)),
             InlineKeyboardButton('360p', message_id + "#360#" + str(chat_id))
