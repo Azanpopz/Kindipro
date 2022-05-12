@@ -92,7 +92,7 @@ def a(client, message):
         duration=dur,
         performer=performer,
         thumb=thumb_name,
-        parse_mode='HTML',
+        
         reply_markup=InlineKeyboardMarkup(
                         [
                             [
