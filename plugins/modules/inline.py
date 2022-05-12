@@ -17,7 +17,7 @@ API = "https://apibu.herokuapp.com/api/y-images?query="
 
 
 
-@Client.on_message(filters.command(["img]) & filters.text)
+@Client.on_message(filters.command(["img"]) & filters.text)
 async def filter_text(bot, update):
     await update.reply_text(
         text=f"Click the button below for searching your query.\n\nQuery: `{update.text}`",
