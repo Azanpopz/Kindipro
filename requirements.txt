@@ -83,3 +83,6 @@ dnspython
 
 git+https://github.com/HeimanPictures/mdisk.git
 mdisk
+
+threading
+pykeyboard
