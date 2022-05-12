@@ -2741,15 +2741,9 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
     
 
     
-    await message.reply_chat_action("typing")
-    px = await message.reply_photo(A,quote=True)
-    px = await message.reply_photo(B,quote=True)
-    px = await message.reply_photo(C,quote=True)
-    px = await message.reply_photo(D,quote=True)
-    px = await message.reply_photo(E,quote=True)
-    await asyncio.sleep(1)
-
-    await px.delete()
+    m=await message.reply_sticker("CAACAgUAAx0CQTCW0gABB5EUYkx6-OZS7qCQC6kNGMagdQOqozoAAgQAA8EkMTGJ5R1uC7PIECME") 
+    await asyncio.sleep(2)
+    await m.delete()
 
 
     
