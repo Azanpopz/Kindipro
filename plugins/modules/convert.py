@@ -8,10 +8,6 @@ import asyncio
 import re
 from os import mkdir, system
 
-App_Id = 6969  #Replace With Your Own
-App_Hash = "deafbeef2fb23af2bab23f23aaff2a3"  #Replace With Your Own
-Bot_Token = "13265466:AaSaddDaHGwaBdadsaDHfafw4daw"  #Replace With Your Own
-app = Client("FFMpvdvdvdvegot", api_id=App_Id, api_hash=App_Hash, bot_token=Bot_Token)
 
 
 class Convert:
