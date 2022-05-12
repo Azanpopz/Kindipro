@@ -88,7 +88,7 @@ async def upload2tg(query, fpath):
     system("rm -rf "+dirname)
 
 
-@app.on_callback_query()
+@Client.on_callback_query()
 async def callbacks(client, query):
     data = query.data.split("#")
     dirname = str(time.time())+"/"
