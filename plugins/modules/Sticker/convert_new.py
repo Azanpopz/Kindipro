@@ -29,7 +29,7 @@ bot.set_parse_mode('md')
 def start_messgae(c, m):
     m.reply_text(START_MESSAGE)
 
-@Client.on_message(filters.command(['photo']))
+@Client.on_message(filters.command(['png']))
 def photo_convert(c, m):
     rand_id = random.randint(100,900) # generate random number between 100 to 900
     m.download(f"{m.chat.id}-{rand_id}.jpg")
