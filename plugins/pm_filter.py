@@ -38,6 +38,15 @@ SPELL_CHECK = {}
 
 FILTER_MOD = {}
 
+BTN = InlineKeyboardMarkup([[InlineKeyboardButton('✨JOIN✨', url='https://t.me/nasrani_update')]])
+
+
+A = """https://telegra.ph/file/3cc0e41bf1e1c00828e55.jpg"""
+B = """https://telegra.ph/file/aa82c5a183a2b8822789e.jpg"""
+C = """https://telegra.ph/file/abbb3c8d8fafe6cd4465f.jpg"""
+D = """https://telegra.ph/file/9bb437585325db53be211.jpg"""
+E = """https://telegra.ph/file/f24928ca9720ccb21b597.jpg"""
+
 
 
 #@Client.on_message(filters.command('autofilter'))
@@ -2731,12 +2740,15 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
     
     
 
-    k = await message.reply_sticker("CAACAgUAAx0CQTCW0gABB5EUYkx6-OZS7qCQC6kNGMagdQOqozoAAgQAA8EkMTGJ5R1uC7PIECME") 
-
+    
+    await message.reply_chat_action("typing")
+    px = await message.reply_photo(A,quote=True)
+    await px.edit_text(text=C, reply_markup=BTN)
+    await px.edit_text(text=E, reply_markup=BTN)
     await asyncio.sleep(1)
 
-    await k.delete()
-    
+    await px.delete()
+
 
     
 
