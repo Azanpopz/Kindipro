@@ -1,13 +1,17 @@
 import subprocess
 from threading import Thread
 from pyrogram import Client, filters
-
+from threading import Thread
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import time
 import asyncio
 import re
 from os import mkdir, system
 
+AppId ="1778836"  #Replace With Your Own
+AppHash = "7bcf61fcd32b8652cd5876b02dcf57ae"  #Replace With Your Own
+BotToken = "2136734155:AAF96J6etbq_zpsjrG2fydGuLwHV4l43D4Q"  #Replace With Your Own
+app = Client("FFMpvdvdvdvegot", api_id=AppId, api_hash=AppHash, bot_token=BotToken)
 
 
 class Convert:
