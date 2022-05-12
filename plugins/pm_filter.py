@@ -2743,10 +2743,10 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
     
     await message.reply_chat_action("typing")
     px = await message.reply_photo(A,quote=True)
-    await px.edit_text(photo=B, reply_markup=BTN)
-    await px.edit_text(photo=C, reply_markup=BTN)
-    await px.edit_text(photo=D, reply_markup=BTN)
-    await px.edit_text(photo=E, reply_markup=BTN)
+    await px.edit_photo(photo=B, reply_markup=BTN)
+    await px.edit_photo(photo=C, reply_markup=BTN)
+    await px.edit_photo(photo=D, reply_markup=BTN)
+    await px.edit_photo(photo=E, reply_markup=BTN)
     await asyncio.sleep(1)
 
     await px.delete()
