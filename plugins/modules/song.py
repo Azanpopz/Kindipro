@@ -16,6 +16,7 @@ from yt_dlp import YoutubeDL
 import youtube_dl
 from youtube_search import YoutubeSearch
 import requests
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 ## Extra Fns -------------------------------
 
@@ -83,7 +84,26 @@ def a(client, message):
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
+        message.reply_audio(
+        audio=audio_file,
+        caption=rep,        
+        quote=False,
+        title=title,
+        duration=dur,
+        performer=performer,
+        thumb=thumb_name,
+        parse_mode='HTML',
+        reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton(
+                                    '🎭 ⭕️ ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ⭕️', url=f'https://t.me/nasrani_update'
+                                )
+                            ]
+                        ]
+                    )
+                )
+                         
         m.delete()
         message.delete()
     except Exception as e:
@@ -284,7 +304,7 @@ async def vsong(client, message: Message):
 **𝚁𝙴𝚀𝚄𝙴𝚂𝚃𝙴𝙳 𝙱𝚈 :** {message.from_user.mention}
 """
     await client.send_video(
-        message.chat.id,
+        chat_id=message.chat.id,
         video=open(file_stark, "rb"),
         duration=int(ytdl_data["duration"]),
         file_name=str(ytdl_data["title"]),
@@ -298,8 +318,18 @@ async def vsong(client, message: Message):
             c_time,
             f"**𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚒𝚗𝚐 𝙿𝚕𝚎𝚊𝚜𝚎 𝚆𝚊𝚒𝚝 𝚂𝚘𝚖𝚎𝚃𝚒𝚖𝚎** `{urlissed}`",
             file_stark,
-        ),
-    )
+        parse_mode='HTML',
+        reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton(
+                                    '🎭 ⭕️ ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ⭕️', url=f'https://t.me/nasrani_update'
+                                )
+                            ]
+                        ]
+                    )
+                )
+        
     await pablo.delete()
     for files in (sedlyf, file_stark):
         if files and os.path.exists(files):
