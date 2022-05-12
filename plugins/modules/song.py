@@ -27,7 +27,7 @@ def time_to_seconds(time):
 
 ## Commands --------------------------------
 
-@Client.on_message(filters.command(["voice", "pattu"]) & ~filters.channel & ~filters.edited)
+@Client.on_message(filters.command(["song", "mp3"]) & ~filters.channel & ~filters.edited)
 def a(client, message):
     query = ''
     for i in message.command[1:]:
@@ -57,7 +57,7 @@ def a(client, message):
             #     m.edit("Exceeded 30mins cap")
             #     return
 
-            performer = f"[ᗩᒍᗩ᙭]" 
+            performer = f"[NASRANI_UPDATE]" 
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
@@ -87,7 +87,7 @@ def a(client, message):
         m.delete()
         message.delete()
     except Exception as e:
-        m.edit('**An Error Occured. Please Report This To** @jospsupport !!')
+        m.edit('**An Error Occured. Please Report This To** @nasrani_update !!')
         print(e)
     try:
         os.remove(audio_file)
@@ -237,7 +237,7 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@Client.on_message(filters.command(["mkv", "4k"]))
+@Client.on_message(filters.command(["video", "videos", "ytdl"]))
 async def vsong(client, message: Message):
     urlissed = get_text(message)
 
