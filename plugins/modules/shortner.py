@@ -3,17 +3,7 @@ import aiohttp
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InlineQueryResultArticle, InputTextMessageContent
 from pyshorteners import Shortener
-import os
-import requests
-from requests.utils import requote_uri
-from pyrogram import Client as Koshik
-from pyrogram import filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-API = "https://short-link-api.vercel.app/?query="
-IPA = "https://unshorten.me/json/"
-
-BUTTONS = InlineKeyboardMarkup([[InlineKeyboardButton('✨ ❤️ 😁 Made By 😁 ❤️ ✨', url='https://t.me/KoshikKumar17')]])
 
 BITLY_API = os.environ.get("BITLY_API", None)
 CUTTLY_API = os.environ.get("CUTTLY_API", None)
@@ -31,7 +21,7 @@ BUTTONS = InlineKeyboardMarkup(
 )
 
 
-@Client.on_message(filters.command("shorten"))
+@Client.on_message(filters.command(["short"]) & filters.regex(r'https?://[^\s]+'))
 async def reply_shortens(bot, update):
     message = await update.reply_text(
         text="`Analysing your link...`",
@@ -47,7 +37,7 @@ async def reply_shortens(bot, update):
     )
 
 
-@Client.on_message(filters.command("shortn"))
+@Client.on_inline_query(filters.regex(r'https?://[^\s]+'))
 async def inline_short(bot, update):
     link = update.matches[0].group(0)
     shorten_urls = await short(link)
@@ -66,19 +56,6 @@ async def inline_short(bot, update):
         inline_query_id=update.id,
         results=answers
     )
-
-
-@Koshik.on_message(filters.command("short"))
-async def linkshortener(bot, update):
-    koshik = await update.reply_text("**Shorting your link....👤\n\nPlease wait a bit..🙃**",quote=True)
-    query = update.text.split(None, 1)[1]
-    reply_markup = BUTTONS
-    await koshik.edit_text(
-        text=shortlink(query),
-        disable_web_page_preview=True,
-        reply_markup=reply_markup
-    )
-
 
 
 async def short(link):
