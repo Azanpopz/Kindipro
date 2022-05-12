@@ -318,7 +318,7 @@ async def vsong(client, message: Message):
             c_time,
             f"**𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚒𝚗𝚐 𝙿𝚕𝚎𝚊𝚜𝚎 𝚆𝚊𝚒𝚝 𝚂𝚘𝚖𝚎𝚃𝚒𝚖𝚎** `{urlissed}`",
             file_stark,
-        parse_mode='HTML',
+        
         reply_markup=InlineKeyboardMarkup(
                         [
                             [
