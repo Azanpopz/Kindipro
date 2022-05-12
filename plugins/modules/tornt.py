@@ -11,15 +11,6 @@ app = Client("trntsrcbot", api_id=int(os.environ.get("API_ID")), api_hash=os.env
 print("\nBot Started\n")
 
 
-@Client.on_message(filters.command(['torrent']))
-async def start(_, message):
-    await message.reply_text("Hello I'm PirateBay Torrent Scraper Bot\nSend /help_torrent To Show Help Screen\nBot by @unkusr")
-
-
-
-@Client.on_message(filters.command(['help_torrent']))
-async def help(_, message):
-    await message.reply_text("Example: /find titanic")
 
 m = None
 i = 0
@@ -27,7 +18,7 @@ a = None
 query = None
 
 
-@Client.on_message(filters.command(["find"]))
+@Client.on_message(filters.command(["torrent"]))
 async def find(_, message):
     global m
     global i
