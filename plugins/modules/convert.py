@@ -14,7 +14,7 @@ TEXT=os.environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title
 APPROVED = os.environ.get("APPROVED_WELCOME", "on").lower()
 
 
-@Client.on_chat_join_request(filters.chat & filters.channel)
+@Client.on_chat_join_request(filters.chat)
 async def autoapprove(client: pr0fess0r_99, message: ChatJoinRequest):
     chat=message.chat # Chat
     user=message.from_user # User
