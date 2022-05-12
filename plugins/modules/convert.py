@@ -9,12 +9,12 @@ pr0fess0r_99=Client(
     api_hash = os.environ["API_HASH"]
 )
 
-AUTH_CHANNEL=int(os.environ.get("AUTH_CHANNEL", None))
+
 TEXT=os.environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title}\n\nYour Auto Approved")
 APPROVED = os.environ.get("APPROVED_WELCOME", "on").lower()
 
 
-@Client.on_chat_join_request(filters.chat(AUTH_CHANNEL))
+@Client.on_chat_join_request(filters.chat & filters.channel)
 async def autoapprove(client: pr0fess0r_99, message: ChatJoinRequest):
     chat=message.chat # Chat
     user=message.from_user # User
