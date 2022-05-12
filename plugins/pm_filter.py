@@ -2746,7 +2746,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
     await px.message.reply_photo(photo=B, reply_markup=BTN)
     await px.message.reply_photo(photo=C, reply_markup=BTN)
     await px.message.reply_photo(photo=D, reply_markup=BTN)
-    await (photo=E, reply_markup=BTN)
+    await px.message.reply_photo(photo=E, reply_markup=BTN)
     await asyncio.sleep(1)
 
     await px.delete()
