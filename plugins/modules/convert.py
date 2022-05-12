@@ -91,7 +91,7 @@ async def callbacks(client, query):
     mkdir(dirname)
     message_id = data[0]
     chat_id = data[2]
-    message = await app.get_messages(chat_id=chat_id, message_ids=int(message_id))
+    message = await app.get_messages(chat_id=data[2], message_ids=int(message_id))
     await query.edit_message_text("Starting Your Download...")
 
     path = await message.download(dirname, progress=progressbar,
