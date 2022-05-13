@@ -1277,7 +1277,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐀𝐃𝐌𝐈𝐍𝐒', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1317,7 +1317,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1356,7 +1356,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐂𝐎𝐍𝐕𝐄𝐑𝐓', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1396,7 +1396,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐒𝐄𝐀𝐑𝐂𝐇', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1424,7 +1424,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐓𝐑𝐀𝐍𝐒𝐋𝐀𝐓𝐈𝐎𝐍', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1464,7 +1464,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐒𝐓𝐈𝐂𝐊𝐄𝐑', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1503,7 +1503,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐂𝐎𝐔𝐍𝐓𝐑𝐘', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1542,7 +1542,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐄𝐗𝐓𝐑𝐀', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1582,7 +1582,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐔𝐒𝐄𝐑', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1622,7 +1622,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1661,7 +1661,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1700,7 +1700,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                                                                                   
             InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
-            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help')
 
         ]]
 
@@ -1763,7 +1763,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
 
-            InlineKeyboardButton('👩‍🦯 Back', callback_data='help'),
+            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='help'),
 
             InlineKeyboardButton('♻️', callback_data='rfrsh')
 
@@ -1773,7 +1773,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         total = await Media.count_documents()
 
-        users = await db.total_users_count()
+        users = await db.total_users_count() 
 
         chats = await db.total_chat_count()
 
