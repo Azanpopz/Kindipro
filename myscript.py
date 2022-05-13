@@ -25,7 +25,7 @@ Bot stats /stats """
 
     TRANS = """<a href='https://telegra.ph/file/eaf97e4782f05b667e551.jpg'>.</a>
 G Trans /tr [your language code]
-Tts""" /tts
+Tts  /tts"""
 
     STICKER = """<a href='https://telegra.ph/file/eaf97e4782f05b667e551.jpg'>.</a>
 Sticker pack /kang
