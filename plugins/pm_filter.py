@@ -3164,17 +3164,7 @@ async def manual_filters(client, message, text=False):
                             )
                             await asyncio.sleep(10)
                             await k.delete()      
-                            btn.insert(14,
-
-                            [
-
-                                 InlineKeyboardButton(f"🐟{message.chat.title}🐟",url="https://t.me/nasrani_update"),
-
-                                 InlineKeyboardButton(f"🦄{message.from_user.id}🦄",url="tg://openmessage?user_id={user_id}")
-
-                            ]
-
-                        )
+                            
                             
 
                     elif btn == "[]":
@@ -3192,67 +3182,30 @@ async def manual_filters(client, message, text=False):
 
                             caption= reply_text or "",
                             
-
+                            insert=f"🐟ok🐟",url="https://t.me/nasrani_update",
                             reply_to_message_id=reply_id
 
                         )
 
                         await asyncio.sleep(10)
-                        await k.delete()            
-                        btn.insert(14,
-
-                            [
-
-                                 InlineKeyboardButton(f"🐟{message.chat.title}🐟",url="https://t.me/nasrani_update"),
-
-                                 InlineKeyboardButton(f"🦄{message.from_user.id}🦄",url="tg://openmessage?user_id={user_id}")
-
-                            ]
-
-                        )
-                        
-
+                        await k.delete()                                                            
                     else:
-
                         button = eval(btn)
                         buttons = [[
-
                             InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
-
                         ]]
-
                         k = await message.reply_cached_media(
-
-                            fileid,
                             
-
+                            fileid,                                                        
                             caption= reply_text or "",
-
+                            insert=f"🐟ok🐟",url="https://t.me/nasrani_update",
                             reply_markup=InlineKeyboardMarkup(button),
-
                             reply_to_message_id=reply_id
-
                         )
                         await asyncio.sleep(10)
-                        await k.delete()  
-                        btn.insert(14,
-
-                            [
-
-                                 InlineKeyboardButton(f"🐟{message.chat.title}🐟",url="https://t.me/nasrani_update"),
-
-                                 InlineKeyboardButton(f"🦄{message.from_user.id}🦄",url="tg://openmessage?user_id={user_id}")
-
-                            ]
-
-                        )               
-
+                        await k.delete()                          
                 except Exception as e:
-
                     logger.exception(e)
-
                 break
-
     else:
-
         return False
