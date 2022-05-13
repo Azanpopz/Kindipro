@@ -3154,7 +3154,7 @@ async def manual_filters(client, message, text=False):
                                 group_id,
 
                                 reply_text,
-                                caption=f"😂ok😜",
+                                
                                 disable_web_page_preview=True,
                                 
 
