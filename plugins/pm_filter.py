@@ -1756,7 +1756,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
         
 
-    elif query.data == "pin":
+    
 
 
     elif query.data == "stats":
