@@ -1205,21 +1205,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
 
-            InlineKeyboardButton('𝐀𝐃𝐌𝐈𝐍𝐒', callback_data='admins'),
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='download'),
-            InlineKeyboardButton('𝐂𝐎𝐍𝐕𝐄𝐑𝐓', callback_data='convert')
+            InlineKeyboardButton('➩𝐀𝐃𝐌𝐈𝐍𝐒', callback_data='admins'),
+            InlineKeyboardButton('➩𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='download'),
+            InlineKeyboardButton('➩𝐂𝐎𝐍𝐕𝐄𝐑𝐓', callback_data='convert')
             ],[
-            InlineKeyboardButton('𝐒𝐄𝐀𝐑𝐂𝐇', callback_data='search'),
-            InlineKeyboardButton('𝐒𝐓𝐀𝐓𝐒', callback_data='stats'),   
-            InlineKeyboardButton('𝐓𝐑𝐀𝐍𝐒𝐋𝐀𝐓𝐈𝐎𝐍', callback_data='trans')
+            InlineKeyboardButton('➩𝐒𝐄𝐀𝐑𝐂𝐇', callback_data='search'),
+            InlineKeyboardButton('➩𝐒𝐓𝐀𝐓𝐒', callback_data='stats'),   
+            InlineKeyboardButton('➩𝐔𝐒𝐄𝐑', callback_data='user')
             ],[  
-            InlineKeyboardButton('𝐒𝐓𝐈𝐂𝐊𝐄𝐑', callback_data='sticker'),
-            InlineKeyboardButton('𝐂𝐎𝐔𝐍𝐓𝐑𝐘', callback_data='country'),
-            InlineKeyboardButton('𝐄𝐗𝐓𝐑𝐀', callback_data='extra')
+            InlineKeyboardButton('➩𝐒𝐓𝐈𝐂𝐊𝐄𝐑', callback_data='sticker'),
+            InlineKeyboardButton('➩𝐂𝐎𝐔𝐍𝐓𝐑𝐘', callback_data='country'),
+            InlineKeyboardButton('➩𝐄𝐗𝐓𝐑𝐀', callback_data='extra')
             ],[
-            InlineKeyboardButton('𝐔𝐒𝐄𝐑', callback_data='user'),
-            InlineKeyboardButton('PAGE1', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page')            
+            InlineKeyboardButton('▶𝐇𝐎𝐌𝐄', callback_data='start'),
+            InlineKeyboardButton('➩𝙂-𝐓𝐑𝐀𝐍𝐒', callback_data='trans'),
+            InlineKeyboardButton('✎𝐀𝐁𝐎𝐔𝐓', callback_data='page')            
 
         ]]
 
@@ -1276,8 +1276,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐀𝐃𝐌𝐈𝐍𝐒', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐀𝐃𝐌𝐈𝐍𝐒☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1316,8 +1316,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1355,8 +1355,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐂𝐎𝐍𝐕𝐄𝐑𝐓', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐂𝐎𝐍𝐕𝐄𝐑𝐓☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1395,8 +1395,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐒𝐄𝐀𝐑𝐂𝐇', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐒𝐄𝐀𝐑𝐂𝐇☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1423,8 +1423,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐓𝐑𝐀𝐍𝐒𝐋𝐀𝐓𝐈𝐎𝐍', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐓𝐑𝐀𝐍𝐒𝐋𝐀𝐓𝐈𝐎𝐍☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1463,8 +1463,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐒𝐓𝐈𝐂𝐊𝐄𝐑', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐒𝐓𝐈𝐂𝐊𝐄𝐑☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1502,8 +1502,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐂𝐎𝐔𝐍𝐓𝐑𝐘', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐂𝐎𝐔𝐍𝐓𝐑𝐘☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1541,8 +1541,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐄𝐗𝐓𝐑𝐀', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐄𝐗𝐓𝐑𝐀☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1581,8 +1581,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐔𝐒𝐄𝐑', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐔𝐒𝐄𝐑☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1621,8 +1621,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1660,8 +1660,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1699,8 +1699,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1')
+            InlineKeyboardButton('☬𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃☬', callback_data='start'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1')
 
         ]]
 
@@ -1763,9 +1763,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
 
-            InlineKeyboardButton('𝐁𝐀𝐂𝐊', callback_data='page1'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1'),
 
-            InlineKeyboardButton('♻️', callback_data='rfrsh')
+            InlineKeyboardButton('☬𝐑𝐄𝐅𝐑𝐄𝐒𝐇☬', callback_data='rfrsh')
 
         ]]
 
@@ -1801,9 +1801,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
 
-            InlineKeyboardButton('👩‍🦯 Back', callback_data='page1'),
+            InlineKeyboardButton('☬𝐁𝐀𝐂𝐊☬', callback_data='page1'),
 
-            InlineKeyboardButton('♻️', callback_data='rfrsh')
+            InlineKeyboardButton('☬𝐑𝐄𝐅𝐑𝐄𝐒𝐇☬', callback_data='rfrsh')
 
         ]]
 
