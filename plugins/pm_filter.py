@@ -1382,7 +1382,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
         await query.message.edit_text(
 
-            text=script.DOWN.format(query.from_user.mention),
+            text=script.CONV.format(query.from_user.mention),
 
             reply_markup=reply_markup,
 
@@ -1390,7 +1390,359 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         )        
         
+    elif query.data == "search":
+
+        buttons = [[
+                                                                                  
+            InlineKeyboardButton('𝐒𝐄𝐀𝐑𝐂𝐇', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣"
+
+        )
+    elif query.data == "download":
+
+        buttons = [[
+                                                                                  
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣"
+
+        )
+
         
+        await query.message.edit_text(
+
+            text=script.DOWN.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+     
+    elif query.data == "download":
+
+        buttons = [[
+                                                                                  
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣"
+
+        )
+
+        
+        await query.message.edit_text(
+
+            text=script.DOWN.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+    elif query.data == "download":
+
+        buttons = [[
+                                                                                  
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣"
+
+        )
+
+        
+        await query.message.edit_text(
+
+            text=script.DOWN.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+    elif query.data == "download":
+
+        buttons = [[
+                                                                                  
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣"
+
+        )
+
+        
+        await query.message.edit_text(
+
+            text=script.DOWN.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+
+    elif query.data == "download":
+
+        buttons = [[
+                                                                                  
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣"
+
+        )
+
+        
+        await query.message.edit_text(
+
+            text=script.DOWN.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+
+    elif query.data == "download":
+
+        buttons = [[
+                                                                                  
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣"
+
+        )
+
+        
+        await query.message.edit_text(
+
+            text=script.DOWN.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+    elif query.data == "download":
+
+        buttons = [[
+                                                                                  
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣"
+
+        )
+
+        
+        await query.message.edit_text(
+
+            text=script.DOWN.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+    elif query.data == "download":
+
+        buttons = [[
+                                                                                  
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text="▣▢▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▢"
+
+        )
+
+        await query.message.edit_text(
+
+            text="▣▣▣"
+
+        )
+
+        
+        await query.message.edit_text(
+
+            text=script.DOWN.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )
+  
+        await query.message.edit_text(
+
+            text=script.SEARCH.format(query.from_user.mention),
+
+            reply_markup=reply_markup,
+
+            parse_mode='html'
+
+        )                
 
     
 
