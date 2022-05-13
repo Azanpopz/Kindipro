@@ -21,7 +21,7 @@ Image /img """
    
     STATS = """<a href='https://telegra.ph/file/eaf97e4782f05b667e551.jpg'>.</a>
 Heroku stats /botstats
-Bot stats""" /stats
+Bot stats /stats """ 
 
     TRANS = """<a href='https://telegra.ph/file/eaf97e4782f05b667e551.jpg'>.</a>
 G Trans /tr [your language code]
