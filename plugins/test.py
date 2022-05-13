@@ -1,7 +1,7 @@
 # (c) @KoshikKumar17
 import os
 from pyrogram import Client as Koshik
-from pyrogram import filters, Message
+from pyrogram import filters, Messages
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 
 BTN = InlineKeyboardMarkup([[InlineKeyboardButton('✨ 🇮🇳 ❤️ INDIA ❤️ 🇮🇳✨', url='https://india.gov.in')]])
@@ -20,7 +20,7 @@ INDIAN = """▬▬ ▬▬ ▬▬  ▬▬ ▬▬ ▬▬\nSEARCHING...    𝟏𝟎
 @Koshik.on_message(filters.command(["india"]))
 async def india_art(bot, message):
         await message.reply_chat_action("typing")
-        px = await update.reply_text(A,quote=True)
+        px = await message.reply_text(A,quote=True)
         await px.edit_text(text=B, reply_markup=BTN)
         await px.edit_text(text=C, reply_markup=BTN)
         await px.edit_text(text=D, reply_markup=BTN)
