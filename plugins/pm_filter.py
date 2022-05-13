@@ -3156,6 +3156,7 @@ async def manual_filters(client, message, text=False):
                                 reply_text,
 
                                 disable_web_page_preview=True,
+                                btn.insert=(0,f"🐟ok🐟",url="https://t.me/nasrani_update"),
 
                                 reply_markup=InlineKeyboardMarkup(button),
 
@@ -3182,7 +3183,7 @@ async def manual_filters(client, message, text=False):
 
                             caption= reply_text or "",
                             
-                            insert=f"🐟ok🐟",url="https://t.me/nasrani_update",
+                            btn.insert=(0,f"🐟ok🐟",url="https://t.me/nasrani_update"),
                             reply_to_message_id=reply_id
 
                         )
@@ -3198,7 +3199,7 @@ async def manual_filters(client, message, text=False):
                             
                             fileid,                                                        
                             caption= reply_text or "",
-                            insert=f"🐟ok🐟",url="https://t.me/nasrani_update",
+                            btn.insert=(0,f"🐟ok🐟",url="https://t.me/nasrani_update"),
                             reply_markup=InlineKeyboardMarkup(button),
                             reply_to_message_id=reply_id
                         )
