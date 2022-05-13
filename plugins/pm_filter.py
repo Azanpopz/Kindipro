@@ -1418,11 +1418,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text="▣▣▣"
 
         )
-    elif query.data == "download":
+    elif query.data == "trans":
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝐓𝐑𝐀𝐍𝐒𝐋𝐀𝐓𝐈𝐎𝐍', callback_data='start'),
             InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
 
         ]]
@@ -1450,7 +1450,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
         await query.message.edit_text(
 
-            text=script.DOWN.format(query.from_user.mention),
+            text=script.TRANS.format(query.from_user.mention),
 
             reply_markup=reply_markup,
 
@@ -1458,11 +1458,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         )
      
-    elif query.data == "download":
+    elif query.data == "sticker":
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝐒𝐓𝐈𝐂𝐊𝐄𝐑', callback_data='start'),
             InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
 
         ]]
@@ -1490,18 +1490,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
         await query.message.edit_text(
 
-            text=script.DOWN.format(query.from_user.mention),
+            text=script.STICKER.format(query.from_user.mention),
 
             reply_markup=reply_markup,
 
             parse_mode='html'
 
         )
-    elif query.data == "download":
+    elif query.data == "country":
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝐂𝐎𝐔𝐍𝐓𝐑𝐘', callback_data='start'),
             InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
 
         ]]
@@ -1529,18 +1529,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
         await query.message.edit_text(
 
-            text=script.DOWN.format(query.from_user.mention),
+            text=script.COUNTRY.format(query.from_user.mention),
 
             reply_markup=reply_markup,
 
             parse_mode='html'
 
         )
-    elif query.data == "download":
+    elif query.data == "extra":
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝐄𝐗𝐓𝐑𝐀', callback_data='start'),
             InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
 
         ]]
@@ -1568,7 +1568,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
         await query.message.edit_text(
 
-            text=script.DOWN.format(query.from_user.mention),
+            text=script.EXTRA.format(query.from_user.mention),
 
             reply_markup=reply_markup,
 
@@ -1576,11 +1576,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         )
 
-    elif query.data == "download":
+    elif query.data == "user":
 
         buttons = [[
                                                                                   
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='start'),
+            InlineKeyboardButton('𝐔𝐒𝐄𝐑', callback_data='start'),
             InlineKeyboardButton('𝖡𝖺𝖼𝗄', callback_data='help')
 
         ]]
@@ -1608,7 +1608,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
         await query.message.edit_text(
 
-            text=script.DOWN.format(query.from_user.mention),
+            text=script.USER.format(query.from_user.mention),
 
             reply_markup=reply_markup,
 
