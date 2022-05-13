@@ -1,6 +1,6 @@
 # (c) @KoshikKumar17
 import os
-from pyrogram import Client
+from pyrogram import Client as Koshik
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 
@@ -17,12 +17,14 @@ INDIAN = """▬▬ ▬▬ ▬▬  ▬▬ ▬▬ ▬▬\nSEARCHING...    𝟏𝟎
 
 
 
-@Client.on_message(filters.private & filters.command(["india"]))
+@Koshik.on_message(filters.private & filters.command(["india"]))
 async def india_art(bot, update):
         await update.reply_chat_action("typing")
         px = await update.reply_text(A,quote=True)
+        await px.edit_text(text=B, reply_markup=BTN)
         await px.edit_text(text=C, reply_markup=BTN)
+        await px.edit_text(text=D, reply_markup=BTN)
         await px.edit_text(text=E, reply_markup=BTN)
-        
+        await px.edit_text(text=F, reply_markup=BTN)
         await px.delete()
         await update.reply_text(text=INDIAN,quote=True,reply_markup=BTN)
