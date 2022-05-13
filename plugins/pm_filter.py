@@ -850,11 +850,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [
             [
-                InlineKeyboardButton('⭕️ Support', url='https://t.me/JOSPSupport'),
-                InlineKeyboardButton('Channel ⭕️', url='https://t.me/JosProjects')
+                InlineKeyboardButton('⭕️ Support', url='https://t.me/mazhatthullikal'),
+                InlineKeyboardButton('Channel ⭕️', url='https://t.me/mazhatthullikal')
             ],
             [
-                InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/+y53tWFUw6Q43NzE9')
+                InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/mazhatthullikal')
             ]
             ]
         
@@ -876,11 +876,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
                 buttons = [
                   [
-                        InlineKeyboardButton('⭕️ Support', url='https://t.me/JOSPSupport'),
-                        InlineKeyboardButton('Channel ⭕️', url='https://t.me/JosProjects')
+                        InlineKeyboardButton('⭕️ Support', url='https://t.me/mazhatthullikal'),
+                        InlineKeyboardButton('Channel ⭕️', url='https://t.me/mazhatthullikal')
                   ],
                   [
-                        InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/+y53tWFUw6Q43NzE9')
+                        InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/mazhatthullikal')
                   ]
                   ]
         
@@ -1104,11 +1104,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [
             [
-                InlineKeyboardButton('⭕️ Support', url='https://t.me/JOSPSupport'),
-                InlineKeyboardButton('Channel ⭕️', url='https://t.me/JosProjects')
+                InlineKeyboardButton('⭕️ Support', url='https://t.me/mazhatthullikal'),
+                InlineKeyboardButton('Channel ⭕️', url='https://t.me/mazhatthullikal')
             ],
             [
-                InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/+y53tWFUw6Q43NzE9')
+                InlineKeyboardButton('🎬 Series & Movie Club 🎬', url=f'https://t.me/mazhatthullikal')
             ]
             ]
         await query.answer()
@@ -1204,19 +1204,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
 
-            InlineKeyboardButton('𝖥𝗂𝗅𝗍𝖾𝗋', callback_data='hud'),
-            InlineKeyboardButton('𝖲𝗍𝖺𝗍𝗌', callback_data='stats'),
-            InlineKeyboardButton('𝖨𝗆𝖽𝖻', callback_data='imbd')
+            InlineKeyboardButton('𝐀𝐃𝐌𝐈𝐍𝐒', callback_data='hud'),
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='stats'),
+            InlineKeyboardButton('𝐂𝐎𝐍𝐕𝐄𝐑𝐓', callback_data='imbd')
             ],[
-            InlineKeyboardButton('𝖯𝗎𝗋𝗀𝖾', callback_data='purge'),
-            InlineKeyboardButton('Logo', callback_data='lego'),   
-            InlineKeyboardButton('𝖳𝗀𝗋𝖺𝗉𝗁', callback_data='tgraph')
+            InlineKeyboardButton('𝐒𝐄𝐀𝐑𝐂𝐇', callback_data='purge'),
+            InlineKeyboardButton('𝐒𝐓𝐀𝐓𝐒', callback_data='lego'),   
+            InlineKeyboardButton('𝐓𝐑𝐀𝐍𝐒𝐋𝐀𝐓𝐈𝐎𝐍', callback_data='tgraph')
             ],[  
-            InlineKeyboardButton('𝖬𝖾𝗆𝖾', callback_data='fun'),
-            InlineKeyboardButton('𝖬𝗎𝗍𝖾', callback_data='mute'),
-            InlineKeyboardButton('Torrent', callback_data='trnt')
+            InlineKeyboardButton('𝐒𝐓𝐈𝐂𝐊𝐄𝐑', callback_data='fun'),
+            InlineKeyboardButton('𝐂𝐎𝐔𝐍𝐓𝐑𝐘', callback_data='mute'),
+            InlineKeyboardButton('𝐄𝐗𝐓𝐑𝐀', callback_data='trnt')
             ],[
-            InlineKeyboardButton('BACK', callback_data='help'),
+            InlineKeyboardButton('𝐔𝐒𝐄𝐑', callback_data='help'),
             InlineKeyboardButton('PAGE1', callback_data='start'),
             InlineKeyboardButton('NEXT', callback_data='page2')            
 
