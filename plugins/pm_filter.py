@@ -6,6 +6,7 @@ import ast
 
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
+from myScript import script
 import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
@@ -1139,11 +1140,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
             InlineKeyboardButton('🔍𝐒𝐞𝐚𝐫𝐜𝐡🔎', switch_inline_query_current_chat=''),
 
-            InlineKeyboardButton('🎭𝐔𝐩𝐝𝐚𝐭𝐞𝐬🎭', url='https://t.me/mazhatthullikal')
+            InlineKeyboardButton('🎭𝐔𝐩𝐝𝐚𝐭𝐞𝐬🎭', url='https://t.me/nasrani_update')
 
             ],[
 
-            InlineKeyboardButton('🕵️𝐇𝐞𝐥𝐩🕵️', callback_data='help'),
+            InlineKeyboardButton('🕵️𝐇𝐞𝐥𝐩🕵️', callback_data='page1'),
 
             InlineKeyboardButton('😊𝐀𝐛𝐨𝐮𝐭😊', callback_data='about')
 
@@ -1204,19 +1205,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         buttons = [[
 
-            InlineKeyboardButton('𝐀𝐃𝐌𝐈𝐍𝐒', callback_data='hud'),
-            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='stats'),
-            InlineKeyboardButton('𝐂𝐎𝐍𝐕𝐄𝐑𝐓', callback_data='imbd')
+            InlineKeyboardButton('𝐀𝐃𝐌𝐈𝐍𝐒', callback_data='admins'),
+            InlineKeyboardButton('𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃', callback_data='download'),
+            InlineKeyboardButton('𝐂𝐎𝐍𝐕𝐄𝐑𝐓', callback_data='convert')
             ],[
-            InlineKeyboardButton('𝐒𝐄𝐀𝐑𝐂𝐇', callback_data='purge'),
-            InlineKeyboardButton('𝐒𝐓𝐀𝐓𝐒', callback_data='lego'),   
-            InlineKeyboardButton('𝐓𝐑𝐀𝐍𝐒𝐋𝐀𝐓𝐈𝐎𝐍', callback_data='tgraph')
+            InlineKeyboardButton('𝐒𝐄𝐀𝐑𝐂𝐇', callback_data='search'),
+            InlineKeyboardButton('𝐒𝐓𝐀𝐓𝐒', callback_data='stats'),   
+            InlineKeyboardButton('𝐓𝐑𝐀𝐍𝐒𝐋𝐀𝐓𝐈𝐎𝐍', callback_data='trans')
             ],[  
-            InlineKeyboardButton('𝐒𝐓𝐈𝐂𝐊𝐄𝐑', callback_data='fun'),
-            InlineKeyboardButton('𝐂𝐎𝐔𝐍𝐓𝐑𝐘', callback_data='mute'),
-            InlineKeyboardButton('𝐄𝐗𝐓𝐑𝐀', callback_data='trnt')
+            InlineKeyboardButton('𝐒𝐓𝐈𝐂𝐊𝐄𝐑', callback_data='sticker'),
+            InlineKeyboardButton('𝐂𝐎𝐔𝐍𝐓𝐑𝐘', callback_data='country'),
+            InlineKeyboardButton('𝐄𝐗𝐓𝐑𝐀', callback_data='extra')
             ],[
-            InlineKeyboardButton('𝐔𝐒𝐄𝐑', callback_data='help'),
+            InlineKeyboardButton('𝐔𝐒𝐄𝐑', callback_data='user'),
             InlineKeyboardButton('PAGE1', callback_data='start'),
             InlineKeyboardButton('NEXT', callback_data='page2')            
 
