@@ -1217,7 +1217,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('➩𝐂𝐎𝐔𝐍𝐓𝐑𝐘', callback_data='country'),
             InlineKeyboardButton('➩𝐄𝐗𝐓𝐑𝐀', callback_data='extra')
             ],[
-            InlineKeyboardButton('▶𝐇𝐎𝐌𝐄', callback_data='start'),
+            InlineKeyboardButton('✭𝐇𝐎𝐌𝐄', callback_data='start'),
             InlineKeyboardButton('➩𝙂-𝐓𝐑𝐀𝐍𝐒', callback_data='trans'),
             InlineKeyboardButton('✎𝐀𝐁𝐎𝐔𝐓', callback_data='page')            
 
