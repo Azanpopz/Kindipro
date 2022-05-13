@@ -23,6 +23,6 @@ async def india_art(bot, update):
         px = await update.reply_text(A,quote=True)
         await px.edit_text(text=C, reply_markup=BTN)
         await px.edit_text(text=E, reply_markup=BTN)
-        )
+        
         await px.delete()
         await update.reply_text(text=INDIAN,quote=True,reply_markup=BTN)
