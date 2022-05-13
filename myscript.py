@@ -64,6 +64,7 @@ Batch /batch
 filter /filter or add
 Paste /paste"""
                                   
-    MENU_TEXT = """<a href='https://telegra.ph/file/eaf97e4782f05b667e551.jpg'>.</a>
+    MENU_TEXT = """𝗛ᴇʟʟᴏ {},
+<a href='https://telegra.ph/file/eaf97e4782f05b667e551.jpg'>.</a>
 Check you commands"""
                                    
