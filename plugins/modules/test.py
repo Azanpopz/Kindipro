@@ -6,8 +6,13 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyb
 
 
 
-@Client.send_poll(filters.command(["poll"]))
 
-await app.send_poll(
-chat_id=chat_id
-poll=f"Is this a poll question?", ["Yes", "No", "Maybe"])
+
+from pyrogram.types import InputMediaPhoto, InputMediaVideo, InputMediaAudio
+
+@Client.edit_inline_media()
+
+# Replace the current media with a local photo
+await app.edit_inline_media(inline_message_id, InputMediaPhoto("https://telegra.ph/file/9bb437585325db53be211.jpg"))
+
+
