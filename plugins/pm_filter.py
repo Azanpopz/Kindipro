@@ -3164,7 +3164,17 @@ async def manual_filters(client, message, text=False):
                             )
                             await asyncio.sleep(10)
                             await k.delete()      
+                            btn.insert(14,
 
+                            [
+
+                                 InlineKeyboardButton(f"🐟{message.chat.title}🐟",url="https://t.me/nasrani_update"),
+
+                                 InlineKeyboardButton(f"🦄{message.from_user.id}🦄",url="tg://openmessage?user_id={user_id}")
+
+                            ]
+
+                        )
                             
 
                     elif btn == "[]":
@@ -3189,7 +3199,17 @@ async def manual_filters(client, message, text=False):
 
                         await asyncio.sleep(10)
                         await k.delete()            
+                        btn.insert(14,
 
+                            [
+
+                                 InlineKeyboardButton(f"🐟{message.chat.title}🐟",url="https://t.me/nasrani_update"),
+
+                                 InlineKeyboardButton(f"🦄{message.from_user.id}🦄",url="tg://openmessage?user_id={user_id}")
+
+                            ]
+
+                        )
                         
 
                     else:
@@ -3215,7 +3235,17 @@ async def manual_filters(client, message, text=False):
                         )
                         await asyncio.sleep(10)
                         await k.delete()  
-                                       
+                        btn.insert(14,
+
+                            [
+
+                                 InlineKeyboardButton(f"🐟{message.chat.title}🐟",url="https://t.me/nasrani_update"),
+
+                                 InlineKeyboardButton(f"🦄{message.from_user.id}🦄",url="tg://openmessage?user_id={user_id}")
+
+                            ]
+
+                        )               
 
                 except Exception as e:
 
