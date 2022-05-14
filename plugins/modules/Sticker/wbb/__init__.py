@@ -34,14 +34,22 @@ from pyromod import listen
 from Python_ARQ import ARQ
 from telegraph import Telegraph
 
-is_samplee = path.exists("samplee.py")
 
-if is_samplee:
-    from samplee import *
+is_config = path.exists("config.py")
+
+if is_config:
+    from config import *
 else:
-    from samplee import *
+    from sample_config import *
 
-
+USERBOT_PREFIX = USERBOT_PREFIX
+GBAN_LOG_GROUP_ID = GBAN_LOG_GROUP_ID
+WELCOME_DELAY_KICK_SEC = WELCOME_DELAY_KICK_SEC
+LOG_GROUP_ID = LOG_GROUP_ID
+MESSAGE_DUMP_CHAT = MESSAGE_DUMP_CHAT
+MOD_LOAD = []
+MOD_NOLOAD = []
+SUDOERS = filters.user()
 bot_start_time = time.time()
 
 
@@ -111,7 +119,7 @@ arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 app = Client("wbb", bot_token=BOT_TOKEN, api_id=API_ID, api_hash=API_HASH)
 
 log.info("Starting bot client")
-
+app.start()
 log.info("Starting userbot client")
 app2.start()
 
