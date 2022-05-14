@@ -40,10 +40,6 @@ from wbb import (
     log,
 )
 from plugins.modules.Sticker import ALL_MODULES
-from wbb.modules.sudoers import bot_sys_stats
-from wbb.utils import paginate_modules
-from wbb.utils.constants import MARKDOWN
-from wbb.utils.dbfunctions import clean_restart_stage
 
 loop = asyncio.get_event_loop()
 
