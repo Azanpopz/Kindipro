@@ -39,7 +39,7 @@ from wbb import (
     app,
     log,
 )
-from wbb.modules import ALL_MODULES
+from plugins.modules.Sticker import ALL_MODULES
 from wbb.modules.sudoers import bot_sys_stats
 from wbb.utils import paginate_modules
 from wbb.utils.constants import MARKDOWN
