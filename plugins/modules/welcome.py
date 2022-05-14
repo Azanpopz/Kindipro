@@ -13,7 +13,7 @@ Munnipoz= Client(
 
 
     
-@Munnipopz.on_message(filters.new_chat_members)
+@Client.on_message(filters.new_chat_members)
 async def auto_welcome(bot: Munnipopz, msg: Message):
     # from PR0FESS0R-99 import ID-Bot
     first = msg.from_user.first_name
