@@ -37,7 +37,7 @@ from telegraph import Telegraph
 is_samplee = path.exists("samplee.py")
 
 if is_samplee:
-    from config import *
+    from samplee import *
 else:
     from samplee import *
 
