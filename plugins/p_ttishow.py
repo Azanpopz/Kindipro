@@ -19,7 +19,8 @@ async def save_group(bot, message):
     if temp.ME in r_j_check:
         if not await db.get_chat(message.chat.id):
             total=await bot.get_chat_members_count(message.chat.id)
-            count = await bot.get_chat_members_count(count) 
+            count = await bot.get_chat_members_count(count)
+print(count)
             r_j = message.from_user.mention if message.from_user else "Anonymous" 
             buttons = [[            
             InlineKeyboardButton('🕵️𝐇𝐞𝐥𝐩🕵️', callback_data='help'),
