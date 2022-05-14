@@ -42,12 +42,7 @@ else:
     from sample_config import *
 
 
-GBAN_LOG_GROUP_ID = GBAN_LOG_GROUP_ID
-WELCOME_DELAY_KICK_SEC = WELCOME_DELAY_KICK_SEC
 
-MESSAGE_DUMP_CHAT = MESSAGE_DUMP_CHAT
-MOD_LOAD = []
-MOD_NOLOAD = []
 SUDOERS = filters.user()
 bot_start_time = time.time()
 
