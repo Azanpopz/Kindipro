@@ -3,6 +3,7 @@ from traceback import format_exc
 from pyrogram import Client, filters
 from pyrogram import filters
 from pyrogram.types import Message
+from plugins.modules.Sticker import capture_err
 
 
 
@@ -31,7 +32,7 @@ def isArgInt(message: Message) -> list:
 
 
 @Client.on_message(filters.command("qq") & ~filters.private & ~filters.edited)
-
+@capture_err
 async def quotly_func(client, message: Message):
     if not message.reply_to_message:
         return await message.reply_text("Reply to a message to quote it.")
