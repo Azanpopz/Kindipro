@@ -86,7 +86,7 @@ async def save_group(bot, message):
                     await (temp.MELCOW['welcome']).delete()
                 except:
                     pass
-            temp.MELCOW['welcome'] =
+            temp.MELCOW['welcome'] 
             chat_id=int(message.chat.id)
             count=await bot.get_chat_members_count(chat_id)
             print(count)
