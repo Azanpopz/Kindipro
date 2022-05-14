@@ -3,7 +3,7 @@ from traceback import format_exc
 from pyrogram import Client, filters
 from pyrogram import filters
 from pyrogram.types import Message
-from plugins.modules.Sticker import capture_err
+from plugins.modules.Sticker.wb import capture_err
 
 
 
