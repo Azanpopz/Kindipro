@@ -31,10 +31,7 @@ async def save_group(bot, message):
     r_j_check = [u.id for u in message.new_chat_members]
     if temp.ME in r_j_check:
         if not await db.get_chat(message.chat.id):
-            total=await bot.get_chat_members_count(message.chat.id)
-            chat_id=int(message.chat.id)
-            count=await bot.get_chat_members_count(chat_id)
-            print(count)
+            total=await bot.get_chat_members_count(message.chat.id)            
             r_j = message.from_user.mention if message.from_user else "Anonymous" 
             buttons = [[            
             InlineKeyboardButton('🕵️𝐇𝐞𝐥𝐩🕵️', callback_data='help'),
@@ -89,7 +86,11 @@ async def save_group(bot, message):
                     await (temp.MELCOW['welcome']).delete()
                 except:
                     pass
-            temp.MELCOW['welcome'] = await message.reply_text(
+            temp.MELCOW['welcome'] =
+            chat_id=int(message.chat.id)
+            count=await bot.get_chat_members_count(chat_id)
+            print(count)
+                                   await message.reply_text(
                                                                 
                                                                 text=f"<b>{u.mention}, {count}, 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 {message.chat.title} \n താങ്കൾക്ക് സിനിമ എടുക്കാൻ അറിയില്ലെങ്കിൽ മുകളിലെ വീഡിയോ കണ്ട് അത് പോലെ ചെയ്യുക😌 </b>",
                                                                 reply_markup=reply_markup,
