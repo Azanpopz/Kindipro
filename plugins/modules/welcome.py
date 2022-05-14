@@ -38,8 +38,8 @@ async def sticker_group(bot, message):
    try:
       reply_markup = START_BUTTON
       chat_id = int(message.chat.id)
-      count = await client.get_chat_members_count(chat_id)
-          await client.message_text(
+      count = await bot.get_chat_members_count(chat_id)
+          await bot.message_text(
           text=HELP,
           reply_markup=reply_markup,
           quote=True
