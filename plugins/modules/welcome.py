@@ -12,7 +12,7 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.types import User, Message, Sticker, Document, ChatMember
 
-bughunter0= Client(
+Client= Client(
     "Welcome-Bot",
      bot_token = os.environ["BOT_TOKEN"],
      api_id = int(os.environ["API_ID"]),
@@ -31,7 +31,7 @@ async def auto_welcome(bot, message):
     mention = message.from_user.mention
     username = message.from_user.username
     chat_id = int(message.chat.id)
-    count = await bughunter0.get_chat_members_count(chat_id)
+    count = await Client.get_chat_members_count(chat_id)
     id = message.from_user.id
     group_name = message.chat.title
     group_username = message.chat.username
@@ -46,7 +46,7 @@ async def auto_welcome(bot, message):
     if not BUTTON:
        await message.reply_text(text=WELCOME_TEXT.format(
            chat_id = int(message.chat.id),
-           count = await bughunter0.get_chat_members_count(chat_id),
+           count = await Client.get_chat_members_count(chat_id),
            first = message.from_user.first_name,
            last = message.from_user.last_name,
            username = None if not message.from_user.username else '@' + message.from_user.username,
@@ -59,7 +59,7 @@ async def auto_welcome(bot, message):
     else:
        await msg.reply_text(text=WELCOME_TEXT.format(
            chat_id = int(message.chat.id),
-           count = await bughunter0.get_chat_members_count(chat_id),
+           count = await Client.get_chat_members_count(chat_id),
            first = message.from_user.first_name,
            last = message.from_user.last_name,
            username = None if not message.from_user.username else '@' + message.from_user.username,
