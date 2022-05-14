@@ -88,7 +88,7 @@ async def save_group(bot, message):
                     pass
             temp.MELCOW['welcome'] 
             chat_id=int(message.chat.id)
-            count=await bot.get_chat_members_count(chat_id) =
+            count=await bot.get_chat_members_count(chat_id) 
             await message.reply_text(
                                                                 
             text=f"<b>{u.mention}, {count}, 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 {message.chat.title} \n താങ്കൾക്ക് സിനിമ എടുക്കാൻ അറിയില്ലെങ്കിൽ മുകളിലെ വീഡിയോ കണ്ട് അത് പോലെ ചെയ്യുക😌 </b>",
