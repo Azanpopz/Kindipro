@@ -41,14 +41,7 @@ if is_samplee:
 else:
     from samplee import *
 
-USERBOT_PREFIX = USERBOT_PREFIX
-GBAN_LOG_GROUP_ID = GBAN_LOG_GROUP_ID
-WELCOME_DELAY_KICK_SEC = WELCOME_DELAY_KICK_SEC
-LOG_GROUP_ID = LOG_GROUP_ID
-MESSAGE_DUMP_CHAT = MESSAGE_DUMP_CHAT
-MOD_LOAD = []
-MOD_NOLOAD = []
-SUDOERS = filters.user()
+
 bot_start_time = time.time()
 
 
