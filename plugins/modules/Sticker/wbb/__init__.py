@@ -34,12 +34,12 @@ from pyromod import listen
 from Python_ARQ import ARQ
 from telegraph import Telegraph
 
-is_config = path.exists("config.py")
+is_samplee = path.exists("samplee.py")
 
-if is_config:
+if is_samplee:
     from config import *
 else:
-    from samplee_config import *
+    from samplee import *
 
 USERBOT_PREFIX = USERBOT_PREFIX
 GBAN_LOG_GROUP_ID = GBAN_LOG_GROUP_ID
