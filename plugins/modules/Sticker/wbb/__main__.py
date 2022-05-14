@@ -30,7 +30,7 @@ from uvloop import install
 from pyrogram import filters, Client, idle
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from wbb import (
+from plugins.modules.Sticker.wbb import (
     BOT_NAME,
     BOT_USERNAME,
     LOG_GROUP_ID,
