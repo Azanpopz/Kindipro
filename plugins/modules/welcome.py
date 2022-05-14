@@ -14,13 +14,14 @@ Munnipoz= Client(
 
     
 @Client.on_message(filters.new_chat_members)
-async def auto_welcome(bot: client, msg: Message):
+async def auto_welcome(bot: Client, msg: Message):
     # from PR0FESS0R-99 import ID-Bot
     first = msg.from_user.first_name
     last = msg.from_user.last_name
     mention = msg.from_user.mention
     username = msg.from_user.username
-    count = msg.chat.id
+    chat_id = int(msg.chat.id)
+    count = await msg.get_chat_members_count(chat_id)
     id = msg.from_user.id
     group_name = msg.chat.title
     group_username = msg.chat.username
