@@ -31,7 +31,7 @@ from pyrogram import filters
 from pyrogram import filters
 from pyrogram.types import Message
 
-from plugins.modules.Sticker.wbb import SUDOERS, USERBOT_PREFIX, app, app2, arq
+from plugins.modules.Sticker.wbb import SUDOERS, app, app2, arq
 from plugins.modules.Sticker.wb import capture_err
 
 __MODULE__ = "Quotly"
