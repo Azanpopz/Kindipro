@@ -1,6 +1,6 @@
 from io import BytesIO
 from traceback import format_exc
-
+from pyrogram import Client, filters
 from pyrogram import filters
 from pyrogram.types import Message
 
