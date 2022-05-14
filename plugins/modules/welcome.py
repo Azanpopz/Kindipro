@@ -1,48 +1,72 @@
-import os 
-from os import error
-import logging
-import pyrogram
-import time
-from decouple import config
+import os
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.types import User, Message, Sticker, Document, ChatMember
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
-Munnipopz = Client(
-    "Member-Sticker-Bot",
-    bot_token = os.environ["BOT_TOKEN"],
-    api_id = int(os.environ["API_ID"]),
-    api_hash = os.environ["API_HASH"]
+Munnipoz= Client(
+    "Welcome-Bot",
+     bot_token = os.environ["BOT_TOKEN"],
+     api_id = int(os.environ["API_ID"]),
+     api_hash = os.environ["API_HASH"]
 )
 
-HELP = """
-● Still Wonder How I Work ? 
-● Use /How get a Full Brief
-● Use /Donate to Donate
-"""
-START_BUTTON = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('ABOUT', url='https://t.me/nasrani_update'),
-        InlineKeyboardButton('HELP', url='https://t.me/nasrani_update')
-        ],
-        [
-        InlineKeyboardButton('↗ Join Here ↗', url='https://t.me/nasrani_update'),
-        ],
-        [InlineKeyboardButton('↗ ADD ME TO A GROUP ↗', url="https://t.me/nasrani_update")
-        ]]
-        
-    )
 
-@Client.on_message(filters.new_chat_members & filters.group)
-async def sticker_group(bot, message):
-   try:
-      reply_markup = START_BUTTON
-      chat_id = int(message.chat.id)
-      count = await bot.get_chat_members_count(chat_id)
-      await bot.message_text(
-          text=HELP,
-          reply_markup=reply_markup,
-          quote=True
-      )
-          
-          
+
+
+    
+@Munnipopz.on_message(filters.new_chat_members)
+async def auto_welcome(bot: Munnipopz, msg: Message):
+    # from PR0FESS0R-99 import ID-Bot
+    first = msg.from_user.first_name
+    last = msg.from_user.last_name
+    mention = msg.from_user.mention
+    username = msg.from_user.username
+    count = msg.chat.id
+    id = msg.from_user.id
+    group_name = msg.chat.title
+    group_username = msg.chat.username
+    name_button = "🔰 JOIN NOW 🔰"
+    link_button = "t.me/nasrani_update"
+    button_name = os.environ.get("WELCOME_BUTTON_NAME", name_button)
+    button_link = os.environ.get("WELCOME_BUTTON_LINK", link_button)
+    welcome_text = f"Hey {mention}\nWelcome To {group_name} your admission no {count}"
+    WELCOME_TEXT = os.environ.get("WELCOME_TEXT", welcome_text)
+    print("Welcome Message Activate")
+    BUTTON = bool(os.environ.get("WELCOME_BUTTON"))
+    if not BUTTON:
+       await msg.reply_text(text=WELCOME_TEXT.format(
+           first = msg.from_user.first_name,
+           last = msg.from_user.last_name,
+           username = None if not msg.from_user.username else '@' + msg.from_user.username,
+           mention = msg.from_user.mention,
+           id = msg.from_user.id,
+           group_name = msg.chat.title,
+           group_username = None if not msg.chat.username else '@' + msg.chat.username
+          )
+       )
+    else:
+       await msg.reply_text(text=WELCOME_TEXT.format(
+           first = msg.from_user.first_name,
+           last = msg.from_user.last_name,
+           username = None if not msg.from_user.username else '@' + msg.from_user.username,
+           mention = msg.from_user.mention,
+           id = msg.from_user.id,
+           group_name = msg.chat.title,
+           group_username = None if not msg.chat.username else '@' + msg.chat.username
+          ),
+       reply_markup=InlineKeyboardMarkup(
+               [
+                   [
+                       InlineKeyboardButton
+                           (
+                               button_name, url=button_link
+                           )
+                   ]  
+               ]
+           )
+       )  
+
+
+print("""Auto Welcome Bot Started
+
+Maintained By NASRANI_UPDATE""")
+
