@@ -1,6 +1,7 @@
 import os
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import User, Message, Sticker, Document, ChatMember
 
 Munnipoz= Client(
     "Welcome-Bot",
