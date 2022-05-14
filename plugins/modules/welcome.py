@@ -45,8 +45,8 @@ async def auto_welcome(bot, message):
     BUTTON = bool(os.environ.get("WELCOME_BUTTON"))
     if not BUTTON:
        await message.reply_text(text=WELCOME_TEXT.format(
-           chat_id = int(message.chat.id)
-           count = await message.get_chat_members_count(chat_id)
+           chat_id = int(message.chat.id),
+           count = await message.get_chat_members_count(chat_id),
            first = message.from_user.first_name,
            last = message.from_user.last_name,
            username = None if not message.from_user.username else '@' + message.from_user.username,
@@ -58,8 +58,8 @@ async def auto_welcome(bot, message):
        )
     else:
        await msg.reply_text(text=WELCOME_TEXT.format(
-           chat_id = int(message.chat.id)
-           count = await message.get_chat_members_count(chat_id)
+           chat_id = int(message.chat.id),
+           count = await message.get_chat_members_count(chat_id),
            first = message.from_user.first_name,
            last = message.from_user.last_name,
            username = None if not message.from_user.username else '@' + message.from_user.username,
