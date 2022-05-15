@@ -35,15 +35,22 @@ from Python_ARQ import ARQ
 from telegraph import Telegraph
 is_config = path.exists("config.py")
 
+is_config = path.exists("config.py")
+
 if is_config:
     from config import *
 else:
     from sample_config import *
 
-
-
+USERBOT_PREFIX = USERBOT_PREFIX
+GBAN_LOG_GROUP_ID = GBAN_LOG_GROUP_ID
+WELCOME_DELAY_KICK_SEC = WELCOME_DELAY_KICK_SEC
+LOG_GROUP_ID = LOG_GROUP_ID
+MESSAGE_DUMP_CHAT = MESSAGE_DUMP_CHAT
+MOD_LOAD = []
+MOD_NOLOAD = []
 SUDOERS = filters.user()
-bot_start_time = time.time()
+bot_start_time = time.time())
 
 
 class Log:
