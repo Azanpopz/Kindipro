@@ -86,16 +86,5 @@ mdisk
 
 
 
-future
-motor
-psutil
-pykeyboard
-python-arq
-search-engine-parser
-speedtest-cli
-uvloop
-bs4
-feedparser
-pyromod
 
 
