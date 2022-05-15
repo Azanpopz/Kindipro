@@ -40,33 +40,33 @@ BOT_TOKEN="2136734155:AAF96J6etbq_zpsjrG2fydGuLwHV4l43D4Q"
 
 API_ID="1778836"
 
-API_HASH=7bcf61fcd32b8652cd5876b02dcf57ae
+API_HASH="7bcf61fcd32b8652cd5876b02dcf57ae"
 
-SESSION_STRING=BQA8Omi7tl41FSWCOa5PFzSQrZqdypRTx5mq7oLULKDYplnPNrUeL5nC-luRC4A1V5BRVDeEKHOwjCJpNrvvstOlRV2gXPttxVyCknunSkxhQHK_aUQgM_prv3enFlBj1yfdjzyypGCOhaRKpQuM5y3RKmMlQ-w2aAL9noUyjDA1BuVY5YC2ZcxAWcz3lALmnC09P4BA0ANPHuArI8Bd6mZeP4AZb0mRhynnejmWL9pM3iW2pe2KRjpt54W-Q1vXZTGNVf1uzx7Z0iJNSPFa3YVOkgwoeUYgLE3VKH2imU3Fi4wtURMGVmWZAu3udl_xvA-S1cJn23ha7XJ2mCyfKfA0TQHpigA # Check Readme to generate sessions
+SESSION_STRING="BQA8Omi7tl41FSWCOa5PFzSQrZqdypRTx5mq7oLULKDYplnPNrUeL5nC-luRC4A1V5BRVDeEKHOwjCJpNrvvstOlRV2gXPttxVyCknunSkxhQHK_aUQgM_prv3enFlBj1yfdjzyypGCOhaRKpQuM5y3RKmMlQ-w2aAL9noUyjDA1BuVY5YC2ZcxAWcz3lALmnC09P4BA0ANPHuArI8Bd6mZeP4AZb0mRhynnejmWL9pM3iW2pe2KRjpt54W-Q1vXZTGNVf1uzx7Z0iJNSPFa3YVOkgwoeUYgLE3VKH2imU3Fi4wtURMGVmWZAu3udl_xvA-S1cJn23ha7XJ2mCyfKfA0TQHpigA" # Check Readme to generate sessions
 
-USERBOT_PREFIX=/
+USERBOT_PREFIX="/"
 
-SUDO_USERS_ID=1291970954 # Sudo users have full access to everythin, don't trust anyone
+SUDO_USERS_ID="1291970954" # Sudo users have full access to everythin, don't trust anyone
 
-LOG_GROUP_ID=-1001565141207
+LOG_GROUP_ID="-1001565141207"
 
-GBAN_LOG_GROUP_ID=-1001565141207
+GBAN_LOG_GROUP_ID="-1001565141207"
 
-MESSAGE_DUMP_CHAT=-1001565141207
+MESSAGE_DUMP_CHAT="-1001565141207"
 
-WELCOME_DELAY_KICK_SEC=300 # Edit if u want
+WELCOME_DELAY_KICK_SEC="300" # Edit if u want
 
-MONGO_URL=mongodb+srv://Munnipopz:Zebhamol@cluster0.wh5tr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+MONGO_URL="mongodb+srv://Munnipopz:Zebhamol@cluster0.wh5tr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
-ARQ_API_URL=https://arq.hamker.in # Leave it like this
+ARQ_API_URL="https://arq.hamker.in" # Leave it like this
 
-ARQ_API_KEY=AAZUZW-PKGMUA-HZUHZS-TSUNMJ-ARQ # Get it from @ARQRobot
+ARQ_API_KEY="AAZUZW-PKGMUA-HZUHZS-TSUNMJ-ARQ" # Get it from @ARQRobot
 
-LOG_MENTIONS=0 # Make it 1 if you want to enable it
+LOG_MENTIONS="0" # Make it 1 if you want to enable it
 
-RSS_DELAY=300 # In seconds
+RSS_DELAY="300" # In seconds
 
-PM_PERMIT=1 # fill 0 to disable it
+PM_PERMIT="1" # fill 0 to disable it
 
 
 is_config = path.exists("config.py")
