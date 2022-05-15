@@ -36,9 +36,9 @@ from telegraph import Telegraph
 
 
 
-BOT_TOKEN=2136734155:AAF96J6etbq_zpsjrG2fydGuLwHV4l43D4Q # Get it from @botfather
+BOT_TOKEN="2136734155:AAF96J6etbq_zpsjrG2fydGuLwHV4l43D4Q"
 
-API_ID=1778836
+API_ID="1778836"
 
 API_HASH=7bcf61fcd32b8652cd5876b02dcf57ae
 
