@@ -43,7 +43,7 @@ app = Client(
 
 
 '''Connecting To Database'''
-mongo_client = MongoClient(Config.DATABASE_URI)
+mongo_client = MongoClient(Config.DB_URL)
 db_bot = mongo_client['RequestTrackerBot']
 collection_ID = db_bot['channelGroupID']
 
