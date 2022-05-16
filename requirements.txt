@@ -84,9 +84,6 @@ dnspython
 git+https://github.com/HeimanPictures/mdisk.git
 mdisk
 
-dnspython==2.1.0
-pyaes==1.6.1
-PySocks==1.7.1
 
 
 
