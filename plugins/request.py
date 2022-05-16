@@ -85,7 +85,7 @@ async def chatHandler(bot:Update, msg:Message):
     return
 
 # return channel id when message/post from channel is forwarded
-@app.on_message(filters.forwarded & filters.private)
+@Client.on_message(filters.forwarded & filters.private)
 async def forwardedHandler(bot:Update, msg:Message):
     forwardInfo = msg.forward_from_chat
     if forwardInfo.type == "channel":   # If message forwarded from channel
