@@ -1351,7 +1351,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode='html'
 
         )
-    elif query.data == "covert":
+    elif query.data == "convert":
 
         buttons = [[
                                                                                   
