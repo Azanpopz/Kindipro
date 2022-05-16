@@ -55,7 +55,7 @@ requestRegex = "#[rR][eE][qQ][uU][eE][sS][tT] "
 """Handlers"""
 
 # Start & Help Handler
-@Client.on_message(filters.private & filters.command(["start", "help"]))
+@Client.on_message(filters.private & filters.command(["s", "h"]))
 async def startHandler(bot:Update, msg:Message):
     botInfo = await bot.get_me()
     await msg.reply_text(
@@ -96,7 +96,7 @@ async def forwardedHandler(bot:Update, msg:Message):
     return
 
 # /add handler to add group id & channel id with database
-@Client.on_message(filters.private & filters.command("add"))
+@Client.on_message(filters.private & filters.command("send"))
 async def groupChannelIDHandler(bot:Update, msg:Message):
     message = msg.text.split(" ")
     if len(message) == 3:   # If command is valid
