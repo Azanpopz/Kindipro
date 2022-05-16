@@ -23,12 +23,6 @@ B = bool(os.environ.get("B"))
 
 
 
-#!/usr/bin/env python3
-
-
-"""Importing"""
-from os import environ
-
 
 class Con(object):
     API_ID = int(environ.get("API_ID", 0))
