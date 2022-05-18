@@ -1947,7 +1947,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
             return
 
         
-        if 2 < len(message.text) < 100:
+        if 0 < len(message.text) < 100:
 
             search = message.text
 
