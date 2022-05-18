@@ -1947,6 +1947,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
             return
 
         
+        if 2 < len(message.text) < 100:
 
             search = message.text
 
@@ -1962,11 +1963,12 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
                     return
 
-        
+        else:
 
-            
+            return
 
     else:
+
 
         settings = await get_settings(msg.message.chat.id)
 
