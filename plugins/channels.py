@@ -3,7 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from config import CHANNEL_ID, CHANNELS
 from pyrogram import Client, filters
 from util import replace_mdisk_link, caption
-
+from info import CHANNELS
 import re
 
 
