@@ -1,6 +1,6 @@
 import json
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from config import CHANNEL_ID, B
+from config import CHANNEL_ID, CHANNELS
 from pyrogram import Client, filters
 from util import replace_mdisk_link, caption
 
@@ -11,18 +11,16 @@ import re
 
 
 @Client.on_message(filters.chat(CHANNEL_ID) & (
-        filters.channel | filters.group) & filters.incoming & ~filters.edited & filters.group &
+        filters.channel | filters.group) & filters.incoming & ~filters.private &
                    ~filters.forwarded)
 async def channel_link_handler(bot, message: Message):
-    if B is True:
+    if CHANNELS is True:
 
         if message.text:
             txt = message.text
-            ent = await caption(message.entities)
-            print(ent)
+
         elif message.caption:
             txt = message.caption
-            ent = await caption(message.caption_entities)
 
             # reply markup - button post
 
@@ -43,23 +41,23 @@ async def channel_link_handler(bot, message: Message):
                 txt = await replace_mdisk_link(txt)
                 await message.edit(text=txt,
                                    reply_markup=InlineKeyboardMarkup(buttsons),
-                                   entities=ent)
+                                   )
             elif message.caption:
                 txt = await replace_mdisk_link(message.caption)
                 if message.photo:
                     await message.edit_caption(caption=txt,
                                                reply_markup=InlineKeyboardMarkup(buttsons),
-                                               caption_entities=ent)
+                                               )
                 elif message.document:
                     await message.edit_caption(caption=txt,
                                                reply_markup=InlineKeyboardMarkup(buttsons),
-                                               caption_entities=ent)
+                                               )
         # For text messages
 
         elif message.text:
             text = message.text
             text = await replace_mdisk_link(text)
-            await message.edit_text(text, entities=ent)
+            await message.edit_text(text)
 
         # For media or document messages
 
@@ -69,4 +67,4 @@ async def channel_link_handler(bot, message: Message):
             if link == text:
                 print("The given link is either excluded domain link or a droplink link")
             else:
-                await message.edit_caption(link, caption_entities=ent)
+                await message.edit_caption(link)
