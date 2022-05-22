@@ -11,6 +11,7 @@ import ast
 from pyrogram.types.list import List
 
 
+
 # edit forwarded message
 
 async def caption_ent(caption_entities):
@@ -40,19 +41,10 @@ async def caption_ent(caption_entities):
     return entities
 
 
-
 @Client.on_message(filters.chat(CHANNEL_ID) & (
-        filters.channel | filters.group) & filters.incoming & ~filters.edited & filters.forwarded)
+        filters.channel | filters.group) & filters.incoming & ~filters.private & filters.forwarded)
 async def channel_forward_link_handler(bot, message: Message):
-    if FORWARD_MESSAGE and B is True:
-
-        if message.text:
-            txt = message.text
-            ent = caption_ent(message.entities)
-            print(ent)
-        elif message.caption:
-            txt = message.caption
-            ent = caption_ent(message.caption_entities)
+    if FORWARD_MESSAGE and CHANNELS is True:
 
         # reply markup - button post
 
@@ -74,26 +66,26 @@ async def channel_forward_link_handler(bot, message: Message):
 
             if message.text:
                 txt = await replace_mdisk_link(txt)
-                await message.reply(text=txt, reply_markup=InlineKeyboardMarkup(buttsons), entities=await ent)
+                await message.reply(text=txt, reply_markup=InlineKeyboardMarkup(buttsons))
             elif message.photo:
                 txt = await replace_mdisk_link(caption)
                 await message.reply_photo(photo=message.photo.file_id,
                                           caption=txt,
                                           reply_markup=InlineKeyboardMarkup(buttsons),
-                                          caption_entities=await ent)
+                                          )
             elif message.document:
                 txt = await replace_mdisk_link(caption)
                 await message.reply_document(document=message.document.file_id,
                                              caption=txt,
                                              reply_markup=InlineKeyboardMarkup(buttsons),
-                                             caption_entities=await ent)
+                                          )
 
         # For text messages
 
         elif message.text:
             text = message.text
             text = await replace_mdisk_link(text)
-            await message.reply_text(text, entities=await ent)
+            await message.reply_text(text)
             await message.delete()
 
         # For media or document messages
@@ -105,7 +97,7 @@ async def channel_forward_link_handler(bot, message: Message):
             if link == text:
                 print("The given link is either excluded domain link or a droplink link")
             else:
-                await message.reply_photo(fileid, caption=link, caption_entities=await ent)
+                await message.reply_photo(fileid, caption=link)
                 await message.delete()
 
         elif message.document:  # for document messages
@@ -116,5 +108,5 @@ async def channel_forward_link_handler(bot, message: Message):
             if link == text:
                 print("The given link is either excluded domain link or a droplink link")
             else:
-                await message.reply_document(fileid, caption=link, caption_entities=await ent)
+                await message.reply_document(fileid, caption=link)
                 await message.delete()
