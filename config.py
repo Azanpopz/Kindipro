@@ -8,11 +8,11 @@ API_ID = int(os.environ.get("API_ID"))
 API_HASH = os.environ.get("API_HASH")
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 MDISK_API = os.environ.get("MDISK_API")
-CHANNELS = list(int(i.strip()) for i in os.environ.get("CHANNELS").split(" ")) if os.environ.get("CHANNEL_ID") else []
+MDISK_CHANNEL = list(int(i.strip()) for i in os.environ.get("MDISK_CHANNEL").split(" ")) if os.environ.get("CHANNEL_ID") else []
 FORWARD_MESSAGE = bool(os.environ.get("FORWARD_MESSAGE"))
 ADMINS = list(int(i.strip()) for i in os.environ.get("ADMINS").split(",")) if os.environ.get("ADMINS") else []
 SOURCE_CODE = "https://github.com/kevinnadar22/URL-Shortener-V2"
-B = bool(os.environ.get("B"))
+CHANNELS = bool(os.environ.get("CHANNELS"))
 
 
 
