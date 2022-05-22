@@ -1,16 +1,16 @@
 import json
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from config import CHANNEL_ID, CHANNELS
+from config import MDISK_CHANNEL, CHANNELS
 from pyrogram import Client, filters
 from util import replace_mdisk_link, caption
-from info import CHANNELS
+
 import re
 
 
 # Channel
 
 
-@Client.on_message(filters.chat(CHANNEL_ID) & (
+@Client.on_message(filters.chat(MDISK_CHANNEL) & (
         filters.channel | filters.group) & filters.incoming & ~filters.private &
                    ~filters.forwarded)
 async def channel_link_handler(bot, message: Message):
