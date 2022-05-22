@@ -1,7 +1,7 @@
 import json
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
-from utils import replace_mdisk_link, caption
+from util import replace_mdisk_link, caption
 from config import ADMINS, SOURCE_CODE
 from pyrogram.types import Message
 import re
