@@ -53,7 +53,7 @@ async def find(_, message):
         f"➲Magnet: `{a[i]['Magnet']}`\n\n\n"
     )
     
-    )
+    
     await m.edit(
         result,
         reply_markup=InlineKeyboardMarkup(
