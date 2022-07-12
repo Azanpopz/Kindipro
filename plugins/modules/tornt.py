@@ -53,5 +53,106 @@ async def find(_, message):
         f"➲Magnet: `{a[i]['Magnet']}`\n\n\n"
     )
     
+    )
+    await m.edit(
+        result,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(f"Next",
+                                         callback_data="next"),
+                    InlineKeyboardButton(f"{emoji.CROSS_MARK}",
+                                         callback_data="delete")
+                ]
+            ]
+        ),
+        parse_mode="markdown",
+    )
+
+
+@Client.on_callback_query(filters.regex("next"))
+async def callback_query_next(_, message):
+    global i
+    global m
+    global a
+    global query
+    i += 1
+    result = (
+        f"**Page - {i+1}**\n\n"
+        f"➲Name: {a[i]['Name']}\n"
+        f"➲{a[i]['Uploader']} on "
+        f"{a[i]['Date']}\n" 
+        f"➲Size: {a[i]['Size']}\n"
+        f"➲Leechers: {a[i]['Leechers']} || "
+        f"➲Seeders: {a[i]['Seeders']}\n"
+        f"➲Type: {a[i]['Category']}\n"
+        f"➲Magnet: `{a[i]['Magnet']}`\n\n\n"
+    )
+    await m.edit(
+        result,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(f"Prev",
+                                         callback_data="previous"),
+                    InlineKeyboardButton(f"{emoji.CROSS_MARK}",
+                                         callback_data="delete"),
+                    InlineKeyboardButton(f"Next",
+                                         callback_data="next")
+                    
+                ]
+            ]
+        ),
+        parse_mode="markdown",
+    )
+
+
+@Client.on_callback_query(filters.regex("previous"))
+async def callback_query_previous(_, message):
+    global i
+    global m
+    global a
+    global query
+    i -= 1
+    result = (
+        f"**Page - {i+1}**\n\n"
+        f"➲Name: {a[i]['Name']}\n"
+        f"➲{a[i]['Uploader']} on "
+        f"{a[i]['Date']}\n" 
+        f"➲Size: {a[i]['Size']}\n"
+        f"➲Leechers: {a[i]['Leechers']} || "
+        f"➲Seeders: {a[i]['Seeders']}\n"
+        f"➲Type: {a[i]['Category']}\n"
+        f"➲Magnet: `{a[i]['Magnet']}`\n\n\n"
+    )
+    await m.edit(
+        result,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(f"Prev",
+                                         callback_data="previous"),
+                    InlineKeyboardButton(f"{emoji.CROSS_MARK}",
+                                         callback_data="delete"),
+                    InlineKeyboardButton(f"Next",
+                                         callback_data="next")
+                ]
+            ]
+        ),
+        parse_mode="markdown",
+    )
+
+
+@Client.on_callback_query(filters.regex("delete"))
+async def callback_query_delete(_, message):
+    global m
+    global i
+    global a
+    global query
+    await m.delete()
+    m = None
+    i = 0
+    a = None
+    query = None
 
 
