@@ -26,6 +26,7 @@ pendulum
 pytesseract
 pyshorteners
 heroku3
+Heroku3
 
 python-decouple
 speedtest-cli
