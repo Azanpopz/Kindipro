@@ -69,14 +69,13 @@ async def find(_, message):
                     InlineKeyboardButton(f"Next",
                                          callback_data="next"),
                     InlineKeyboardButton(f"{emoji.CROSS_MARK}",
-                                         callback_data="delete")
+                                         callback_data="close_data")
                 ]
             ]
         ),
         parse_mode="markdown",
     )
-    await asyncio.sleep(1)
-    await m.delete(
+    
 
 @Client.on_callback_query(filters.regex("next"))
 async def callback_query_next(_, message):
