@@ -9,6 +9,12 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
+api_id = 123456789 #int of api id get from my.telegram.org
+api_hash = " Your Api Hash Here " #str of api hash get from my.telegram.org
+token = ' Your Bot Token here ' #str of token get from BotFather
+
+bot = Client('Session_Name', api_id, api_hash, bot_token=token, workers = 4 )
+
 
 bot.set_parse_mode('md')
 @Client.on_message(filters.command("pm" '.') & filters.private & filters.text)
