@@ -103,7 +103,7 @@ async def callback_query_next(_, message):
                     InlineKeyboardButton(f"Prev",
                                          callback_data="previous"),
                     InlineKeyboardButton(f"{emoji.CROSS_MARK}",
-                                         callback_data="delete"),
+                                         callback_data="close_data"),
                     InlineKeyboardButton(f"Next",
                                          callback_data="next")
                     
@@ -140,7 +140,7 @@ async def callback_query_previous(_, message):
                     InlineKeyboardButton(f"Prev",
                                          callback_data="previous"),
                     InlineKeyboardButton(f"{emoji.CROSS_MARK}",
-                                         callback_data="delete"),
+                                         callback_data="close_data"),
                     InlineKeyboardButton(f"Next",
                                          callback_data="next")
                 ]
