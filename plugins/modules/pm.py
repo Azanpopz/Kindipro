@@ -21,7 +21,7 @@ bot.set_parse_mode('md')
 async def pm_text(client: Client, message):
     try:
         if message.from_user.id == ADMIN:
-            await reply_text(client, message)
+            await m.reply_text(client, message)
             return
         info = await client.get_users(user_ids=message.from_user.id)
         reference_id = int(message.chat.id)
