@@ -9,19 +9,12 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-api_id = 123456789 #int of api id get from my.telegram.org
-api_hash = " Your Api Hash Here " #str of api hash get from my.telegram.org
-token = ' Your Bot Token here ' #str of token get from BotFather
 
-bot = Client('Session_Name', api_id, api_hash, bot_token=token, workers = 4 )
-
-
-bot.set_parse_mode('md')
 @Client.on_message(filters.command("pm" '.') & filters.private & filters.text)
 async def pm_text(client: Client, message):
     try:
         if message.from_user.id == ADMIN:
-            await m.reply_text(client, message)
+            await reply_text(client, message)
             return
         info = await client.get_users(user_ids=message.from_user.id)
         reference_id = int(message.chat.id)
