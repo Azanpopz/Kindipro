@@ -3,7 +3,7 @@
 import asyncio
 import re
 import ast
-
+import math
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 from myscript import script
@@ -254,7 +254,7 @@ async def next_page(bot, query):
 
             [InlineKeyboardButton("⟲𝐁𝐀𝐂𝐊⟲", callback_data=f"next_{req}_{key}_{off_set}"),
 
-             InlineKeyboardButton(f"📃 𝐏𝐀𝐆𝐄 {round(int(offset) / 10) + 1} / {round(total / 10)}",
+             InlineKeyboardButton(f"📃 Pages {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}",
 
                                   callback_data="pages")]
 
@@ -264,7 +264,7 @@ async def next_page(bot, query):
 
         btn.append(
 
-            [InlineKeyboardButton(f"❎ {round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
+            [InlineKeyboardButton(f"🗓 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
 
              InlineKeyboardButton("⟳𝐍𝐄𝐗𝐓⟳", callback_data=f"next_{req}_{key}_{n_offset}")])
 
@@ -276,7 +276,7 @@ async def next_page(bot, query):
 
                 InlineKeyboardButton("⟲𝐁𝐀𝐂𝐊⟲", callback_data=f"next_{req}_{key}_{off_set}"),
 
-                InlineKeyboardButton(f"❎ {round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
+                InlineKeyboardButton(f"🗓 {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}", callback_data="pages"),
 
                 InlineKeyboardButton("⟳𝐍𝐄𝐗𝐓⟳", callback_data=f"next_{req}_{key}_{n_offset}")
 
@@ -2095,7 +2095,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
         btn.append(
 
-            [InlineKeyboardButton(text=f"❎ 1/{round(int(total_results) / 10)}", callback_data="pages"),
+            [InlineKeyboardButton(text=f"🗓 1/{math.ceil(int(total_results) / 10)}", callback_data="pages"),
 
              InlineKeyboardButton(text="⟳𝐍𝐄𝐗𝐓⟳", callback_data=f"next_{req}_{key}_{offset}")]
 
