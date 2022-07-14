@@ -3,7 +3,7 @@ import aiohttp
 import json
 from pyrogram import Client, filters, emoji
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
+import asyncio
 
 app = Client("trntsrcbot", api_id=int(os.environ.get("API_ID")), api_hash=os.environ.get("API_HASH"), bot_token=os.environ.get("BOT_TOKEN"))
 
@@ -61,7 +61,7 @@ async def find(_, message):
         f"➲Type: {a[i]['Category']}\n"
         f"➲Magnet: `{a[i]['Magnet']}`\n\n\n"
     )
-    await m.edit(
+    sts await m.edit(
         result,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -75,7 +75,8 @@ async def find(_, message):
         ),
         parse_mode="markdown",
     )
-
+    await asyncio.sleep(1)
+    await sts.delete(
 
 @Client.on_callback_query(filters.regex("next"))
 async def callback_query_next(_, message):
