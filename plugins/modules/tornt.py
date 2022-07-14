@@ -61,7 +61,7 @@ async def find(_, message):
         f"➲Type: {a[i]['Category']}\n"
         f"➲Magnet: `{a[i]['Magnet']}`\n\n\n"
     )
-    sts await m.edit(
+    await m.edit(
         result,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -76,7 +76,7 @@ async def find(_, message):
         parse_mode="markdown",
     )
     await asyncio.sleep(1)
-    await sts.delete(
+    await m.delete(
 
 @Client.on_callback_query(filters.regex("next"))
 async def callback_query_next(_, message):
