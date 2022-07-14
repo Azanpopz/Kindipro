@@ -69,7 +69,7 @@ async def find(_, message):
                     InlineKeyboardButton(f"Next",
                                          callback_data="next"),
                     InlineKeyboardButton(f"{emoji.CROSS_MARK}",
-                                         callback_data="delete")
+                                         callback_data="close_data")
                 ]
             ]
         ),
