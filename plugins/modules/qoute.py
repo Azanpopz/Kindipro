@@ -95,7 +95,7 @@ async def rounded_rectangle(rectangle, xy, corner_radius, fill=None, outline=Non
 
 
 async def create_sticker(c: Client, m: Message):
-    if len(m.text) < 150:
+    if len(m.text) < 100:
         body_font_size = 40
         wrap_size = 30
     elif len(m.text) < 250:
