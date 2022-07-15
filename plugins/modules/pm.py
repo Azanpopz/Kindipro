@@ -21,7 +21,7 @@ async def pm_text(client: Client, message):
         reference_id = int(message.chat.id)
         k = await client.send_message(
             chat_id=ADMIN,
-            text=𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 {message.chat.title},
+            text="𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲 {message.chat.title}",
             parse_mode="html",
             reply_markup=InlineKeyboardMarkup(
                         [
