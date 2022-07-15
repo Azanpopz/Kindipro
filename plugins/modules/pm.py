@@ -20,7 +20,7 @@ async def pm_text(client: Client, message):
         reference_id = int(message.chat.id)
         k = await client.send_message(
             chat_id=ADMIN,
-            text=script.PM_TXT_ATT.format(reference_id, info.first_name, message.text),
+            text=script.MENU_TEXT.format(query.from_user.mention, temp.U_NAME, temp.B_NAME),
             parse_mode="html",
             reply_markup=InlineKeyboardMarkup(
                         [
