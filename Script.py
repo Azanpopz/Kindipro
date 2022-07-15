@@ -288,7 +288,7 @@ Name - {}
 
 
     USER_DETAILS = "<b>PM FROM:</b>\nName: {} {}\nId: {}\nUname: @{}\nScam: {}\nRestricted: {}\nStatus: {}\nDc Id: {}"
-    PM_TXT_ATT = "<b>Message from:</b> {}\n<b>Name:</b> {}\n\n{}"
+    PM_TXT_ATT = "<b> {message.chat.title} Message from:</b> {}\n<b>Name:</b> {}\n\n{}"
     PM_MED_ATT = "<b>Message from:</b> {} \n<b>Name:</b> {}"
 
     MY_CAPTION = "FILE : <code>{file_name}</code> \nSize : <i>{file_size}</i>\n\n Hello {message.from_user.first_name} \n\n⚠️ കോപ്പി റൈറ്റ് ഉള്ളത് കൊണ്ട് ഈ ഒരു ഫയൽ 1 മണിക്കൂർകൊണ്ട് ഇവിടെ നിന്നും ഡിലേറ്റാവും...!!!\n\nഇവിടെ നിന്നും വേറെ എവിടേലും മാറ്റിയതിന് ശേഷം ഡൗൺലോഡ് ചെയ്യുക...!!!\n\nFILES FORWARD TO YOUR SAVED MESSAGES\n\nAll files here Gets Deleted With in 1 hour."
