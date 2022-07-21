@@ -2223,17 +2223,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
     else:
 
-        buttons = [
-
-                [
-
-                    InlineKeyboardButton(f"{message.from_user.mention}", url=f"https://t.me/NasraniSeries"),
-
-                    InlineKeyboardButton('SUPPORT', url='https://t.me/NasraniChatGroup'),
-
-                ]
-
-                ]
+        
 
         fmsg = await message.reply_photo(
                caption=f"👮‍♂ {message.from_user.mention} ɴᴏᴛɪᴄᴇ :ɪ𝙵 ʏᴏᴜ ᴅᴏ ɴᴏᴛ sᴇᴇ ᴛʜᴇ 𝙵ɪʟᴇ𝚂 ᴏ𝙵 ᴛʜɪ𝚂 ᴍᴏᴠɪᴇ ʏᴏᴜ ᴀ𝚂ᴋᴇᴅ 𝙵ᴏʀ. ʟᴏᴏᴋ ᴀᴛ ɴᴇ𝚇ᴛ ᴘᴀɢᴇ🔎\n©️քօաɛʀɛɖ ɮʏ :{message.chat.title}",
@@ -2242,11 +2232,23 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
                reply_markup=InlineKeyboardMarkup(btn))
 
     
-
+ 
     await asyncio.sleep(180)
 
     await fmsg.delete()
 
+
+    buttons = [
+
+            [
+
+                InlineKeyboardButton(f"{message.from_user.mention}", url=f"https://t.me/NasraniSeries"),
+
+                InlineKeyboardButton('SUPPORT', url='https://t.me/NasraniChatGroup'),
+
+            ]
+
+            ]
     await message.reply_text(text=f"⚙️ {message.from_user.mention} Fɪʟᴛᴇʀ Fᴏʀ {search} Cʟᴏꜱᴇᴅ 🗑️")
 
     
