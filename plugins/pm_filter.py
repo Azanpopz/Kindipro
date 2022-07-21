@@ -118,7 +118,7 @@ async def next_page(bot, query):
 
     if int(req) not in [query.from_user.id, 0]:
 
-        return await query.answer(f"{query.from_user.first_name}", show_alert=True)
+        return await query.answer(f"ഹലോ {query.from_user.first_name} മൂവി വേണമെങ്കിൽ മൂവിയുടെ പേര് അയക്കുക ", show_alert=True)
 
     try:
 
@@ -312,7 +312,7 @@ async def advantage_spoll_choker(bot, query):
 
     if int(user) != 0 and query.from_user.id != int(user):
 
-        return await query.answer(f"{query.from_user.first_name} For You", show_alert=True)
+        return await query.answer(f"ഹലോ {query.from_user.first_name} മൂവി വേണമെങ്കിൽ മൂവിയുടെ പേര് അയക്കുക", show_alert=True)
 
     if movie_ == "close_spellcheck":
 
@@ -806,7 +806,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if int(rid) not in [query.from_user.id, 0]:
 
-            return await query.answer(f"{query.from_user.first_name} 🤥", show_alert=True)
+            return await query.answer(f"ഹലോ {query.from_user.first_name} മൂവി വേണമെങ്കിൽ മൂവിയുടെ പേര് അയക്കുക", show_alert=True)
 
 
 
@@ -921,7 +921,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if int(rid) not in [query.from_user.id, 0]:
 
-            return await query.answer(f"{query.from_user.first_name}🙏", show_alert=True)
+            return await query.answer(f"ഹലോ {query.from_user.first_name} മൂവി വേണമെങ്കിൽ മൂവിയുടെ പേര് അയക്കുക", show_alert=True)
 
 
 
