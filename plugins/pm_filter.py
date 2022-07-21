@@ -312,7 +312,7 @@ async def advantage_spoll_choker(bot, query):
 
     if int(user) != 0 and query.from_user.id != int(user):
 
-        return await query.answer(f"{query.from_user.mention} For You", show_alert=True)
+        return await query.answer(f"{query.from_user.first_name}" For You", show_alert=True)
 
     if movie_ == "close_spellcheck":
 
