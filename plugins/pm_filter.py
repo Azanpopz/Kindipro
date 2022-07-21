@@ -118,7 +118,7 @@ async def next_page(bot, query):
 
     if int(req) not in [query.from_user.id, 0]:
 
-        return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
+        return await query.answer(f"{message.from_user.mention}, show_alert=True)
 
     try:
 
@@ -806,7 +806,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if int(rid) not in [query.from_user.id, 0]:
 
-            return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
+            return await query.answer(f"{message.from_user.mention}, show_alert=True)
 
 
 
