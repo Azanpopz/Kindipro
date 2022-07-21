@@ -921,7 +921,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if int(rid) not in [query.from_user.id, 0]:
 
-            return await query.answer(UNAUTHORIZED_CALLBACK_TEXT, show_alert=True)
+            return await query.answer(f"{query.from_user.first_name}🙏", show_alert=True)
 
 
 
