@@ -806,7 +806,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if int(rid) not in [query.from_user.id, 0]:
 
-            return await query.answer(f"{query.from_user.mention} 🤥, show_alert=True)
+            return await query.answer({query.from_user.mention} 🤥, show_alert=True)
 
 
 
