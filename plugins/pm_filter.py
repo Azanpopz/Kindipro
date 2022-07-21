@@ -2242,7 +2242,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
             [
 
-                InlineKeyboardButton(f"{message.from_user.mention}", url=f"https://t.me/NasraniSeries"),
+                InlineKeyboardButton(f"{query.from_user.first_name}", url=f"https://t.me/NasraniSeries"),
 
                 InlineKeyboardButton('SUPPORT', url='https://t.me/NasraniChatGroup'),
 
