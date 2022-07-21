@@ -2249,7 +2249,10 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
             ]
 
             ]
-    await message.reply_text(text=f"⚙️ {message.from_user.mention} Fɪʟᴛᴇʀ Fᴏʀ {search} Cʟᴏꜱᴇᴅ 🗑️")
+    await message.reply_text(text=f"⚙️ {message.from_user.mention} Fɪʟᴛᴇʀ Fᴏʀ {search} Cʟᴏꜱᴇᴅ 🗑️",
+    reply_markup=InlineKeyboardMarkup(buttons)
+    )               
+            
 
     
 
