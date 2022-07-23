@@ -2252,7 +2252,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
             ]
     await message.reply_photo(
     photo=random.choice(SP),
-    text=f"⚙️ {message.from_user.mention} Fɪʟᴛᴇʀ Fᴏʀ {search} Cʟᴏꜱᴇᴅ 🗑️",
+    caption=f"⚙️ {message.from_user.mention} Fɪʟᴛᴇʀ Fᴏʀ {search} Cʟᴏꜱᴇᴅ 🗑️",
     reply_markup=InlineKeyboardMarkup(buttons)
     )               
             
