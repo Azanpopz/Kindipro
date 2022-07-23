@@ -2245,7 +2245,7 @@ async def auto_filter(client, msg: pyrogram.types.Message, spoll=False):
 
                 InlineKeyboardButton(f"{message.from_user.first_name}", url=f"https://t.me/NasraniSeries"),
 
-                InlineKeyboardButton('SUPPORT', url='google.com/search?q={message.replace(' ','+')}'),
+                InlineKeyboardButton('SUPPORT', url=f'google.com/search?q={message.replace(' ','+')}'),
 
             ]
 
