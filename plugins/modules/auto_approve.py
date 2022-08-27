@@ -12,7 +12,7 @@ pr0fess0r_99=Client(
 )
 
 CHAT_ID=int(os.environ.get("CHAT_ID", None))
-TEXT=os.environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title}\n\nYour Auto Approved")
+TEXT=os.environ.get("APPROVED_WELCOME_TEXT", "ʜᴇʟʟᴏ {mention}\nᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴍʏ ᴄʜᴀɴɴᴇʟ.{title}\n\nᴏɴʟʏ ɴᴇᴡ ᴀɴᴅ ʟᴏᴡ ꜱɪᴢᴇ ᴍᴏᴠɪᴇ ᴀᴠᴀɪʟᴀʙʟᴇ. ᴇɴᴊᴏʏɪɴɢ🔥🔥")
 APPROVED = os.environ.get("APPROVED_WELCOME", "on").lower()
 
 @Client.on_chat_join_request(filters.chat(CHAT_ID))
