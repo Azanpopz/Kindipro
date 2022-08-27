@@ -1,6 +1,8 @@
 import os
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, User, ChatJoinRequest
+from myscript import script
+
 
 pr0fess0r_99=Client(
     "Auto Approved Bot",
@@ -20,7 +22,8 @@ async def autoapprove(client: pr0fess0r_99, message: ChatJoinRequest):
     print(f"{user.first_name} Joined 🤝") # Logs
     await client.approve_chat_join_request(chat_id=chat.id, user_id=user.id)
     if APPROVED == "on":
-        await client.send_message(chat_id=chat.id, text=Hello {mention}\nWelcome To {title}\n\nYour Auto Approved.format(mention=user.mention, title=chat.title))
+        await client.send_message(chat_id=chat.id,
+        text=script.AUTO_APPROVE.format(mention=user.mention, title=chat.title))
         print("Welcome....")
 
 print("Auto Approved Bot")
