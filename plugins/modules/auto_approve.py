@@ -11,6 +11,7 @@ pr0fess0r_99=Client(
     api_hash = os.environ["API_HASH"]
 )
 
+APPROVED = os.environ.get("APPROVED_WELCOME", "on").lower()
 
 @Client.on_chat_join_request(filters.chat(-1001775347865))
 async def autoapprove(client: pr0fess0r_99, message: ChatJoinRequest):
