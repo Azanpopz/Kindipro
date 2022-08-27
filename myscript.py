@@ -123,4 +123,7 @@ class script(object):
                                   
     MENU_TEXT = """𝙷𝙴𝚈 {}
 𝙷𝙴𝚁𝙴 𝙸𝚂 𝙼𝚈 𝙷𝙴𝙻𝙿 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂."""
+
+
+AUTO_APPROVE = """𝙷𝙴𝚈 {mention}\nWelcome To {title}\n\nYour Auto Approved"""
                                    
