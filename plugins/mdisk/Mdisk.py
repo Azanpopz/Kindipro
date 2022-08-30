@@ -12,6 +12,8 @@ from bs4 import BeautifulSoup
 import requests
 import re
 
+
+
 API_ID = environ.get('API_ID')
 API_HASH = environ.get('API_HASH')
 BOT_TOKEN = environ.get('BOT_TOKEN')
@@ -25,7 +27,7 @@ bot = Client('Doodstream bot',
              sleep_threshold=0)
 
 
-@Client.on_message(filters.command('start') & filters.private)
+@Client.on_message(filters.command('md') & filters.private)
 async def start(bot, message):
     await message.reply(
         f"**Hi, {message.chat.first_name} !!**\n\n"
