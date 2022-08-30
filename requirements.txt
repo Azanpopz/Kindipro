@@ -85,7 +85,9 @@ dnspython
 git+https://github.com/HeimanPictures/mdisk.git
 mdisk
 
-
+pyshorteners
+#doodstream
+unshortenit
 
 
 
