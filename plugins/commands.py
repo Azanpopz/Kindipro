@@ -24,7 +24,7 @@ BATCH_FILES = {}
 async def start(client, message):
     if message.chat.type in ['group', 'supergroup']:
         await message.reply_chat_action("Typing")
-        m=await message.reply_sticker("CAACAgUAAx0CQTCW0gABB5EUYkx6-OZS7qCQC6kNGMagdQOqozoAAgQAA8EkMTGJ5R1uC7PIECME") 
+        m=await message.reply_sticker("CAACAgIAAxkBAAEFv-RjE6FZH1I3vU1E_WZS9UGxmtb1BQACVBYAAtB7QUn8uVjZ80ZWKCkE") 
         await asyncio.sleep(2)
         await m.delete()
         buttons = [[            
@@ -65,7 +65,7 @@ async def start(client, message):
         )
     if len(message.command) != 2:
         await message.reply_chat_action("Typing")
-        m=await message.reply_sticker("CAACAgUAAx0CQTCW0gABB5EUYkx6-OZS7qCQC6kNGMagdQOqozoAAgQAA8EkMTGJ5R1uC7PIECME") 
+        m=await message.reply_sticker("CAACAgIAAxkBAAEFv-ZjE6Gkg2phGxVjkuXmK-r6Vs0KxAACKRgAAhP_2UkVxgiD_rlLGSkE") 
         await asyncio.sleep(2)
         await m.delete()
         buttons = [[            
@@ -112,7 +112,7 @@ async def start(client, message):
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
             InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TeamEvamaria')
+            InlineKeyboardButton(' Updates', url='https://t.me/botsupportp')
             ],[
             InlineKeyboardButton('ℹ️ Help', callback_data='help'),
             InlineKeyboardButton('😊 About', callback_data='about')
@@ -127,7 +127,7 @@ async def start(client, message):
         return
     if len(message.command) ==2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         await message.reply_chat_action("Typing")
-        m=await message.reply_sticker("CAACAgUAAx0CQTCW0gABB5EUYkx6-OZS7qCQC6kNGMagdQOqozoAAgQAA8EkMTGJ5R1uC7PIECME") 
+        m=await message.reply_sticker("CAACAgIAAxkBAAEFv-pjE6IZgVftB2vR-gPCakYZ7trXVQACzhcAAumO4ElItaUifzpKfSkE") 
         await asyncio.sleep(2)
         await m.delete()
         buttons = [[            
@@ -188,7 +188,7 @@ async def start(client, message):
                     reply_markup=InlineKeyboardMarkup(
                          [
                              [
-                                 InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="https://t.me/+YCA-JWZDNsJkNmI1")
+                                 InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="https://t.me/automovieatebot")
                              ],
                              [
                                  InlineKeyboardButton('🧩𝐆𝐨𝐨𝐠𝐥𝐞🧩', url="https://imdb.com"),
@@ -291,7 +291,7 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(
                          [
                              [
-                                 InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="https://t.me/+YCA-JWZDNsJkNmI1")
+                                 InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="https://t.me/automovieatebot")
                              ],
                              [
                                  InlineKeyboardButton('🧩𝐆𝐨𝐨𝐠𝐥𝐞🧩', url="https://imdb.com"),
@@ -302,7 +302,7 @@ async def start(client, message):
                  )
                     
         
-    await message.reply(f"<b><a href='https://t.me/NasraniChatGroup'>Thank For Using Me...</a></b>")
+    await message.reply(f"<b><a href='https://t.me/'>Thank For Using Me...</a></b>")
     
 
 @Client.on_message(filters.command('channel') & filters.user(ADMINS))
