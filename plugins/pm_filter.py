@@ -39,7 +39,7 @@ SPELL_CHECK = {}
 
 FILTER_MOD = {}
 
-BTN = InlineKeyboardMarkup([[InlineKeyboardButton('✨JOIN✨', url='https://t.me/nasrani_update')]])
+BTN = InlineKeyboardMarkup([[InlineKeyboardButton('✨JOIN✨', url='https://t.me/at3movies')]])
 
 
 A = """https://telegra.ph/file/3cc0e41bf1e1c00828e55.jpg"""
@@ -168,7 +168,7 @@ async def next_page(bot, query):
 
                 InlineKeyboardButton(
 
-                        text=f"🐠 [{get_size(file.file_size)}]🐠{file.file_name}🐠", 
+                        text=f"❤️‍🔥 [{get_size(file.file_size)}]❤️‍🔥{file.file_name}❤️‍🔥", 
 
                         callback_data=f'{pre}_#{file.file_id}#{query.from_user.id}'
 
@@ -188,7 +188,7 @@ async def next_page(bot, query):
 
                 InlineKeyboardButton(
 
-                    text=f"🐠{file.file_name}🐠",
+                    text=f"❤️‍🔥{file.file_name}❤️‍🔥",
 
                     callback_data=f'{pre}_#{file.file_id}#{query.from_user.id}',
 
@@ -196,7 +196,7 @@ async def next_page(bot, query):
 
                 InlineKeyboardButton(
 
-                    text=f"🐠{get_size(file.file_size)}🐠",
+                    text=f"❤️‍🔥{get_size(file.file_size)}❤️‍🔥",
 
                     callback_data=f'{pre}_#{file.file_id}#{query.from_user.id}',
 
@@ -394,7 +394,7 @@ async def advantage_spoll_choker(bot, query):
 
                                 [
 
-                                    InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="http://t.me/nasrani_bot?startgroup=true")
+                                    InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="http://t.meat3moviesofficalbot?startgroup=true")
 
                                 ],
 
@@ -1020,7 +1020,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                             InlineKeyboardButton(f'ɪɴғᴏ', 'infos')
                         ],
                         [
-                            InlineKeyboardButton("⚠️ Can't Access ❓ Click Here ⚠️", url=f'https://t.me/+Md9dwytUK1NhNTc9')
+                            InlineKeyboardButton("⚠️ Can't Access ❓ Click Here ⚠️", url=f'https://t.me/moviesinlineback')
                         ],                       
                         [
                             InlineKeyboardButton('📥 Download 📥 ', url = msg.link)
