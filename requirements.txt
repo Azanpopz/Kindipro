@@ -2,9 +2,9 @@ git+https://github.com/subinps/pyrogram@inline-m
 tgcrypto
 pymongo[srv]==3.12.3
 motor==2.5.1
-marshmallow==3.14.1
+mmallow==3.14.1
 umongo==3.0.1
-requests
+sts
 bs4
 imdbpy==2021.4.18
 aiofiles
@@ -12,38 +12,38 @@ telegraph
 pyrogram
 youtube_search_python
 youtube_search
-ytthumb
+umb
 ffmpeg-python
-googletrans==3.1.0a0
+gootrans==3.1.0a0
 carbonnow==0.0.1
 Pillow>=4.2.0
 bs4
-string-extract
+stri-extract
 domain-extract
 hashtags_extract
 Pymoe
-pendulum
+pendlum
 pytesseract
 pyshorteners
-heroku3
+herku3
 Heroku3
 
 python-decouple
 speedtest-cli
-countryinfo
+yinfo
 python-telegram-bot==11.1.0
-pyromod~=1.5
+pyrd~=1.5
 gtts
 yt_dlp
 wget
 
-TgCrypto
+ypto
 pyrogram<=1.4.16
-googletrans==3.1.0a0
+trans==3.1.0a0
 pymongo
 dnspython
 python-dotenv
-play-scraper
+pla-scraper
 pyTelegramBotAPI
 
 
@@ -54,35 +54,35 @@ pyaes==1.6.1
 PySocks==1.7.1
 TgCrypto==1.2.2
 lottie
-cairosvg
-youtube-dl
+casvg
+be-dl
 validators
 ffmpeg
 requests
 
 eyeD3
-lyricsgenius
+lyricsgeniuslyrics
 requests
 spotipy
-youtube_dl
+be_dl
 youtube_search
-python-telegram-bot
+pytho-telegram-bot
 
 OpenCC
 Pillow
-Pyrogram
+Pyroam
 TgCrypto
-ffmpeg-python
+ffmeg-python
 youtube-dl
 wget
 
 
-humanize
+nize
 hachoir
 pymongo
 dnspython
 
-git+https://github.com/HeimanPictures/mdisk.git
+gitps://github.com/HeimanPictures/mdisk.git
 mdisk
 
 
