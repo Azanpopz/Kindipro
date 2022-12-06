@@ -11,7 +11,7 @@ from gtts import gTTS
 from io import BytesIO
 from typing import List, Dict
 from googletrans import Translator
-from pyrogram import Client, filters, enums
+from pyrogram import Client, filters
 from asyncio import get_running_loop
 from info import IMDB_TEMPLATE, SHORT_LINK_API_KEY
 from utils import extract_user, get_file_id, get_poster, last_online
