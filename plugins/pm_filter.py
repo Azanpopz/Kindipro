@@ -28,39 +28,17 @@ import logging
 
 
 
-import json
-import os
-import re
-import ast
-import asyncio
-import logging
-import random
-import pyrogram
-
-from info import *
-from Script import script
-from pyrogram import Client, filters
-from database.users_chats_db import db
-from plugins.misc import paginate_modules
-from plugins.helper_func import TimeFormatter
-from database.filters_mdb import del_all, find_filter, get_filters
-from utils import get_size, is_subscribed, get_poster, search_gagala, temp
-from database.ia_filterdb import Media, get_file_details, get_search_results
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid, BadRequest
-from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
-from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
-    make_inactive
-from database.settings_db import sett_db
-from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, \
-    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE
-
 logger = logging.getLogger(__name__)
+
 logger.setLevel(logging.ERROR)
 
+
+
 BUTTONS = {}
-BATCH_FILES = {}
+
 SPELL_CHECK = {}
+
+FILTER_MOD = {}
 
 
 @Client.on_message(filters.group & filters.text & filters.incoming)  # & ~filters.edited
