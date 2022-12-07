@@ -208,7 +208,8 @@ def split_list(l, n):
 def get_file_id(msg: Message):
     if msg.media:
         for message_type in (
-            "text"
+            "text",
+            "message",
             "photo",
             "animation",
             "audio",
