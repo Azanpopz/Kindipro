@@ -4,7 +4,7 @@ RUN apt update && apt upgrade -y
 RUN apt install git -y
 COPY requirements.txt /requirements.txt
 
-RUN cd /master_personal
+RUN cd /Kindipro
 RUN pip3 install -U pip && pip3 install -U -r requirements.txt
 WORKDIR /Kindipro
 COPY start.sh /start.sh
