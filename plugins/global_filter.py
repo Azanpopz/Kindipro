@@ -1,5 +1,5 @@
 import io
-from pyrogram import filters, Client
+from pyrogram import filters, Client, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.gfilters_mdb import(
    add_gfilter,
@@ -11,7 +11,7 @@ from database.gfilters_mdb import(
 
 from database.connections_mdb import active_connection
 from utils import get_file_id, gfilterparser, split_quotes
-from infos import ADMINS
+from info import ADMINS
 
 
 @Client.on_message(filters.command(['gfilter', 'addg']) & filters.incoming & filters.user(ADMINS))
