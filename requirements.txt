@@ -189,6 +189,7 @@ pyshorteners
 doodstream
 unshortenit
 
-
+TgCrypto
+Pillow~=8.3.1
 
 
