@@ -71,6 +71,27 @@ support_chat_id = environ.get('SUPPORT_CHAT_ID')
 # This is required for the plugins involving the file system.
 TMP_DOWNLOAD_DIRECTORY = environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
 
+
+
+# delete
+HEROKU_API_KEY = environ.get("HEROKU_API_KEY", "")
+HEROKU_APP_NAME = environ.get("HEROKU_AP_NAME", "")
+BT_STRT_TM = time.time()
+MY_CAPTION = "FILE : <code>{file_name}</code> \nSize : <i>{file_size}</i>\n\n Hello {message.from_user.first_name} \n\n⚠️ കോപ്പി റൈറ്റ് ഉള്ളത് കൊണ്ട് ഈ ഒരു ഫയൽ 1 മണിക്കൂർകൊണ്ട് ഇവിടെ നിന്നും ഡിലേറ്റാവും...!!!\n\nഇവിടെ നിന്നും വേറെ എവിടേലും മാറ്റിയതിന് ശേഷം ഡൗൺലോഡ് ചെയ്യുക...!!!\n\nFILES FORWARD TO YOUR SAVED MESSAGES\n\nAll files here Gets Deleted With in 1 hour."
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Command
 COMMAND_HAND_LER = environ.get("COMMAND_HAND_LER", "/")
 
