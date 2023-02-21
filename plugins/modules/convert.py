@@ -14,6 +14,15 @@ TEXT=os.environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title
 APPROVED = os.environ.get("APPROVED_WELCOME", "on").lower()
 
 
+@Client.on_message(filters.private & filters.command(["approve"]))
+async def approve(client: pr0fess0r_99, message: Message):
+    approvedbot = await client.get_me() 
+    button = [[ InlineKeyboardButton("📦 Repo", url="https://t.me/nasrani_update"), InlineKeyboardButton("Updates 📢", url="t.me/nasrani_update") ],
+              [ InlineKeyboardButton("➕️ Add Me To Your Chat ➕️", url=f"http://t.me/{approvedbot.username}?startgroup=botstart") ]]
+    await client.send_message(chat_id=message.chat.id, text=f"**__Hello {message.from_user.mention} Iam Auto Approver Join Request Bot Just [Add Me To Your Group Channnl](http://t.me/{approvedbot.username}?startgroup=botstart) || Repo t.me/nasrani_update||**__", reply_markup=InlineKeyboardMarkup(button), disable_web_page_preview=True)
+
+
+
 @Client.on_chat_join_request(filters.chat(CHAT_ID))
 async def autoapprove(client: pr0fess0r_99, message: ChatJoinRequest):
     chat=message.chat # Chat
