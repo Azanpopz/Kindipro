@@ -113,3 +113,5 @@ gTTS==2.2.4
 pyperclip==1.8.2
 emoji
 pytz
+ujson
+search_engine_parser
