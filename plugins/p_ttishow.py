@@ -1,28 +1,13 @@
-import random
-import asyncio
-
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong, PeerIdInvalid
-from info import ADMINS, LOG_CHANNEL, SUPPORT_CHAT, PM
+from infos import ADMINS, LOG_CHANNEL, SUPPORT_CHAT, MELCOW_NEW_USERS, MELCOW_IMG, MELCOW_VID, MAIN_CHANNEL, S_GROUP
 from database.users_chats_db import db
 from database.ia_filterdb import Media
-from utils import get_size, temp
+from utils import get_size, temp, get_settings
 from Script import script
 from pyrogram.errors import ChatAdminRequired
-
-import os 
-from os import error
-import logging
-import pyrogram
-import time
-from decouple import config
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.types import User, Message, Sticker, Document, ChatMember
-
-
-
+import asyncio
 
 """-----------------------------------------https://t.me/GetTGLink/4179 --------------------------------------"""
 
@@ -31,20 +16,10 @@ async def save_group(bot, message):
     r_j_check = [u.id for u in message.new_chat_members]
     if temp.ME in r_j_check:
         if not await db.get_chat(message.chat.id):
-            total=await bot.get_chat_members_count(message.chat.id)            
+            total=await bot.get_chat_members_count(message.chat.id)
             r_j = message.from_user.mention if message.from_user else "Anonymous" 
-            buttons = [[            
-            InlineKeyboardButton('🕵️𝐇𝐞𝐥𝐩🕵️', callback_data='help'),
-            InlineKeyboardButton('😊𝐀𝐛𝐨𝐮𝐭😊', callback_data='about')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await bot.send_message(
-            chat_id=PM,
-            text= script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, r_j),
-            reply_markup=reply_markup,
-            parse_mode='html'
-        )           
-        await db.add_chat(message.chat.id, message.chat.title)
+            await bot.send_message(LOG_CHANNEL, script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, r_j))       
+            await db.add_chat(message.chat.id, message.chat.title)
         if message.chat.id in temp.BANNED_CHATS:
             # Inspired from a boat of a banana tree
             buttons = [[
@@ -63,39 +38,37 @@ async def save_group(bot, message):
             await bot.leave_chat(message.chat.id)
             return
         buttons = [[
-            InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="http://t.me/nasrani_bot?startgroup=true")
-         ],
-         [
-            InlineKeyboardButton('🎭𝐔𝐩𝐝𝐚𝐭𝐞𝐬🎭', url='https://t.me/nasariya_update')
+            InlineKeyboardButton('ℹ️ Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
+            InlineKeyboardButton('📢 Updates', url=(MAIN_CHANNEL))
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await message.reply_text(
-            text=f"<b>𝐓𝐡𝐚𝐧𝐤𝐲𝐨𝐮 𝐅𝐨𝐫 𝐀𝐝𝐝𝐢𝐧𝐠 𝐌𝐞 𝐈𝐧 {message.chat.title} ❣️\n\n 𝐏𝐥𝐞𝐚𝐬𝐞 𝐒𝐡𝐚𝐫𝐞 𝐀𝐧𝐝 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 {count} </b>",
+            text=f"<b>Thankyou For Adding Me In {message.chat.title} ❣️\n\nIf you have any questions & doubts about using me contact support.</b>",
             reply_markup=reply_markup)
-    else:        
-        buttons = [[
-            InlineKeyboardButton('🎁𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬🎁', url="http://t.me/nasrani_bot?startgroup=true")
-         ],
-         [
-            InlineKeyboardButton('🎭𝐔𝐩𝐝𝐚𝐭𝐞𝐬🎭', url='https://t.me/bigmoviesworld')
-        ]]
-        reply_markup=InlineKeyboardMarkup(buttons)
-        for u in message.new_chat_members:
-            if (temp.MELCOW).get('welcome') is not None:
-                try:
-                    await (temp.MELCOW['welcome']).delete()
-                except:
-                    pass
-            temp.MELCOW['welcome'] = await message.reply_text(
-                                                                
-                                                                text=f"<b>{u.mention}, 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐓𝐨 {message.chat.title} \n താങ്കൾക്ക് സിനിമ എടുക്കാൻ അറിയില്ലെങ്കിൽ മുകളിലെ വീഡിയോ കണ്ട് അത് പോലെ ചെയ്യുക😌 </b>",
-                                                                reply_markup=reply_markup,
-                                                                parse_mode='html'
-                                                               )
-            
-        await asyncio.sleep(30)      # sleep 30 second
-        await (temp.MELCOW['welcome']).delete()
-
+    else:
+        settings = await get_settings(message.chat.id)
+        if settings["welcome"]:
+            for u in message.new_chat_members:
+                if (temp.MELCOW).get('welcome') is not None:
+                    try:
+                        await (temp.MELCOW['welcome']).delete()
+                    except:
+                        pass
+                temp.MELCOW['welcome'] = await message.reply_photo(
+                                                 photo=(MELCOW_IMG),
+                                                 caption=(script.MELCOW_ENG.format(u.mention, message.chat.title)),
+                                                 reply_markup=InlineKeyboardMarkup(
+                                                                         [[
+                                                                           InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=S_GROUP),
+                                                                           InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=MAIN_CHANNEL)
+                                                                        ]]
+                                                 ),
+                                                 parse_mode=enums.ParseMode.HTML
+                )
+                
+        if settings["auto_delete"]:
+            await asyncio.sleep(600)
+            await (temp.MELCOW['welcome']).delete()
 
 @Client.on_message(filters.command('leave') & filters.user(ADMINS))
 async def leave_a_chat(bot, message):
@@ -194,6 +167,7 @@ async def get_ststs(bot, message):
 # a function for trespassing into others groups, Inspired by a Vazha
 # Not to be used , But Just to showcase his vazhatharam.
 # @Client.on_message(filters.command('invite') & filters.user(ADMINS))
+@Client.on_message(filters.command('invite') & filters.user(ADMINS))
 async def gen_invite(bot, message):
     if len(message.command) == 1:
         return await message.reply('Give me a chat id')
