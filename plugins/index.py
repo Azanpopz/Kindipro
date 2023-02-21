@@ -1,22 +1,6 @@
 import logging
 import asyncio
-from pyrogram import Client, filters
-from pyrogram.errors import FloodWait
-from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, ChatAdminRequired, UsernameInvalid, UsernameNotModified
-from infos import ADMINS
-from infos import INDEX_REQ_CHANNEL as LOG_CHANNEL
-from database.ia_filterdb import save_file
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from utils import temp
-import re
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-lock = asyncio.Lock()
-
-
-import logging
-import asyncio
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import ChannelInvalid, ChatAdminRequired, UsernameInvalid, UsernameNotModified
 from info import ADMINS
@@ -65,7 +49,6 @@ async def index_files(bot, query):
     await index_files_to_db(int(lst_msg_id), chat, msg, bot)
 
 
-
 @Client.on_message((filters.forwarded | (filters.regex("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")) & filters.text ) & filters.private & filters.incoming)
 async def send_for_index(bot, message):
     if message.text:
@@ -77,7 +60,7 @@ async def send_for_index(bot, message):
         last_msg_id = int(match.group(5))
         if chat_id.isnumeric():
             chat_id  = int(("-100" + chat_id))
-    elif message.forward_from_chat.type == 'channel':
+    elif message.forward_from_chat.type == enums.ChatType.CHANNEL:
         last_msg_id = message.forward_from_message_id
         chat_id = message.forward_from_chat.username or message.forward_from_chat.id
     else:
@@ -127,7 +110,7 @@ async def send_for_index(bot, message):
         ],
         [
             InlineKeyboardButton('Reject Index',
-                                 callback_data=f'index#reject#{chat_id}#{message.message_id}#{message.from_user.id}'),
+                                 callback_data=f'index#reject#{chat_id}#{message.id}#{message.from_user.id}'),
         ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
@@ -135,10 +118,6 @@ async def send_for_index(bot, message):
                            f'#IndexRequest\n\nBy : {message.from_user.mention} (<code>{message.from_user.id}</code>)\nChat ID/ Username - <code> {chat_id}</code>\nLast Message ID - <code>{last_msg_id}</code>\nInviteLink - {link}',
                            reply_markup=reply_markup)
     await message.reply('ThankYou For the Contribution, Wait For My Moderators to verify the files.')
-
-
-
-
 
 
 @Client.on_message(filters.command('setskip') & filters.user(ADMINS))
