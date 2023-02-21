@@ -1457,6 +1457,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
  async def auto_filter(client, msg, spoll=False):
+    r
+    
+async def auto_filter(client, msg, spoll=False):
     reqstr1 = msg.from_user.id if msg.from_user else 0
     reqstr = await client.get_users(reqstr1)
     if not spoll:
@@ -1512,8 +1515,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 for file in files
             ]
     else:
-
-       btn = [
+        if settings["button"]:
+            btn = [
                 [
                     InlineKeyboardButton(
                         text=f"▫️{get_size(file.file_size)} ⊳ {file.file_name}", callback_data=f'{pre}#{file.file_id}'
