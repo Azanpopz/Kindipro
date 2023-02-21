@@ -1,4 +1,4 @@
-https://github.com/Mahesh0253/pyrogram/archive/inline.zip
+
 pyrogram>=2.0.30
 tgcrypto
 pymongo[srv]==3.12.3
@@ -11,6 +11,8 @@ imdbpy==2021.4.18
 aiofiles
 telegraph
 
+
+git+https://github.com/Joelkb/cinemagoer
 
 
 ytthumb
@@ -53,7 +55,7 @@ yt_dlp
 wget
 
 TgCrypto
-pyrogram<=1.4.16
+
 googletrans==3.1.0a0
 pymongo
 dnspython
