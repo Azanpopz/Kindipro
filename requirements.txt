@@ -110,5 +110,7 @@ Pillow
 speedtest-cli
 python-dotenv
 
-
+pyshorteners
+doodstream
+unshortenit
 
