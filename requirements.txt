@@ -112,4 +112,4 @@ python-dotenv
 pyshorteners
 doodstream
 unshortenit
-
+python-decouple
